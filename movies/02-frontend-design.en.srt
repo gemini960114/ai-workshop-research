@@ -1,0 +1,223 @@
+1
+00:00:00,800 --> 00:00:03,559
+Give an AI the same request for a web
+page:
+
+2
+00:00:03,559 --> 00:00:08,500
+why does one result look like a template,
+and another like a designer's work?
+
+3
+00:00:08,500 --> 00:00:10,874
+The difference may be a single skill.
+
+4
+00:00:10,874 --> 00:00:15,045
+This video introduces Anthropic's official
+frontend-design skill.
+
+5
+00:00:16,000 --> 00:00:21,916
+A skill is an operating manual written for
+an AI Agent: how to handle a type of task,
+
+6
+00:00:21,916 --> 00:00:25,396
+which rules to follow, and which tools it
+can use.
+
+7
+00:00:25,396 --> 00:00:29,432
+It's just a folder, and at its core is one
+file, SKILL.md.
+
+8
+00:00:30,367 --> 00:00:32,373
+You usually don't have to name it.
+
+9
+00:00:32,373 --> 00:00:36,977
+The AI reads the description at the top of
+SKILL.md to decide when to load it.
+
+10
+00:00:36,977 --> 00:00:40,104
+To force it, type a slash followed by the
+skill name.
+
+11
+00:00:41,067 --> 00:00:45,593
+A skill can live in the project directory,
+where it only applies to that project,
+
+12
+00:00:45,593 --> 00:00:48,834
+or in your user directory, where every
+project can use it.
+
+13
+00:00:48,834 --> 00:00:52,914
+But a global skill may compete with the
+project's skills to be triggered.
+
+14
+00:00:53,867 --> 00:00:59,863
+Installing takes one line: npx skills add,
+followed by the GitHub owner and repo.
+
+15
+00:00:59,863 --> 00:01:03,712
+Add an at sign and a name to install just
+one skill.
+
+16
+00:01:03,712 --> 00:01:08,080
+Dash a picks the AI Agent, dash dash copy
+copies the files,
+
+17
+00:01:08,080 --> 00:01:10,300
+and dash y skips confirmation.
+
+18
+00:01:11,233 --> 00:01:13,466
+Two things matter before you start.
+
+19
+00:01:13,466 --> 00:01:16,367
+First, in Antigravity, use Open Folder to
+open
+
+20
+00:01:16,367 --> 00:01:18,826
+this unit's folder, not the outer one.
+
+21
+00:01:18,826 --> 00:01:22,527
+Second, after installing a skill, always
+start a new chat,
+
+22
+00:01:22,527 --> 00:01:24,505
+or the skill won't take effect.
+
+23
+00:01:25,467 --> 00:01:29,964
+frontend-design makes the AI work like the
+design director of a studio:
+
+24
+00:01:29,964 --> 00:01:33,827
+it finds the colors, fonts, and layout in
+the subject itself,
+
+25
+00:01:33,827 --> 00:01:37,212
+and deliberately avoids the AI-template
+look of purple
+
+26
+00:01:37,212 --> 00:01:39,971
+gradients, big numbers, and a row of
+cards.
+
+27
+00:01:40,933 --> 00:01:45,500
+Example one: ask the AI for a one-page
+website for a Taiwanese artisanal
+
+28
+00:01:45,500 --> 00:01:48,500
+tea brand, Shanlan Tea Research
+Institute,
+
+29
+00:01:48,500 --> 00:01:52,823
+with a brand story, three teas, an origin
+map, and an order button.
+
+30
+00:01:52,823 --> 00:01:55,664
+The key is the last line: no SaaS
+template,
+
+31
+00:01:55,664 --> 00:01:59,957
+and propose two aesthetic directions for
+me to choose from first.
+
+32
+00:02:00,900 --> 00:02:05,077
+Here's the home page it built: off-white
+paper with tea brown,
+
+33
+00:02:05,077 --> 00:02:06,492
+and a serif headline.
+
+34
+00:02:06,492 --> 00:02:09,355
+On the right of the hero is a harvest
+batch
+
+35
+00:02:09,355 --> 00:02:12,151
+card showing altitude and roasting craft.
+
+36
+00:02:12,151 --> 00:02:15,317
+The whole page reads like a tea field
+notebook.
+
+37
+00:02:16,267 --> 00:02:21,224
+Example two: a Memory Match game with Vite
+and JavaScript: sixteen cards,
+
+38
+00:02:21,224 --> 00:02:25,841
+a move count and a timer, and the page
+running as soon as it's done.
+
+39
+00:02:25,841 --> 00:02:31,545
+This prompt is almost the same as in Unit
+01; the only difference is that this time,
+
+40
+00:02:31,545 --> 00:02:33,107
+the skill is installed.
+
+41
+00:02:34,067 --> 00:02:37,681
+Flipped cards turn white, and matched
+pairs disappear.
+
+42
+00:02:37,681 --> 00:02:40,592
+Put it side by side with the Unit 01
+version
+
+43
+00:02:40,592 --> 00:02:43,436
+and compare the colors, fonts, and layout.
+
+44
+00:02:43,436 --> 00:02:47,987
+Finally, don't forget to ask: which Skills
+did you use in this case?
+
+45
+00:02:48,933 --> 00:02:53,587
+To recap: open the right folder, install
+the skill, start a new chat,
+
+46
+00:02:53,587 --> 00:02:56,690
+give the prompt, and ask which skills it
+used.
+
+47
+00:02:56,690 --> 00:02:58,511
+Now go and try it yourself.

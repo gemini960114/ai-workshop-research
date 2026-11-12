@@ -9,6 +9,7 @@
 | 01 | [01-antigravity.mp4](01-antigravity.mp4) | [zh-TW](01-antigravity.zh-TW.srt) | 3:56 |
 | 01 (English) | [01-antigravity.en.mp4](01-antigravity.en.mp4) | [en](01-antigravity.en.srt) | 3:59 |
 | 02 | [02-frontend-design.mp4](02-frontend-design.mp4) | [zh-TW](02-frontend-design.zh-TW.srt) | 2:42 |
+| 02 (English) | [02-frontend-design.en.mp4](02-frontend-design.en.mp4) | [en](02-frontend-design.en.srt) | 3:02 |
 | 03 | [03-office-skills.mp4](03-office-skills.mp4) | [zh-TW](03-office-skills.zh-TW.srt) | 3:09 |
 | 03 (English) | [03-office-skills.en.mp4](03-office-skills.en.mp4) | [en](03-office-skills.en.srt) | 3:34 |
 | 04 | [04-voucher-ocr.mp4](04-voucher-ocr.mp4) | [zh-TW](04-voucher-ocr.zh-TW.srt) | 4:26 |

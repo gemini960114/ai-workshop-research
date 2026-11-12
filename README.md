@@ -37,19 +37,19 @@ git clone https://github.com/gemini960114/ai-workshop-research.git
 
 ## Slides & Tutorial Videos
 
-Each unit's README starts with a slide download link; all slide decks are in [`PPTX/`](PPTX/):
+Every unit has **English and Traditional Chinese versions** of its slide deck (with speaker notes) and its narrated tutorial video. Each unit's README links to the English versions first; decks are in [`PPTX/`](PPTX/) and videos in [`movies/`](movies/).
 
-| Unit | Slides |
-| --- | --- |
-| 00 | [00-cloud-vs-local.pptx](https://github.com/gemini960114/ai-workshop-research/raw/main/PPTX/00-cloud-vs-local.pptx) |
-| 01 | [01-antigravity.pptx](https://github.com/gemini960114/ai-workshop-research/raw/main/PPTX/01-antigravity.pptx) |
-| 02 | [02-frontend-design.pptx](https://github.com/gemini960114/ai-workshop-research/raw/main/PPTX/02-frontend-design.pptx) |
-| 03 | [03-office-skills.pptx](https://github.com/gemini960114/ai-workshop-research/raw/main/PPTX/03-office-skills.pptx) |
-| 04 | [04-voucher-ocr.pptx](https://github.com/gemini960114/ai-workshop-research/raw/main/PPTX/04-voucher-ocr.pptx) |
-| 05 | [05-qiime2-analysis.pptx](https://github.com/gemini960114/ai-workshop-research/raw/main/PPTX/05-qiime2-analysis.pptx) |
-| 06 | [06-research-papers.pptx](https://github.com/gemini960114/ai-workshop-research/raw/main/PPTX/06-research-papers.pptx) |
+| Unit | Slides | Video |
+| --- | --- | --- |
+| 00 | [English](https://github.com/gemini960114/ai-workshop-research/raw/main/PPTX/00-cloud-vs-local.en.pptx) · [中文](https://github.com/gemini960114/ai-workshop-research/raw/main/PPTX/00-cloud-vs-local.pptx) | [English](https://github.com/gemini960114/ai-workshop-research/blob/main/movies/00-cloud-vs-local.en.mp4) (2:00, [en subtitles](https://github.com/gemini960114/ai-workshop-research/blob/main/movies/00-cloud-vs-local.en.srt)) · [中文](https://github.com/gemini960114/ai-workshop-research/blob/main/movies/00-cloud-vs-local.mp4) |
+| 01 | [English](https://github.com/gemini960114/ai-workshop-research/raw/main/PPTX/01-antigravity.en.pptx) · [中文](https://github.com/gemini960114/ai-workshop-research/raw/main/PPTX/01-antigravity.pptx) | [English](https://github.com/gemini960114/ai-workshop-research/blob/main/movies/01-antigravity.en.mp4) (3:59, [en subtitles](https://github.com/gemini960114/ai-workshop-research/blob/main/movies/01-antigravity.en.srt)) · [中文](https://github.com/gemini960114/ai-workshop-research/blob/main/movies/01-antigravity.mp4) |
+| 02 | [English](https://github.com/gemini960114/ai-workshop-research/raw/main/PPTX/02-frontend-design.en.pptx) · [中文](https://github.com/gemini960114/ai-workshop-research/raw/main/PPTX/02-frontend-design.pptx) | [English](https://github.com/gemini960114/ai-workshop-research/blob/main/movies/02-frontend-design.en.mp4) (3:02, [en subtitles](https://github.com/gemini960114/ai-workshop-research/blob/main/movies/02-frontend-design.en.srt)) · [中文](https://github.com/gemini960114/ai-workshop-research/blob/main/movies/02-frontend-design.mp4) |
+| 03 | [English](https://github.com/gemini960114/ai-workshop-research/raw/main/PPTX/03-office-skills.en.pptx) · [中文](https://github.com/gemini960114/ai-workshop-research/raw/main/PPTX/03-office-skills.pptx) | [English](https://github.com/gemini960114/ai-workshop-research/blob/main/movies/03-office-skills.en.mp4) (3:34, [en subtitles](https://github.com/gemini960114/ai-workshop-research/blob/main/movies/03-office-skills.en.srt)) · [中文](https://github.com/gemini960114/ai-workshop-research/blob/main/movies/03-office-skills.mp4) |
+| 04 | [English](https://github.com/gemini960114/ai-workshop-research/raw/main/PPTX/04-voucher-ocr.en.pptx) · [中文](https://github.com/gemini960114/ai-workshop-research/raw/main/PPTX/04-voucher-ocr.pptx) | [English](https://github.com/gemini960114/ai-workshop-research/blob/main/movies/04-voucher-ocr.en.mp4) (4:45, [en subtitles](https://github.com/gemini960114/ai-workshop-research/blob/main/movies/04-voucher-ocr.en.srt)) · [中文](https://github.com/gemini960114/ai-workshop-research/blob/main/movies/04-voucher-ocr.mp4) |
+| 05 | [English](https://github.com/gemini960114/ai-workshop-research/raw/main/PPTX/05-qiime2-analysis.en.pptx) · [中文](https://github.com/gemini960114/ai-workshop-research/raw/main/PPTX/05-qiime2-analysis.pptx) | [English](https://github.com/gemini960114/ai-workshop-research/blob/main/movies/05-qiime2-analysis.en.mp4) (4:51, [en subtitles](https://github.com/gemini960114/ai-workshop-research/blob/main/movies/05-qiime2-analysis.en.srt)) · [中文](https://github.com/gemini960114/ai-workshop-research/blob/main/movies/05-qiime2-analysis.mp4) |
+| 06 | [English](https://github.com/gemini960114/ai-workshop-research/raw/main/PPTX/06-research-papers.en.pptx) · [中文](https://github.com/gemini960114/ai-workshop-research/raw/main/PPTX/06-research-papers.pptx) | [English](https://github.com/gemini960114/ai-workshop-research/blob/main/movies/06-research-papers.en.mp4) (6:57, [en subtitles](https://github.com/gemini960114/ai-workshop-research/blob/main/movies/06-research-papers.en.srt)) · [中文](https://github.com/gemini960114/ai-workshop-research/blob/main/movies/06-research-papers.mp4) |
 
-Tutorial videos are stored in [`movies/`](movies/) (with Traditional Chinese subtitles). The READMEs for Units 00 and 04–06 link directly to the MP4 files here; Units 01–03 link to YouTube versions.
+English videos have English narration and English subtitles. Screen recordings and screenshots in them show the original Chinese demo, with English captions. Chinese videos have Traditional Chinese subtitles; Units 01–03 are also on YouTube.
 
 ## Prerequisites
 

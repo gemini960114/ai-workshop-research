@@ -4,9 +4,9 @@
 
 Learn what a Skill is and how to install it, then use Anthropic's official `frontend-design` skill to build a brand landing page and a Memory Match card game—and compare the result with and without the skill.
 
-> 📥 **Unit Slides**: [Download 02-frontend-design.pptx](https://github.com/gemini960114/ai-workshop-research/raw/main/PPTX/02-frontend-design.pptx) (12 slides, with speaker notes)
+> 📥 **Unit Slides**: [Download 02-frontend-design.en.pptx](https://github.com/gemini960114/ai-workshop-research/raw/main/PPTX/02-frontend-design.en.pptx) (12 slides, with speaker notes; [Chinese version](https://github.com/gemini960114/ai-workshop-research/raw/main/PPTX/02-frontend-design.pptx))
 
-> 🎬 **Tutorial Video**: [Unit 02 | Frontend Design](https://youtu.be/qVPdYf5CD2A) (YouTube)
+> 🎬 **Tutorial Video**: [Unit 02 | Frontend Design](https://github.com/gemini960114/ai-workshop-research/blob/main/movies/02-frontend-design.en.mp4) (MP4, 3 min 02 sec, English narration with [English subtitles](https://github.com/gemini960114/ai-workshop-research/blob/main/movies/02-frontend-design.en.srt); [Chinese version on YouTube](https://youtu.be/qVPdYf5CD2A))
 
 | Step | Content | Est. Time |
 | :--- | :--- | :---: |
