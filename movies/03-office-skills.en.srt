@@ -1,0 +1,244 @@
+1
+00:00:00,800 --> 00:00:06,895
+Can one CSV file become an Excel workbook,
+a slide deck, a Word report,
+
+2
+00:00:06,895 --> 00:00:09,814
+and a PDF handout, all done by AI?
+
+3
+00:00:09,814 --> 00:00:15,136
+This video introduces Anthropic's four
+official Office skills.
+
+4
+00:00:16,100 --> 00:00:20,514
+Without skills, the AI often writes
+throwaway code to read files,
+
+5
+00:00:20,514 --> 00:00:22,687
+breaks when formats get complex,
+
+6
+00:00:22,687 --> 00:00:26,965
+and produces Excel files and slides with
+content but no layout.
+
+7
+00:00:26,965 --> 00:00:30,700
+With skills, it follows an officially
+curated workflow,
+
+8
+00:00:30,700 --> 00:00:34,843
+and even renders slides as images to check
+the layout itself.
+
+9
+00:00:35,800 --> 00:00:38,141
+Each skill handles one file type.
+
+10
+00:00:38,141 --> 00:00:42,895
+docx covers Word headings, tables of
+contents, and tracked changes;
+
+11
+00:00:42,895 --> 00:00:47,152
+pdf extracts text, merges and splits
+files, and fills forms;
+
+12
+00:00:47,152 --> 00:00:51,834
+pptx handles layout, charts, and
+animation; xlsx handles formulas,
+
+13
+00:00:51,834 --> 00:00:53,466
+formatting, and charts.
+
+14
+00:00:53,466 --> 00:00:55,452
+You don't need to name them:
+
+15
+00:00:55,452 --> 00:00:59,709
+they load automatically whenever a task
+touches these files.
+
+16
+00:01:00,667 --> 00:01:03,904
+Before installing, open the right folder:
+use Open
+
+17
+00:01:03,904 --> 00:01:07,076
+Folder on the Unit 03 folder, not the
+outer one.
+
+18
+00:01:07,076 --> 00:01:11,327
+Then install the four skills in the
+terminal with npx skills add.
+
+19
+00:01:11,327 --> 00:01:16,297
+After installing, always start a new
+conversation so the skills take effect.
+
+20
+00:01:17,233 --> 00:01:19,050
+You also need three tools.
+
+21
+00:01:19,050 --> 00:01:21,775
+uv and Node.js let the skills run code.
+
+22
+00:01:21,775 --> 00:01:25,339
+LibreOffice recalculates formulas,
+converts to PDF,
+
+23
+00:01:25,339 --> 00:01:28,554
+and lets the AI see what the slides look
+like.
+
+24
+00:01:28,554 --> 00:01:31,069
+Finally, open the results in Office:
+
+25
+00:01:31,069 --> 00:01:35,192
+animations and transitions are most
+accurate in PowerPoint.
+
+26
+00:01:36,133 --> 00:01:41,041
+There's just one sample dataset: Taiwan's
+Purchasing Managers' Index,
+
+27
+00:01:41,041 --> 00:01:44,099
+with monthly PMI and NMI from 2012 to
+2026.
+
+28
+00:01:44,099 --> 00:01:49,718
+The four examples form a pipeline: each
+step's output is the next step's input.
+
+29
+00:01:50,667 --> 00:01:56,107
+Example one uses xlsx to turn the CSV into
+Excel: one sheet holds the raw data,
+
+30
+00:01:56,107 --> 00:02:00,995
+another computes the yearly averages, and
+a line chart shows the trend.
+
+31
+00:02:00,995 --> 00:02:05,678
+Click a cell, and you should see a
+formula, not a hard-coded number.
+
+32
+00:02:06,633 --> 00:02:11,676
+Example two uses pptx to build a
+five-slide deck from the Excel file.
+
+33
+00:02:11,676 --> 00:02:15,914
+The prompt is very specific: editable
+text, a card layout,
+
+34
+00:02:15,914 --> 00:02:21,103
+one card fading in per click, slow fade
+transitions, and speaker notes.
+
+35
+00:02:22,067 --> 00:02:24,036
+Then check it in PowerPoint.
+
+36
+00:02:24,036 --> 00:02:28,676
+Only the cards are animated, and one more
+appears with each click;
+
+37
+00:02:28,676 --> 00:02:34,231
+transitions are longer than the default
+0.7 seconds; and every slide has notes.
+
+38
+00:02:34,231 --> 00:02:39,223
+Animations and transitions must be written
+directly into the slide XML,
+
+39
+00:02:39,223 --> 00:02:42,668
+and that's exactly where the pptx skill
+comes in.
+
+40
+00:02:43,633 --> 00:02:48,266
+Example three uses docx to write a Word
+report from the same Excel file,
+
+41
+00:02:48,266 --> 00:02:52,706
+with a cover page, an automatic table of
+contents, and four chapters.
+
+42
+00:02:52,706 --> 00:02:57,596
+Right after it's generated, the table of
+contents may be empty: right-click,
+
+43
+00:02:57,596 --> 00:03:00,749
+choose Update Field, and the page numbers
+appear.
+
+44
+00:03:01,700 --> 00:03:04,618
+Finally, pdf turns the report into a
+handout,
+
+45
+00:03:04,618 --> 00:03:08,443
+with page numbers and a light gray
+watermark on every page.
+
+46
+00:03:08,443 --> 00:03:12,138
+The most common mistake is not specifying
+a Chinese font,
+
+47
+00:03:12,138 --> 00:03:15,315
+so the watermark turns into boxes; when it
+works,
+
+48
+00:03:15,315 --> 00:03:17,649
+the Chinese text displays correctly.
+
+49
+00:03:18,600 --> 00:03:23,742
+One CSV, four skills: from Excel and
+slides all the way to Word and PDF.
+
+50
+00:03:23,742 --> 00:03:27,130
+Open the right folder, install the skills,
+start
+
+51
+00:03:27,130 --> 00:03:29,883
+a new conversation, and give it a try.
+
