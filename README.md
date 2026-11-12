@@ -31,6 +31,8 @@ git clone https://github.com/gemini960114/ai-workshop-research.git
 - **05 → 06 是一條研究流程**：05 的分析結果，就是 06 寫論文的材料；06 的資料夾已經附上 05 整理好的研究摘要卡和數字表格。
 - **06 有兩個資料夾**：[`06-ai-workshop-research-papers/`](06-ai-workshop-research-papers/) 是乾淨的練習版；[`06-ai-workshop-research-papers-answer/`](06-ai-workshop-research-papers-answer/) 是照手冊試跑一次的參考答案（12 頁英文論文、12 篇參考文獻）。
 
+> 📋 **提示詞速查表**：七個單元會用到的 prompt 都整理在 [`tutorial.md`](tutorial.md)，上課時照順序複製貼上即可。
+
 ## 上課簡報與影片
 
 各單元 README 開頭有簡報下載連結，檔案都在 [`PPTX/`](PPTX/)：

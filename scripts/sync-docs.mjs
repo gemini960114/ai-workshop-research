@@ -51,6 +51,7 @@ function fromChapter(dir, target) {
 // everything else (if any) becomes a GitHub blob/tree link.
 function fromRoot(target) {
   if (/^(https?:|mailto:|#)/.test(target)) return undefined
+  if (/^(\.\/)?tutorial\.md$/.test(target)) return './prompts'
   const page = chapterPage(target, '(?:\\./)?')
   if (page) return page
   const clean = target.replace(/^\.\//, '')
@@ -69,3 +70,4 @@ for (const [dir, page] of Object.entries(CHAPTERS)) {
 }
 
 write('overview', rewriteLinks(readFileSync(join(ROOT, 'README.md'), 'utf8'), fromRoot))
+write('prompts', rewriteLinks(readFileSync(join(ROOT, 'tutorial.md'), 'utf8'), fromRoot))

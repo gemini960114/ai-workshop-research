@@ -24,11 +24,13 @@ export default defineConfig({
       { text: '課程總覽', link: '/guide/overview' },
       { text: '七個單元', items: units },
       { text: '06 參考答案', link: '/guide/06_research_papers_answer' },
+      { text: '附錄：提示詞速查表', link: '/guide/prompts' },
     ],
     sidebar: [
       { text: '課程介紹', items: [{ text: '課程總覽與單元列表', link: '/guide/overview' }] },
       { text: '單元', items: units },
       { text: '參考答案', items: [{ text: '06 研究論文處理（試跑結果）', link: '/guide/06_research_papers_answer' }] },
+      { text: '附錄', items: [{ text: '提示詞速查表（各單元 prompt）', link: '/guide/prompts' }] },
     ],
     search: { provider: 'local' },
     socialLinks: [{ icon: 'github', link: 'https://github.com/gemini960114/ai-workshop-research' }],

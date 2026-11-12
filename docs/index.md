@@ -12,6 +12,9 @@ hero:
     - theme: alt
       text: 課程總覽與事前準備
       link: /guide/overview
+    - theme: alt
+      text: 提示詞速查表
+      link: /guide/prompts
 
 features:
   - icon: ☁️
