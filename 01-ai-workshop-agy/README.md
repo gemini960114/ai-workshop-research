@@ -4,9 +4,9 @@
 
 Use **Google Antigravity IDE** with its built-in AI Agent to install tools, create a web page, and build a playable mini-game through natural language conversation. No programming experience is required, and it takes about 30 minutes.
 
-> 📥 **Unit Slides**: [Download 01-antigravity.pptx](https://github.com/gemini960114/ai-workshop-research/raw/main/PPTX/01-antigravity.pptx) (19 slides, with speaker notes)
+> 📥 **Unit Slides**: [Download 01-antigravity.en.pptx](https://github.com/gemini960114/ai-workshop-research/raw/main/PPTX/01-antigravity.en.pptx) (19 slides, with speaker notes; [Chinese version](https://github.com/gemini960114/ai-workshop-research/raw/main/PPTX/01-antigravity.pptx))
 
-> 🎬 **Tutorial Video**: [Unit 01 | Getting Started with Antigravity](https://youtu.be/PQEkjWiNC5o) (YouTube)
+> 🎬 **Tutorial Video**: [Unit 01 | Getting Started with Antigravity](https://github.com/gemini960114/ai-workshop-research/blob/main/movies/01-antigravity.en.mp4) (MP4, 3 min 59 sec, English narration with [English subtitles](https://github.com/gemini960114/ai-workshop-research/blob/main/movies/01-antigravity.en.srt); [Chinese version on YouTube](https://youtu.be/PQEkjWiNC5o))
 
 | Step | Content | Est. Time |
 | :--- | :--- | :---: |

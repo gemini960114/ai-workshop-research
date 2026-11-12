@@ -1,0 +1,324 @@
+1
+00:00:00,800 --> 00:00:02,994
+You don't need to know how to code.
+
+2
+00:00:02,994 --> 00:00:06,504
+You just need to say clearly what you
+want. In this unit,
+
+3
+00:00:06,504 --> 00:00:11,143
+we use Google Antigravity and its built-in
+AI Agent to go all the way from
+
+4
+00:00:11,143 --> 00:00:13,462
+installation to a playable mini-game.
+
+5
+00:00:14,400 --> 00:00:18,883
+There are four parts: install and set up,
+ask the AI to install tools,
+
+6
+00:00:18,883 --> 00:00:23,685
+build a first web page as a warm-up, and
+finally build a Memory Match game.
+
+7
+00:00:23,685 --> 00:00:29,128
+Classroom computers are already set up, so
+you can start right at checking the tools.
+
+8
+00:00:30,067 --> 00:00:34,059
+On your own computer, go to the official
+download page.
+
+9
+00:00:34,059 --> 00:00:37,398
+Careful: don't pick the app or CLI at the
+top.
+
+10
+00:00:37,398 --> 00:00:40,447
+Scroll down to Antigravity IDE Standalone.
+
+11
+00:00:40,447 --> 00:00:45,310
+On Windows, most people choose x64; on a
+Mac, choose Apple Silicon.
+
+12
+00:00:46,267 --> 00:00:48,900
+Open it and sign in with your Google
+account.
+
+13
+00:00:48,900 --> 00:00:51,796
+The built-in AI Agent is right there on
+the right:
+
+14
+00:00:51,796 --> 00:00:54,634
+nothing extra to install, and no API key
+needed.
+
+15
+00:00:54,634 --> 00:00:57,266
+If your work or school account is
+restricted,
+
+16
+00:00:57,266 --> 00:00:59,431
+use a personal Gmail account instead.
+
+17
+00:01:00,367 --> 00:01:02,891
+The AI only works inside the folder you
+open.
+
+18
+00:01:02,891 --> 00:01:06,986
+So for every project, create a new folder
+and select it with Open Folder.
+
+19
+00:01:06,986 --> 00:01:11,138
+In the bottom right, you can also choose
+the model and the thinking level.
+
+20
+00:01:12,100 --> 00:01:13,422
+Want more AI Agents?
+
+21
+00:01:13,422 --> 00:01:14,942
+Add them as extensions.
+
+22
+00:01:14,942 --> 00:01:20,162
+In Extensions on the left, search for
+Claude Code and Codex, and click Install.
+
+23
+00:01:20,162 --> 00:01:22,013
+Then go to View, Appearance,
+
+24
+00:01:22,013 --> 00:01:25,383
+and set Secondary Activity Bar Position to
+Default.
+
+25
+00:01:25,383 --> 00:01:29,679
+An icon for each agent appears on the
+right; click one to switch.
+
+26
+00:01:30,633 --> 00:01:34,372
+In the same editor, you can switch agents
+and switch models.
+
+27
+00:01:34,372 --> 00:01:37,642
+Claude Code offers models such as Opus 5.5
+and Sonnet
+
+28
+00:01:37,642 --> 00:01:40,541
+5.5; Codex offers GPT-5.6 Sol, Terra and
+Luna;
+
+29
+00:01:40,541 --> 00:01:45,152
+and the built-in Antigravity Agent offers
+models such as Gemini 3.8 Flash.
+
+30
+00:01:45,152 --> 00:01:50,137
+Note that Claude Code and Codex each need
+you to sign in with their own account.
+
+31
+00:01:51,100 --> 00:01:51,935
+Now the panels.
+
+32
+00:01:51,935 --> 00:01:56,275
+On the left is the Explorer; click a file
+and its contents open in the middle.
+
+33
+00:01:56,275 --> 00:01:58,668
+On the right is where you chat with the
+AI,
+
+34
+00:01:58,668 --> 00:02:01,228
+and below the input box you can switch
+models.
+
+35
+00:02:01,228 --> 00:02:05,234
+If you installed Claude Code, you can
+switch to it on the right as well.
+
+36
+00:02:06,200 --> 00:02:08,514
+Next, ask the AI to install tools.
+
+37
+00:02:08,514 --> 00:02:13,209
+One sentence is enough: it detects your
+operating system, checks Git,
+
+38
+00:02:13,209 --> 00:02:18,040
+uv and Node.js, installs only what's
+missing, and reports the versions.
+
+39
+00:02:19,000 --> 00:02:22,776
+Then the second prompt: ask the AI to
+install GitHub CLI,
+
+40
+00:02:22,776 --> 00:02:24,300
+LibreOffice and ffmpeg.
+
+41
+00:02:24,300 --> 00:02:28,474
+Again, it skips what's installed, explains
+anything that fails,
+
+42
+00:02:28,474 --> 00:02:29,998
+and lists the versions.
+
+43
+00:02:29,998 --> 00:02:33,311
+When it wants to run a command, just click
+Accept.
+
+44
+00:02:33,311 --> 00:02:36,623
+After installing, remember to restart
+Antigravity.
+
+45
+00:02:37,567 --> 00:02:38,637
+A quick warm-up:
+
+46
+00:02:38,637 --> 00:02:43,785
+ask the AI to create hello.html showing
+Hello Antigravity and today's date in
+
+47
+00:02:43,785 --> 00:02:46,459
+large text, then open it in the browser.
+
+48
+00:02:46,459 --> 00:02:51,741
+If you see the page, the AI can create
+files and run commands on your computer.
+
+49
+00:02:52,700 --> 00:02:54,846
+The main example is Memory Match.
+
+50
+00:02:54,846 --> 00:02:59,397
+A good prompt makes four things clear: use
+Vite and JS; sixteen cards,
+
+51
+00:02:59,397 --> 00:03:03,039
+matching pairs disappear, with a move
+count and a timer;
+
+52
+00:03:03,039 --> 00:03:06,160
+show Congratulations when every card is
+cleared;
+
+53
+00:03:06,160 --> 00:03:09,021
+and start the web page as soon as it's
+done.
+
+54
+00:03:09,967 --> 00:03:12,998
+The AI creates the project, installs the
+packages,
+
+55
+00:03:12,998 --> 00:03:16,513
+starts a development server and gives you
+a localhost URL.
+
+56
+00:03:16,513 --> 00:03:19,330
+Open it and play a round: if flipping, the
+move
+
+57
+00:03:19,330 --> 00:03:21,908
+count and the timer all work, you're done.
+
+58
+00:03:22,867 --> 00:03:24,367
+Want to change something?
+
+59
+00:03:24,367 --> 00:03:27,274
+Just tell it in one sentence: turn the
+cards into
+
+60
+00:03:27,274 --> 00:03:29,885
+fruit, add a best record, use twenty
+cards.
+
+61
+00:03:29,885 --> 00:03:31,985
+Refresh the page to see the change.
+
+62
+00:03:32,933 --> 00:03:35,727
+When something goes wrong, there's one
+universal fix:
+
+63
+00:03:35,727 --> 00:03:37,835
+paste the whole error message to the AI.
+
+64
+00:03:37,835 --> 00:03:41,683
+You can also send a screenshot of the
+error or the part that looks wrong,
+
+65
+00:03:41,683 --> 00:03:43,844
+and let the AI find the cause and fix it.
+
+66
+00:03:44,800 --> 00:03:46,746
+One folder and one clear sentence,
+
+67
+00:03:46,746 --> 00:03:49,722
+and the AI can build a working project
+from scratch.
+
+68
+00:03:49,722 --> 00:03:53,785
+Keep this game: in the next unit, we
+install the frontend-design skill,
+
+69
+00:03:53,785 --> 00:03:55,387
+build it again, and compare.
+
