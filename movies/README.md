@@ -12,3 +12,4 @@
 | 05 | [05-qiime2-analysis.mp4](05-qiime2-analysis.mp4) | [zh-TW](05-qiime2-analysis.zh-TW.srt) | 4:06 |
 | 05 (English) | [05-qiime2-analysis.en.mp4](05-qiime2-analysis.en.mp4) | [en](05-qiime2-analysis.en.srt) | 4:51 |
 | 06 | [06-research-papers.mp4](06-research-papers.mp4) | [zh-TW](06-research-papers.zh-TW.srt) | 6:37 |
+| 06 (English) | [06-research-papers.en.mp4](06-research-papers.en.mp4) | [en](06-research-papers.en.srt) | 6:57 |

@@ -1,0 +1,517 @@
+1
+00:00:00,800 --> 00:00:06,120
+In the previous unit, we ran the analysis
+on the HPC and answered three questions:
+
+2
+00:00:06,120 --> 00:00:11,181
+transplantation sharply reduces microbial
+richness; in the longitudinal model,
+
+3
+00:00:11,181 --> 00:00:13,776
+the auto-FMT group declines more slowly;
+
+4
+00:00:13,776 --> 00:00:16,661
+and the bacteria that rise and fall over
+time
+
+5
+00:00:16,661 --> 00:00:19,290
+are Enterococcaceae and Lachnospiraceae.
+
+6
+00:00:20,233 --> 00:00:25,372
+With questions, answers, and data in hand,
+writing a paper gets much easier.
+
+7
+00:00:25,372 --> 00:00:28,482
+But a paper needs two more things: prior
+work,
+
+8
+00:00:28,482 --> 00:00:32,471
+and a traceable source for every number
+and every citation.
+
+9
+00:00:32,471 --> 00:00:36,798
+In Unit 06, we write it up as an English
+paper together with AI.
+
+10
+00:00:37,733 --> 00:00:41,886
+The folder already holds a research brief,
+the raw tables of numbers,
+
+11
+00:00:41,886 --> 00:00:45,918
+and four skills: arxiv for searching,
+paper-library for collecting,
+
+12
+00:00:45,918 --> 00:00:48,687
+research-paper-writing for writing
+principles,
+
+13
+00:00:48,687 --> 00:00:51,456
+and arxiv-preprint for typesetting and
+checks.
+
+14
+00:00:52,400 --> 00:00:54,946
+Before we start, what is the research
+brief?
+
+15
+00:00:54,946 --> 00:00:59,633
+It condenses the previous unit's results
+onto one page: three research questions,
+
+16
+00:00:59,633 --> 00:01:04,205
+their answers, the study limitations, and
+the raw table each number comes from.
+
+17
+00:01:04,205 --> 00:01:07,735
+With it, the AI knows from the start what
+the paper is about.
+
+18
+00:01:08,700 --> 00:01:10,887
+The raw tables live in data/tables.
+
+19
+00:01:10,887 --> 00:01:15,762
+They are what you produced on the HPC: 13
+files, covering the filtering steps,
+
+20
+00:01:15,762 --> 00:01:19,887
+DADA2 denoising stats, Kruskal-Wallis
+tests for several groupings,
+
+21
+00:01:19,887 --> 00:01:24,637
+the longitudinal model coefficients, and
+the random forest and PCoA results.
+
+22
+00:01:24,637 --> 00:01:27,700
+Every number in the paper must be read
+from here.
+
+23
+00:01:28,633 --> 00:01:29,876
+There are five steps.
+
+24
+00:01:29,876 --> 00:01:32,836
+Read the brief, to align on the paper's
+direction.
+
+25
+00:01:32,836 --> 00:01:36,626
+Find literature, because a paper must say
+what others have done,
+
+26
+00:01:36,626 --> 00:01:38,579
+and the limitations need support.
+
+27
+00:01:38,579 --> 00:01:42,368
+Take notes and build a comparison table:
+copy quotable passages,
+
+28
+00:01:42,368 --> 00:01:46,453
+and see what others did and what we are
+missing. Then write the paper.
+
+29
+00:01:46,453 --> 00:01:50,065
+Finally, check every citation and number,
+and export the PDF.
+
+30
+00:01:51,000 --> 00:01:52,610
+Step one needs no skill.
+
+31
+00:01:52,610 --> 00:01:58,177
+We ask the AI to read the research brief,
+check the numbers against the raw tables,
+
+32
+00:01:58,177 --> 00:02:02,872
+and tell us the questions, answers, and
+limitations in plain language.
+
+33
+00:02:02,872 --> 00:02:05,957
+The AI reports that the numbers match
+exactly,
+
+34
+00:02:05,957 --> 00:02:08,305
+and explains six study limitations.
+
+35
+00:02:09,267 --> 00:02:11,650
+Step two searches with the arxiv skill.
+
+36
+00:02:11,650 --> 00:02:15,744
+We ask it to find related papers using the
+brief's search keywords,
+
+37
+00:02:15,744 --> 00:02:20,571
+and to list candidates for us to choose
+from, without downloading anything yet.
+
+38
+00:02:20,571 --> 00:02:24,176
+The AI lists the candidates and marks
+eight as recommended.
+
+39
+00:02:25,133 --> 00:02:29,812
+Next, the paper-library skill adds every
+recommended arXiv paper:
+
+40
+00:02:29,812 --> 00:02:34,852
+it downloads the PDFs, renames the files,
+and writes the bibliography.
+
+41
+00:02:34,852 --> 00:02:40,035
+The original clinical trial, QIIME 2,
+DADA2, and SILVA are not on arXiv,
+
+42
+00:02:40,035 --> 00:02:43,563
+so one more sentence registers these four
+by DOI.
+
+43
+00:02:43,563 --> 00:02:45,866
+The library now holds 12 papers.
+
+44
+00:02:46,800 --> 00:02:50,508
+Step three needs no skill; the AI reads
+the PDFs directly.
+
+45
+00:02:50,508 --> 00:02:55,174
+We ask for a note on each paper, with
+quotable passages and page numbers.
+
+46
+00:02:55,174 --> 00:03:00,544
+Then we ask for a literature matrix: what
+others have done, and what we are missing.
+
+47
+00:03:00,544 --> 00:03:05,210
+Each of the six limitations is matched to
+a solution from the literature.
+
+48
+00:03:06,167 --> 00:03:07,922
+Step four is writing. First,
+
+49
+00:03:07,922 --> 00:03:12,863
+the arxiv-preprint skill sets up an
+English paper skeleton in the manuscript
+
+50
+00:03:12,863 --> 00:03:14,748
+folder, one file per section.
+
+51
+00:03:14,748 --> 00:03:17,543
+We get a main file and seven section
+files,
+
+52
+00:03:17,543 --> 00:03:20,144
+and an empty two-page skeleton compiles.
+
+53
+00:03:22,900 --> 00:03:27,240
+Then we write one section at a time, with
+just one sentence each.
+
+54
+00:03:27,240 --> 00:03:31,647
+The order is Methods, Results,
+Introduction, Discussion, Abstract,
+
+55
+00:03:31,647 --> 00:03:33,182
+and finally, the title.
+
+56
+00:03:34,133 --> 00:03:37,300
+Sentence one: refer to the
+research-paper-writing skill
+
+57
+00:03:37,300 --> 00:03:39,851
+and write the Methods in English.
+
+58
+00:03:39,851 --> 00:03:44,335
+The AI writes four subsections: data
+source and five-stage filtering,
+
+59
+00:03:44,335 --> 00:03:48,299
+DADA2 denoising and SILVA classification,
+diversity analysis,
+
+60
+00:03:48,299 --> 00:03:51,223
+and the longitudinal model and random
+forest.
+
+61
+00:03:51,223 --> 00:03:55,316
+Software versions and parameters come from
+the analysis script.
+
+62
+00:03:56,267 --> 00:04:00,200
+Sentence two: write the Results,
+describing only the data,
+
+63
+00:04:00,200 --> 00:04:03,116
+and redraw any figures from the raw
+tables.
+
+64
+00:04:03,116 --> 00:04:07,863
+We get two tables, for the filtering steps
+and the model coefficients,
+
+65
+00:04:07,863 --> 00:04:10,711
+plus four figures redrawn from the tables.
+
+66
+00:04:10,711 --> 00:04:14,441
+This section reports numbers only, with no
+conclusions.
+
+67
+00:04:15,400 --> 00:04:18,038
+Sentence three: write the Introduction.
+
+68
+00:04:18,038 --> 00:04:21,554
+This is where most citations go: 9 of the
+12 papers.
+
+69
+00:04:21,554 --> 00:04:26,153
+Take this sentence: single rarefying
+discards valid sequencing data,
+
+70
+00:04:26,153 --> 00:04:28,994
+followed by McMurdie 2013 and Raspet 2024.
+
+71
+00:04:28,994 --> 00:04:32,069
+That claim traces back to the passage and
+page
+
+72
+00:04:32,069 --> 00:04:34,877
+number copied word for word in the notes.
+
+73
+00:04:34,877 --> 00:04:39,273
+That's how an introduction works: a line
+of background, a source,
+
+74
+00:04:39,273 --> 00:04:42,046
+and finally the three research questions.
+
+75
+00:04:43,000 --> 00:04:46,969
+Sentence four: write the Discussion based
+on the literature matrix,
+
+76
+00:04:46,969 --> 00:04:49,219
+including limitations and conclusions.
+
+77
+00:04:49,219 --> 00:04:51,115
+It opens with the main findings,
+
+78
+00:04:51,115 --> 00:04:54,550
+compares them with the original trial and
+earlier methods,
+
+79
+00:04:54,550 --> 00:04:57,808
+then lists the six limitations and how to
+address them,
+
+80
+00:04:57,808 --> 00:05:02,606
+such as the unconverged model and single
+rarefying, and ends with the conclusion.
+
+81
+00:05:03,567 --> 00:05:06,595
+Sentence five: write a structured
+abstract.
+
+82
+00:05:06,595 --> 00:05:12,018
+Only after the full text is done is it
+condensed into four parts: background,
+
+83
+00:05:12,018 --> 00:05:14,413
+methods, results, and conclusions.
+
+84
+00:05:14,413 --> 00:05:18,427
+It comes to 1,910 characters, just under
+the arXiv limit.
+
+85
+00:05:19,367 --> 00:05:24,143
+Sentence six: propose three candidate
+titles and say which one you recommend.
+
+86
+00:05:24,143 --> 00:05:25,879
+The AI recommends the first,
+
+87
+00:05:25,879 --> 00:05:30,655
+framing the work as a methodological case
+study of a longitudinal reanalysis.
+
+88
+00:05:30,655 --> 00:05:34,004
+Then: use candidate title 1, and add the
+declarations,
+
+89
+00:05:34,004 --> 00:05:38,407
+leaving author contributions, conflicts of
+interest, and funding blank.
+
+90
+00:05:39,367 --> 00:05:40,787
+Step five is checking.
+
+91
+00:05:40,787 --> 00:05:44,787
+First, the arxiv-preprint skill checks and
+compiles the paper:
+
+92
+00:05:44,787 --> 00:05:48,723
+a script checks citations, figure files,
+and abstract length.
+
+93
+00:05:48,723 --> 00:05:52,918
+Then we ask the AI to verify every
+citation sentence by sentence,
+
+94
+00:05:52,918 --> 00:05:55,886
+and trace every number back to the raw
+tables.
+
+95
+00:05:55,886 --> 00:05:59,887
+It caught two citations that claimed too
+much, and fixed them.
+
+96
+00:06:00,833 --> 00:06:06,027
+The last sentence compiles directly with
+the local pdflatex and bibtex.
+
+97
+00:06:06,027 --> 00:06:10,637
+The result is a 12-page English paper in
+arXiv preprint format,
+
+98
+00:06:10,637 --> 00:06:15,319
+citing 12 references, with no errors and
+no undefined citations.
+
+99
+00:06:15,319 --> 00:06:19,708
+Without LaTeX, you can upload to Overleaf
+and compile there.
+
+100
+00:06:20,667 --> 00:06:24,876
+Looking back, the whole paper used four
+skills: arxiv to search,
+
+101
+00:06:24,876 --> 00:06:28,690
+paper-library to collect,
+research-paper-writing to write,
+
+102
+00:06:28,690 --> 00:06:31,320
+and arxiv-preprint to typeset and check.
+
+103
+00:06:31,320 --> 00:06:36,384
+Every other step was just telling the AI,
+in plain language, what to do next.
+
+104
+00:06:37,333 --> 00:06:39,821
+This is a practice draft. Before
+submitting,
+
+105
+00:06:39,821 --> 00:06:43,291
+the authors must personally check the
+numbers and citations,
+
+106
+00:06:43,291 --> 00:06:45,200
+and confirm the ethics statement.
+
+107
+00:06:46,167 --> 00:06:48,208
+Unit 06, Research Paper Workflow.
+
+108
+00:06:48,208 --> 00:06:51,115
+Open the README, start with the research
+brief,
+
+109
+00:06:51,115 --> 00:06:53,527
+and try it with your own research data.
+
