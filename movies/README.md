@@ -5,6 +5,7 @@
 | Unit | Video | Subtitles | Duration |
 |---|---|---|---|
 | 00 | [00-cloud-vs-local.mp4](00-cloud-vs-local.mp4) | [zh-TW](00-cloud-vs-local.zh-TW.srt) | 1:57 |
+| 00 (English) | [00-cloud-vs-local.en.mp4](00-cloud-vs-local.en.mp4) | [en](00-cloud-vs-local.en.srt) | 2:00 |
 | 01 | [01-antigravity.mp4](01-antigravity.mp4) | [zh-TW](01-antigravity.zh-TW.srt) | 3:56 |
 | 02 | [02-frontend-design.mp4](02-frontend-design.mp4) | [zh-TW](02-frontend-design.zh-TW.srt) | 2:42 |
 | 03 | [03-office-skills.mp4](03-office-skills.mp4) | [zh-TW](03-office-skills.zh-TW.srt) | 3:09 |

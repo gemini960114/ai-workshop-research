@@ -4,9 +4,9 @@
 
 Take the exact same paper and the same three questions, and give them to **ChatGPT on the web (Cloud)** and **an AI IDE on your computer (Local)** to see how the two approaches differ. This unit serves as the opening demonstration for the entire workshop: see the end result first, and the following units will teach you how to build it step by step.
 
-> 📥 **Unit Slides**: [Download 00-cloud-vs-local.pptx](https://github.com/gemini960114/ai-workshop-research/raw/main/PPTX/00-cloud-vs-local.pptx) (13 slides, with speaker notes)
+> 📥 **Unit Slides**: [Download 00-cloud-vs-local.en.pptx](https://github.com/gemini960114/ai-workshop-research/raw/main/PPTX/00-cloud-vs-local.en.pptx) (13 slides, with speaker notes; [Chinese version](https://github.com/gemini960114/ai-workshop-research/raw/main/PPTX/00-cloud-vs-local.pptx))
 
-> 🎬 **Tutorial Video**: [Unit 00 | Cloud vs. Local](https://github.com/gemini960114/ai-workshop-research/blob/main/movies/00-cloud-vs-local.mp4) (MP4, 1 min 57 sec, with [Traditional Chinese subtitles](https://github.com/gemini960114/ai-workshop-research/blob/main/movies/00-cloud-vs-local.zh-TW.srt))
+> 🎬 **Tutorial Video**: [Unit 00 | Cloud vs. Local](https://github.com/gemini960114/ai-workshop-research/blob/main/movies/00-cloud-vs-local.en.mp4) (MP4, 2 min 00 sec, English narration with [English subtitles](https://github.com/gemini960114/ai-workshop-research/blob/main/movies/00-cloud-vs-local.en.srt); [Chinese version](https://github.com/gemini960114/ai-workshop-research/blob/main/movies/00-cloud-vs-local.mp4))
 
 | Step | Content | Est. Time |
 | :--- | :--- | :---: |
