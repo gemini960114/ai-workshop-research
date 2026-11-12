@@ -1,0 +1,356 @@
+1
+00:00:00,800 --> 00:00:05,654
+Voucher registration: ask AI in plain
+language to read scanned invoice PDFs,
+
+2
+00:00:05,654 --> 00:00:09,998
+fill them into Excel, and then turn the
+whole workflow into a skill.
+
+3
+00:00:09,998 --> 00:00:14,150
+This demo is for administrative staff, and
+no coding is required.
+
+4
+00:00:15,100 --> 00:00:17,924
+The data are five scanned expenditure
+vouchers.
+
+5
+00:00:17,924 --> 00:00:20,447
+The top half is the voucher mounting form;
+
+6
+00:00:20,447 --> 00:00:23,511
+the bottom half has an invoice or receipt
+attached.
+
+7
+00:00:23,511 --> 00:00:27,656
+These are scans with no text layer, so the
+AI has to read the images.
+
+8
+00:00:28,600 --> 00:00:32,583
+The file to fill is record.xlsx, copied
+from a template.
+
+9
+00:00:32,583 --> 00:00:38,060
+Its columns are account code, control
+number, invoice number, invoice amount,
+
+10
+00:00:38,060 --> 00:00:43,607
+total amount, vendor tax ID, buyer title,
+liability account, and project code.
+
+11
+00:00:44,567 --> 00:00:47,367
+The approach: let the AI look first, then
+act.
+
+12
+00:00:47,367 --> 00:00:49,984
+Agree on the rules, do one record to
+check,
+
+13
+00:00:49,984 --> 00:00:53,514
+and finally package the workflow that
+worked into a skill.
+
+14
+00:00:54,467 --> 00:00:58,302
+Step one, ask first: "Take a look at what
+the Excel file needs.
+
+15
+00:00:58,302 --> 00:01:00,676
+Can those fields be found in the PDFs?"
+
+16
+00:01:00,676 --> 00:01:03,476
+The AI finds that the PDFs have no text
+layer,
+
+17
+00:01:03,476 --> 00:01:06,520
+so it converts each page to an image and
+reads it.
+
+18
+00:01:07,467 --> 00:01:08,886
+From the sample row,
+
+19
+00:01:08,886 --> 00:01:14,349
+the AI also infers that the vendor tax ID
+is not NCHC's own number, 80778299;
+
+20
+00:01:14,349 --> 00:01:16,194
+it should be the seller's.
+
+21
+00:01:16,194 --> 00:01:21,374
+It flags issues on its own, too: 340 is a
+receipt with no invoice number,
+
+22
+00:01:21,374 --> 00:01:26,908
+331 has a different project code, and the
+liability account isn't on the PDFs.
+
+23
+00:01:27,867 --> 00:01:31,540
+Step two, agree on highlighting rules:
+yellow for anything missing,
+
+24
+00:01:31,540 --> 00:01:35,049
+blue for anything uncertain, plus a cell
+comment explaining why.
+
+25
+00:01:35,049 --> 00:01:38,174
+A color legend goes in the top-right
+corner of the sheet,
+
+26
+00:01:38,174 --> 00:01:40,586
+so anyone who opens the file understands
+it.
+
+27
+00:01:41,533 --> 00:01:45,447
+Step three, do one first: "Just do the
+first one;
+
+28
+00:01:45,447 --> 00:01:48,243
+I want to check that it's correct."
+
+29
+00:01:48,243 --> 00:01:51,918
+Uncertain cells get a blue fill and a
+comment.
+
+30
+00:01:51,918 --> 00:01:57,270
+For example, the invoice amount is the
+tax-included total, 262,688;
+
+31
+00:01:57,270 --> 00:01:59,746
+before tax it would be 250,179.
+
+32
+00:02:00,700 --> 00:02:03,049
+Step four: once that checks out,
+
+33
+00:02:03,049 --> 00:02:07,601
+fill in the other four and explain every
+yellow and blue cell.
+
+34
+00:02:07,601 --> 00:02:12,888
+The five records total 488,548, and the
+total row becomes a SUM formula.
+
+35
+00:02:12,888 --> 00:02:17,293
+The invoice number for receipt 340 is left
+blank, in yellow.
+
+36
+00:02:18,233 --> 00:02:21,452
+Step five is the key: turn the workflow
+into a skill.
+
+37
+00:02:21,452 --> 00:02:24,853
+Everything we confirmed lives only in this
+conversation;
+
+38
+00:02:24,853 --> 00:02:27,039
+start a new chat and it's forgotten.
+
+39
+00:02:27,039 --> 00:02:30,137
+A skill is a work manual that saves this
+knowledge.
+
+40
+00:02:31,100 --> 00:02:32,575
+How do you make a skill?
+
+41
+00:02:32,575 --> 00:02:37,125
+No coding: just ask the AI in natural
+language, the way you normally talk.
+
+42
+00:02:37,125 --> 00:02:40,506
+"Package the procedure we confirmed today
+into a skill,
+
+43
+00:02:40,506 --> 00:02:44,318
+including where to read each field, the
+yellow and blue rules,
+
+44
+00:02:44,318 --> 00:02:48,560
+and how to cross-check the amounts." The
+AI creates voucher-to-excel.
+
+45
+00:02:48,560 --> 00:02:52,248
+SKILL.md is the work manual, with the
+workflow, field rules,
+
+46
+00:02:52,248 --> 00:02:53,662
+and highlighting rules.
+
+47
+00:02:53,662 --> 00:02:57,781
+The scripts folder holds code that writes
+to Excel, applies colors,
+
+48
+00:02:57,781 --> 00:03:01,040
+and computes totals, with the same result
+every time.
+
+49
+00:03:02,000 --> 00:03:06,356
+Later, in a new chat, just say: "I've
+added three new invoices;
+
+50
+00:03:06,356 --> 00:03:11,680
+please enter these records into Excel."
+The AI finds the skill automatically.
+
+51
+00:03:11,680 --> 00:03:15,137
+Before reusing it, check which agent
+you're using:
+
+52
+00:03:15,137 --> 00:03:20,875
+Claude reads .claude/skills in the project
+folder; other agents use .agents/skills.
+
+53
+00:03:21,833 --> 00:03:26,812
+Bonus demo: two AI agents working
+together, one doing and one reviewing.
+
+54
+00:03:26,812 --> 00:03:31,168
+First, Gemini copies the template, reads
+the five invoice PDFs,
+
+55
+00:03:31,168 --> 00:03:32,897
+and fills in record.xlsx.
+
+56
+00:03:32,897 --> 00:03:37,807
+It finds the voucher-to-excel skill we
+just made and follows its rules.
+
+57
+00:03:38,767 --> 00:03:42,490
+Gemini fills in all five: a total of
+488,548,
+
+58
+00:03:42,490 --> 00:03:48,115
+and receipt 340 has no invoice number, so
+it's left blank in yellow.
+
+59
+00:03:48,115 --> 00:03:49,687
+It all looks right.
+
+60
+00:03:49,687 --> 00:03:51,094
+But is it really?
+
+61
+00:03:52,033 --> 00:03:54,463
+Now Claude takes the reviewer's role:
+
+62
+00:03:54,463 --> 00:03:59,913
+"Please cross-check the PDFs against the
+Excel sheet and verify that it's correct."
+
+63
+00:03:59,913 --> 00:04:04,575
+Claude converts each PDF to images and
+checks invoice numbers, amounts,
+
+64
+00:04:04,575 --> 00:04:06,085
+and tax IDs row by row.
+
+65
+00:04:06,085 --> 00:04:09,894
+The verdict: all five are correct, with
+nothing to change.
+
+66
+00:04:09,894 --> 00:04:14,556
+It also notes that some tax IDs are stored
+as text and some as numbers,
+
+67
+00:04:14,556 --> 00:04:16,132
+and suggests one format.
+
+68
+00:04:17,067 --> 00:04:18,425
+One does, one reviews:
+
+69
+00:04:18,425 --> 00:04:23,177
+a second agent cross-checking is like
+colleagues reviewing each other's work,
+
+70
+00:04:23,177 --> 00:04:25,152
+so mistakes are easier to catch.
+
+71
+00:04:25,152 --> 00:04:28,176
+And the same skill works across different
+agents.
+
+72
+00:04:29,133 --> 00:04:32,951
+To recap: let the AI understand first,
+then agree on rules.
+
+73
+00:04:32,951 --> 00:04:36,123
+Do one record, confirm it, then process
+the rest.
+
+74
+00:04:36,123 --> 00:04:38,905
+Turn the workflow that worked into a
+skill,
+
+75
+00:04:38,905 --> 00:04:41,624
+and keep refining it through conversation.
+

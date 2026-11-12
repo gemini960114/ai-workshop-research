@@ -4,9 +4,9 @@
 
 Use natural language to ask an AI Agent to read scanned invoice PDFs, populate an Excel spreadsheet, and finally save the entire verified workflow as a reusable Skill. Next time, a single sentence—"Please help me enter these records into Excel"—is all it takes. No coding required.
 
-> 📥 **Unit Slides**: [Download 04-voucher-ocr.pptx](https://github.com/gemini960114/ai-workshop-research/raw/main/PPTX/04-voucher-ocr.pptx) (17 slides, with demo clips and speaker notes)
+> 📥 **Unit Slides**: [Download 04-voucher-ocr.en.pptx](https://github.com/gemini960114/ai-workshop-research/raw/main/PPTX/04-voucher-ocr.en.pptx) (17 slides, with demo clips and speaker notes; the demo clips keep their original Chinese narration; [Chinese version](https://github.com/gemini960114/ai-workshop-research/raw/main/PPTX/04-voucher-ocr.pptx))
 
-> 🎬 **Tutorial Video**: [Unit 04 | Voucher OCR to Excel](https://github.com/gemini960114/ai-workshop-research/blob/main/movies/04-voucher-ocr.mp4) (MP4, 4 min 26 sec, with [Traditional Chinese subtitles](https://github.com/gemini960114/ai-workshop-research/blob/main/movies/04-voucher-ocr.zh-TW.srt))
+> 🎬 **Tutorial Video**: [Unit 04 | Voucher OCR to Excel](https://github.com/gemini960114/ai-workshop-research/blob/main/movies/04-voucher-ocr.en.mp4) (MP4, 4 min 45 sec, English narration with [English subtitles](https://github.com/gemini960114/ai-workshop-research/blob/main/movies/04-voucher-ocr.en.srt); [Chinese version](https://github.com/gemini960114/ai-workshop-research/blob/main/movies/04-voucher-ocr.mp4))
 
 > 💡 The video and slides use real vouchers (with sensitive fields blurred). This written guide uses the **de-identified practice samples** in [`example_deid/`](example_deid/), so filenames, organization names, and amounts differ from the video while the workflow remains identical.
 
