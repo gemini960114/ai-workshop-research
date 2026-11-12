@@ -1,6 +1,8 @@
-# 教學影片
+# Tutorial Videos
 
-| 單元 | 影片 | 字幕 | 長度 |
+> 🌐 **Language**: English | [繁體中文](README.zh-TW.md)
+
+| Unit | Video | Subtitles | Duration |
 |---|---|---|---|
 | 00 | [00-cloud-vs-local.mp4](00-cloud-vs-local.mp4) | [zh-TW](00-cloud-vs-local.zh-TW.srt) | 1:57 |
 | 01 | [01-antigravity.mp4](01-antigravity.mp4) | [zh-TW](01-antigravity.zh-TW.srt) | 3:56 |

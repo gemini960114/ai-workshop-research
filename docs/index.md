@@ -2,54 +2,54 @@
 layout: home
 
 hero:
-  name: "讓 AI Agent 和你一起做研究"
-  text: "從文獻整理、論文撰寫，到建立自己的 Skill"
-  tagline: 用中文對話，請 AI Agent 讀論文、在 HPC 上跑分析、寫出有引用的英文論文，再把做對的流程存成 Skill
+  name: "Do Research with AI Agents"
+  text: "From Literature Review & Paper Writing to Building Your Own Skills"
+  tagline: Chat in natural language to ask AI Agents to read papers, run HPC analyses, draft cited English manuscripts, and save verified workflows as reusable Skills
   actions:
     - theme: brand
-      text: 開始課程（單元 00）
+      text: Start Course (Unit 00)
       link: /guide/00_cloud_vs_local
     - theme: alt
-      text: 課程總覽與事前準備
+      text: Course Overview & Preparation
       link: /guide/overview
     - theme: alt
-      text: 提示詞速查表
+      text: Prompt Cheat Sheet
       link: /guide/prompts
 
 features:
   - icon: ☁️
-    title: 00. 雲端 vs 地端
-    details: 同一篇論文、同樣三個問題，交給 ChatGPT 網頁和地端 AI 編輯器，再換 Gemini 檢核，看兩種做法差在哪裡。
+    title: 00. Cloud vs. Local
+    details: Give the same paper and the same three questions to ChatGPT Web and a local AI IDE, then cross-check with Gemini to see how the two approaches differ.
     link: /guide/00_cloud_vs_local
-    linkText: 進入單元 00
+    linkText: Go to Unit 00
   - icon: 🚀
-    title: 01. Antigravity 入門
-    details: 安裝 Antigravity IDE 與內建 AI Agent，用中文對話完成安裝、建立網頁，做出一個能玩的小遊戲。
+    title: 01. Getting Started with Antigravity
+    details: Install Antigravity IDE and its built-in AI Agent, set up tools through natural language chat, build your first web page, and create a playable mini-game.
     link: /guide/01_antigravity
-    linkText: 進入單元 01
+    linkText: Go to Unit 01
   - icon: 🎨
-    title: 02. 前端設計 skill
-    details: 認識 Skill 是什麼、怎麼安裝，用 frontend-design skill 做品牌網頁，和單元 01 比一比差別。
+    title: 02. Frontend Design Skill
+    details: Learn what a Skill is and how to install it, build a brand website using the frontend-design skill, and compare the result with Unit 01.
     link: /guide/02_frontend_design
-    linkText: 進入單元 02
+    linkText: Go to Unit 02
   - icon: 📄
-    title: 03. Office 文件處理
-    details: 用 docx、pdf、pptx、xlsx 四個官方 skill，把一份 CSV 一路做成 Excel、簡報、Word 報告和 PDF 講義。
+    title: 03. Office Document Processing
+    details: Use the four official skills—docx, pdf, pptx, and xlsx—to turn a CSV file into an Excel workbook, animated slides, a Word report, and a PDF handout.
     link: /guide/03_office_skills
-    linkText: 進入單元 03
+    linkText: Go to Unit 03
   - icon: 🧾
-    title: 04. 建立自己的 Skill
-    details: 請 AI 看懂掃描發票、填進 Excel，再把做對的流程存成 skill，下次一句話就能重複使用。
+    title: 04. Build Your Own Skill
+    details: Ask AI to read scanned invoice PDFs, populate an Excel sheet, and save the verified workflow as a reusable skill you can trigger with a single sentence.
     link: /guide/04_voucher_ocr
-    linkText: 進入單元 04
+    linkText: Go to Unit 04
   - icon: 🧬
-    title: 05. QIIME 2 腸道菌相分析
-    details: 在國網 HPC 上用中文請 AI 下載資料、派送作業、回報進度，交出一份 9 頁、8 張圖的分析報告。
+    title: 05. QIIME 2 Gut Microbiome Analysis
+    details: On NCHC HPC, use natural language to ask AI to download data, submit Slurm jobs, report progress, and deliver a 9-page analysis report with 8 figures.
     link: /guide/05_qiime2_analysis
-    linkText: 進入單元 05
+    linkText: Go to Unit 05
   - icon: 📝
-    title: 06. 研究論文處理
-    details: 從分析結果出發，用 4 個 skill 找文獻、做筆記、寫論文、核對引用，輸出一份 arXiv 格式的英文論文。
+    title: 06. Research Paper Workflow
+    details: Starting from analysis results, use 4 skills to search literature, take notes, write the manuscript, verify citations, and compile an arXiv-style English paper.
     link: /guide/06_research_papers
-    linkText: 進入單元 06
+    linkText: Go to Unit 06
 ---

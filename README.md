@@ -1,43 +1,45 @@
-# 讓 AI Agent 和你一起做研究
+# Do Research with AI Agents
 
-**從文獻整理、論文撰寫，到建立自己的 Skill。**
+> 🌐 **Language**: English | [繁體中文](README.zh-TW.md)
 
-把 AI Agent 請進你的電腦和你的資料夾：用中文對話，請它讀論文、整理報告、在國網 HPC 上跑分析、找文獻寫成英文論文，最後把做對的流程存成自己的 Skill，下次一句話就能重複使用。
+**From literature review and paper writing to building your own Skills.**
 
-> 📖 **線上課程網站**：<https://gemini960114.github.io/ai-workshop-research/>（含各單元簡報下載與教學影片）
+Bring an AI Agent into your computer and project folders: chat in natural language to ask it to read papers, organize reports, run analyses on NCHC HPC, search literature and write an English manuscript, and finally save your verified workflow as a custom Skill you can reuse with a single sentence.
 
-## 下載課程
+> 📖 **Online Course Website**: <https://gemini960114.github.io/ai-workshop-research/> (includes slide downloads and tutorial videos for each unit)
+
+## Clone the Repository
 
 ```bash
 git clone https://github.com/gemini960114/ai-workshop-research.git
 ```
 
 > [!IMPORTANT]
-> **每個單元都要用 Antigravity 的 Open Folder 打開「該單元的資料夾」**，例如 `06-ai-workshop-research-papers`，**不要打開外層的 `ai-workshop-research`**。
-> AI Agent 只會讀取打開的那個資料夾裡的 skill 和設定，打開外層會找不到。
+> **For every unit, use Antigravity's `Open Folder` to open that specific unit's folder** (e.g., `06-ai-workshop-research-papers`). **Do NOT open the outer `ai-workshop-research` folder.**
+> The AI Agent only reads the skills and configuration inside the folder currently opened as the workspace; opening the root folder will prevent it from finding unit-specific skills.
 
-## 單元
+## Units
 
-| 單元 | 內容 | 你會學到 |
+| Unit | Content | What You Will Learn |
 | --- | --- | --- |
-| [00 雲端 vs 地端](00-ai-workshop-openai/) | 同一篇論文、同樣三個問題，交給 ChatGPT 網頁和地端 AI 編輯器，再換 Gemini 檢核 | 地端 AI Agent 能直接讀寫你的檔案、換模型互相檢核 |
-| [01 Antigravity 入門](01-ai-workshop-agy/) | 安裝 Antigravity 與工具，做第一個網頁和記憶翻牌遊戲 | 跟 AI Agent 對話、請 AI 安裝工具 |
-| [02 前端設計](02-ai-workshop-frontend-design/) | 安裝 frontend-design skill，做品牌網頁，再做一次記憶翻牌 | 什麼是 skill、怎麼安裝；比較有無 skill 的差別 |
-| [03 Office 文件處理](03-ai-workshop-office-skills/) | CSV → Excel → 簡報、Word 報告 → PDF 講義 | 用 docx、pdf、pptx、xlsx skill 產出可用的文件 |
-| [04 核銷憑證登錄 Excel](04-ai-workshop-voucher-ocr/) | 看懂掃描發票 PDF → 填進 Excel → 把做法存成 skill | **建立自己的 Skill**，一句話重複使用；換另一家 AI 互相覆核 |
-| [05 QIIME 2 腸道菌相分析](05-ai-workshop-qiime2-analysis/) | 在國網 HPC 上用中文請 AI 下載資料、派送作業、產出 9 頁分析報告 | 在 HPC 上用自然語言做分析；回到原始輸出檔核對數字 |
-| [06 研究論文處理](06-ai-workshop-research-papers/) | 從分析結果出發：找文獻 → 做筆記 → 寫論文 → 核對引用 → 輸出 PDF | 用 4 個 skill 寫出有引用、追得到出處的英文論文 |
+| [00 Cloud vs. Local](00-ai-workshop-openai/) | Give the same paper and the same three questions to ChatGPT Web and a local AI IDE, then cross-check with Gemini | Local AI Agents can read/write files directly in your folder and cross-check across models |
+| [01 Getting Started with Antigravity](01-ai-workshop-agy/) | Install Antigravity and tools, build your first web page and a Memory Match card game | Chat with an AI Agent and ask AI to install development tools |
+| [02 Frontend Design](02-ai-workshop-frontend-design/) | Install the `frontend-design` skill, build a brand landing page, and remake the Memory Match game | What a skill is, how to install it, and the difference with vs. without a skill |
+| [03 Office Document Processing](03-ai-workshop-office-skills/) | CSV → Excel → Animated Slides, Word Report → PDF Handout | Produce polished documents using `docx`, `pdf`, `pptx`, and `xlsx` skills |
+| [04 Voucher OCR to Excel](04-ai-workshop-voucher-ocr/) | Read scanned invoice PDFs → fill in Excel → save the workflow as a skill | **Build your own Skill** for one-sentence reuse; cross-check with a second AI Agent |
+| [05 QIIME 2 Gut Microbiome Analysis](05-ai-workshop-qiime2-analysis/) | Use natural language on NCHC HPC to download data, submit Slurm jobs, and generate a 9-page report | Run HPC analyses in natural language; verify numbers against raw output files |
+| [06 Research Paper Workflow](06-ai-workshop-research-papers/) | From analysis results: search literature → take notes → write paper → verify citations → compile PDF | Use 4 skills to write a cited, traceable English manuscript |
 
-- **05 → 06 是一條研究流程**：05 的分析結果，就是 06 寫論文的材料；06 的資料夾已經附上 05 整理好的研究摘要卡和數字表格。
-- **06 有兩個資料夾**：[`06-ai-workshop-research-papers/`](06-ai-workshop-research-papers/) 是乾淨的練習版；[`06-ai-workshop-research-papers-answer/`](06-ai-workshop-research-papers-answer/) 是照手冊試跑一次的參考答案（12 頁英文論文、12 篇參考文獻）。
+- **05 → 06 is a continuous research pipeline**: The analysis output from Unit 05 becomes the material for writing the paper in Unit 06; the Unit 06 folder already includes the research brief and summary tables extracted from Unit 05.
+- **Unit 06 has two folders**: [`06-ai-workshop-research-papers/`](06-ai-workshop-research-papers/) is the clean practice folder; [`06-ai-workshop-research-papers-answer/`](06-ai-workshop-research-papers-answer/) is a complete reference answer from a full test run (12-page English manuscript with 12 references).
 
-> 📋 **提示詞速查表**：七個單元會用到的 prompt 都整理在 [`tutorial.md`](tutorial.md)，上課時照順序複製貼上即可。
+> 📋 **Prompt Cheat Sheet**: All prompts used across the seven units are collected in [`tutorial.md`](tutorial.md) so you can copy and paste them in order during the workshop.
 
-## 上課簡報與影片
+## Slides & Tutorial Videos
 
-各單元 README 開頭有簡報下載連結，檔案都在 [`PPTX/`](PPTX/)：
+Each unit's README starts with a slide download link; all slide decks are in [`PPTX/`](PPTX/):
 
-| 單元 | 簡報 |
+| Unit | Slides |
 | --- | --- |
 | 00 | [00-cloud-vs-local.pptx](https://github.com/gemini960114/ai-workshop-research/raw/main/PPTX/00-cloud-vs-local.pptx) |
 | 01 | [01-antigravity.pptx](https://github.com/gemini960114/ai-workshop-research/raw/main/PPTX/01-antigravity.pptx) |
@@ -47,17 +49,17 @@ git clone https://github.com/gemini960114/ai-workshop-research.git
 | 05 | [05-qiime2-analysis.pptx](https://github.com/gemini960114/ai-workshop-research/raw/main/PPTX/05-qiime2-analysis.pptx) |
 | 06 | [06-research-papers.pptx](https://github.com/gemini960114/ai-workshop-research/raw/main/PPTX/06-research-papers.pptx) |
 
-教學影片放在 [`movies/`](movies/)（附繁體中文字幕）。00、04–06 的 README 開頭直接連到這裡的 MP4；01–03 的 README 連到 YouTube 版本。
+Tutorial videos are stored in [`movies/`](movies/) (with Traditional Chinese subtitles). The READMEs for Units 00 and 04–06 link directly to the MP4 files here; Units 01–03 link to YouTube versions.
 
-## 事前準備
+## Prerequisites
 
-- 課堂電腦已經裝好 Antigravity 和需要的工具（Git、Node.js、uv、LibreOffice、ffmpeg）。在自己的電腦上使用時，可以照 01 的步驟安裝。
-- **05** 需要國網中心 HPC 帳號與計畫代號；課堂上會說明。
-- **06** 需要 LaTeX（例如 TinyTeX）或免費的 Overleaf 帳號，二選一。
+- Classroom computers already have Antigravity and required tools installed (Git, Node.js, uv, LibreOffice, ffmpeg). On your own computer, follow the steps in Unit 01 to install them.
+- **Unit 05** requires an NCHC HPC account and project ID; instructions will be provided in class.
+- **Unit 06** requires either a local LaTeX installation (e.g., TinyTeX) or a free Overleaf account.
 
-## 注意事項
+## Notes
 
-- AI 每次產生的內容可能略有不同，和教材的範例結果不完全一樣是正常的。
-- **AI 寫的東西也會出錯。** 寫進報告或論文的數字，一律回到原始輸出檔確認（見 05、06）。
-- 06 產出的是寫作練習用的論文草稿，不能直接投稿；真的要投稿時，所有數字和引用都要由作者本人核對。
-- 04 的公開版只附去識別化的練習憑證；真實憑證與帳務資料不放在 GitHub。
+- AI-generated output varies slightly between runs; it is normal if your results differ slightly from the examples.
+- **AI can make mistakes.** Always verify any numbers written into reports or manuscripts against the raw output files (see Units 05 and 06).
+- Unit 06 produces a draft manuscript for writing practice and must not be submitted as-is; before any real submission, all numbers and citations must be verified by the authors.
+- Unit 04's public repository only includes de-identified sample vouchers; real vouchers and accounting records are never stored on GitHub.

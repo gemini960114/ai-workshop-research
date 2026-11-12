@@ -1,135 +1,138 @@
-# 單元 00：雲端 vs 地端 — 同一篇論文，兩種 AI 用法
+# Unit 00: Cloud vs. Local — One Paper, Two Ways to Use AI
 
-同一篇論文、同樣三個問題，分別交給**雲端的 ChatGPT 網頁**和**地端的 AI 編輯器**，看看兩種做法差在哪裡。這個單元是整個工作坊的開場：先看效果，後面的單元再一步步教你怎麼做。
+> 🌐 **Language**: English | [繁體中文](README.zh-TW.md)
 
-> 📥 **本單元上課簡報**：[下載 00-cloud-vs-local.pptx](https://github.com/gemini960114/ai-workshop-research/raw/main/PPTX/00-cloud-vs-local.pptx)（13 頁，含講者備註）
+Take the exact same paper and the same three questions, and give them to **ChatGPT on the web (Cloud)** and **an AI IDE on your computer (Local)** to see how the two approaches differ. This unit serves as the opening demonstration for the entire workshop: see the end result first, and the following units will teach you how to build it step by step.
 
-> 🎬 **本單元教學影片**：[單元 00｜雲端 vs 地端](https://github.com/gemini960114/ai-workshop-research/blob/main/movies/00-cloud-vs-local.mp4)（MP4，1 分 57 秒，附[繁體中文字幕](https://github.com/gemini960114/ai-workshop-research/blob/main/movies/00-cloud-vs-local.zh-TW.srt)）
+> 📥 **Unit Slides**: [Download 00-cloud-vs-local.pptx](https://github.com/gemini960114/ai-workshop-research/raw/main/PPTX/00-cloud-vs-local.pptx) (13 slides, with speaker notes)
 
-| 步驟 | 內容 | 預估時間 |
+> 🎬 **Tutorial Video**: [Unit 00 | Cloud vs. Local](https://github.com/gemini960114/ai-workshop-research/blob/main/movies/00-cloud-vs-local.mp4) (MP4, 1 min 57 sec, with [Traditional Chinese subtitles](https://github.com/gemini960114/ai-workshop-research/blob/main/movies/00-cloud-vs-local.zh-TW.srt))
+
+| Step | Content | Est. Time |
 | :--- | :--- | :---: |
-| **示範 1** | [雲端做法：ChatGPT 網頁](#示範-1雲端做法chatgpt-網頁) | 5 分鐘 |
-| **示範 2** | [地端做法：在編輯器裡用 Claude Code](#示範-2地端做法在編輯器裡用-claude-code) | 10 分鐘 |
-| **示範 3** | [換另一個模型檢核：Gemini](#示範-3換另一個模型檢核gemini) | 5 分鐘 |
-| **比較** | [雲端 vs 地端](#雲端-vs-地端) | 3 分鐘 |
+| **Demo 1** | [Cloud Approach: ChatGPT Web](#demo-1-cloud-approach-chatgpt-web) | 5 min |
+| **Demo 2** | [Local Approach: Claude Code in the IDE](#demo-2-local-approach-claude-code-in-the-ide) | 10 min |
+| **Demo 3** | [Cross-Checking with Another Model: Gemini](#demo-3-cross-checking-with-another-model-gemini) | 5 min |
+| **Comparison** | [Cloud vs. Local](#cloud-vs-local) | 3 min |
 
 ---
 
-## 示範用的論文
+## Demonstration Paper
 
-| 檔案 | 內容 |
+| File | Description |
 |---|---|
-| [`measuring-how-ai-agents-handle-wet-lab-science.pdf`](measuring-how-ai-agents-handle-wet-lab-science.pdf) | OpenAI〈Measuring how AI agents handle everyday wet-lab science〉（2026 年 11 月 6 日），排版成論文格式的 PDF |
-| [`measuring-how-ai-agents-handle-wet-lab-science.tex`](measuring-how-ai-agents-handle-wet-lab-science.tex) | 上面那份 PDF 的 LaTeX 原始檔 |
+| [`measuring-how-ai-agents-handle-wet-lab-science.pdf`](measuring-how-ai-agents-handle-wet-lab-science.pdf) | OpenAI, *"Measuring how AI agents handle everyday wet-lab science"* (November 6, 2026), typeset as a paper-style PDF |
+| [`measuring-how-ai-agents-handle-wet-lab-science.tex`](measuring-how-ai-agents-handle-wet-lab-science.tex) | LaTeX source file for the PDF above |
 
-論文重點：OpenAI 和生技公司 Ligo 合作建立 **BioBasicsBench**，用 **100 道**日常濕實驗室題目考 AI Agent。題目來自科學家自己的實驗資料，例如膠片、墨點、顯微鏡影像、儀器匯出檔，涵蓋五個領域：蛋白質方法、影像與流式細胞術、定量與檢測、核酸方法、分子選殖。
-
----
-
-## 示範用的提示詞
-
-三個問題，加上一句存成 Word 報告；檢核時，再對 Gemini 說兩句話。
-
-### 📋 三個問題（雲端、地端都用同樣的問題）
-
-```text
-這篇論文標題寫的『wet-lab science（濕式實驗室科學）』是什麼意思？AI 為什麼要去處理實驗室的事？
-```
-
-```text
-裡面說考了 AI 100 道實驗室題目，都是考些什麼？是考選擇題還是看圖題？請做成簡單的表格給我看。
-```
-
-```text
-我是一個剛進生物實驗室的研究生，我應該怎麼安全地用 AI 幫我檢查實驗數據，才不會被它誤導？
-```
-
-### 📋 存成 Word 報告
-
-```text
-幫我整理上述的討論問題與回覆內容, 存成一份word 報告 report.docx
-```
-
-（雲端示範時實際輸入的是「幫我這結果存成一份word 報告」。）
-
-### 📋 換 Gemini 檢核
-
-```text
-report.docx是 ai agent 根據 measuring-how-ai-agents-handle-wet-lab-science.pdf 的問題與回覆內容, 請確認是否正確
-```
-
-```text
-根據您的建議進行修改 另儲存為新檔名
-```
+Paper highlights: OpenAI partnered with biotech company Ligo to build **BioBasicsBench**, testing AI Agents on **100** everyday wet-lab questions derived from scientists' real experimental data—such as gels, blots, microscopy images, and instrument exports—spanning five domains: Protein Methods, Imaging & Flow Cytometry, Quantification & Assays, Nucleic Acid Methods, and Molecular Cloning.
 
 ---
 
-## 示範 1：雲端做法：ChatGPT 網頁
+## Demonstration Prompts
 
-1. 打開 ChatGPT 網頁，**上傳 PDF**。
-2. 三個問題**一題一題問**。回答很完整，還附上論文出處。
-3. 最後請它做成 Word 報告：等了一分多鐘，還要**自己下載**，再用 Word 打開。
+Three questions, plus one prompt to save as a Word report; when cross-checking, two more prompts to Gemini.
 
----
+### 📋 Three Questions (Used in Both Cloud and Local)
 
-## 示範 2：地端做法：在編輯器裡用 Claude Code
+```text
+What does "wet-lab science" in the title of this paper mean? Why would AI be used to handle laboratory work?
+```
 
-1. 論文就放在**自己電腦的資料夾**。在編輯器（Antigravity）裡叫出 Claude Code（安裝方式見單元 01 Step 3），問同樣的三個問題。
-2. 它會**自己找到資料夾裡的 PDF**，讀完再回答。例如第二題，就把 100 道題目整理成表格。
-3. 接著一句話「存成 Word 報告」：它載入 **docx skill**，自己寫程式產生檔案，還轉成 PDF 檢查排版。
-4. [`report.docx`](report.docx) 直接出現在同一個資料夾，在編輯器裡就能打開核對。
+```text
+The paper says AI was tested on 100 lab questions—what kind of questions were they? Multiple-choice or image-reading questions? Please summarize them in a simple table for me.
+```
 
-### 你應該會看到
+```text
+I am a new graduate student who just joined a biology lab. How can I safely use AI to help check my experimental data without being misled by it?
+```
 
-`report.docx`〈AI 與濕式實驗室科學：論文閱讀與討論整理報告〉，依問題分節，例如：
+### 📋 Save as a Word Report
 
-- **問題一**：Wet lab 與 Dry lab 的對照表，以及 AI 為什麼要處理實驗室的事。
-- **問題二**：BioBasicsBench 五大領域的題數表（蛋白質方法 25、影像與流式細胞術 23、定量與檢測 19、核酸方法 17、分子選殖 16），以及給 AI 看的資料類型（膠片與墨點、實驗流程與筆記、表格與儀器匯出檔…）。
-- **問題三**：研究生安全使用 AI 檢查實驗數據的建議。
+```text
+Please organize the discussion questions and answers above and save them as a Word report named report.docx
+```
 
-> 💡 docx skill 的安裝與用法在單元 03〈Office 文件處理〉。
+(In the live Chinese demo, the exact prompt entered in the Cloud version was `"幫我這結果存成一份word 報告"`.)
 
----
+### 📋 Switch to Gemini for Cross-Checking
 
-## 示範 3：換另一個模型檢核：Gemini
+```text
+report.docx contains questions and answers generated by an AI agent based on measuring-how-ai-agents-handle-wet-lab-science.pdf. Please verify whether the content is accurate.
+```
 
-1. 在同一個編輯器裡換成 **Gemini**，請它對照 PDF 檢查 `report.docx`。
-2. Gemini 逐項對照原文：基本資訊、各領域題數、成功與失誤案例，**全部正確**。
-3. 它也指出哪些段落是**背景延伸、不在論文裡**（例如 self-driving lab 這類廣義說明）。
-4. 照建議修改後，這些段落被標成「背景補充」，另存成 [`report_revised.docx`](report_revised.docx)。
-
-### 你應該會看到
-
-比較兩份報告的「2.2 AI 為什麼要處理實驗室的事」：修改後分成**【論文指出的核心原因】**和**【廣義背景補充】**兩段，讀者分得出哪些是論文說的、哪些是 AI 補充的。
+```text
+Please revise the report according to your suggestions and save it under a new filename.
+```
 
 ---
 
-## 雲端 vs 地端
+## Demo 1: Cloud Approach: ChatGPT Web
 
-| | 雲端（ChatGPT 網頁） | 地端（編輯器 + AI Agent） |
+1. Open the ChatGPT web interface and **upload the PDF**.
+2. Ask the three questions **one by one**. The answers are thorough and include citations to the paper.
+3. Finally, ask it to generate a Word report: after waiting over a minute, you have to **download the file yourself** and open it in Word.
+
+---
+
+## Demo 2: Local Approach: Claude Code in the IDE
+
+1. The paper sits right inside **a folder on your own computer**. Open Claude Code inside the IDE (Antigravity; see Unit 01 Step 3 for installation) and ask the exact same three questions.
+2. It **automatically finds the PDF in the folder**, reads it, and answers. For Question 2, for instance, it organizes the 100 benchmark questions into a clean table.
+3. Next, with a single request to "save as a Word report," it loads the **docx skill**, writes a script to generate the document, and even converts it to PDF to inspect the layout.
+4. [`report.docx`](report.docx) appears directly in the same folder, ready to be opened and verified right inside the IDE.
+
+### What You Should See
+
+`report.docx` (*AI and Wet-Lab Science: Paper Reading and Discussion Report*), organized by question:
+
+- **Question 1**: A comparison table of Wet Lab vs. Dry Lab, and why AI is needed for everyday laboratory workflows.
+- **Question 2**: A breakdown table of BioBasicsBench's five domains (Protein Methods: 25, Imaging & Flow Cytometry: 23, Quantification & Assays: 19, Nucleic Acid Methods: 17, Molecular Cloning: 16) and the input modalities given to AI (gels & blots, protocols & lab notes, tables & instrument exports, etc.).
+- **Question 3**: Practical safety guidelines for graduate students using AI to check experimental data.
+
+> 💡 Installation and usage of the `docx` skill are covered in Unit 03 (*Office Document Processing*).
+
+---
+
+## Demo 3: Cross-Checking with Another Model: Gemini
+
+1. In the same IDE, switch to **Gemini** and ask it to verify `report.docx` against the original PDF.
+2. Gemini checks each item against the source text: basic metadata, question counts per domain, and success/failure cases are **all accurate**.
+3. It also points out which paragraphs are **broader background extensions not explicitly stated in the paper** (such as general remarks about self-driving labs).
+4. Following its recommendations, those paragraphs are clearly labeled as "Background Supplement" and saved as [`report_revised.docx`](report_revised.docx).
+
+### What You Should See
+
+Compare Section "2.2 Why AI Handles Laboratory Work" across both reports: in the revised version, it is split into **[Core Reasons Identified in the Paper]** and **[Broader Background Supplement]**, allowing readers to clearly distinguish what the paper actually claims from what the AI added as context.
+
+---
+
+## Cloud vs. Local
+
+| | Cloud (ChatGPT Web) | Local (IDE + AI Agent) |
 |---|---|---|
-| 檔案 | 要上傳 PDF、下載報告 | AI 直接讀寫你資料夾裡的檔案 |
-| 產出 | 自己下載、再打開 | `report.docx` 就出現在同一個資料夾 |
-| 檢核 | 同一個模型 | 可以換另一個模型（Gemini）互相檢核 |
-| 上手 | 打開網頁就能用 | 要先安裝編輯器與 skill（單元 01–03） |
+| Files | Must manually upload PDFs and download reports | AI directly reads and writes files in your folder |
+| Output | Download manually, then open | `report.docx` appears directly in the same folder |
+| Verification | Single model | Switch to another model (Gemini) to cross-check |
+| Onboarding | Open a browser and start immediately | Requires installing the IDE and skills first (Units 01–03) |
 
-地端的做法，就像把 AI Agent 的大腦搬進你的筆電：它就在你的資料夾裡讀論文、寫報告、互相檢核，成為和你一起做研究的夥伴。
+The local approach is like moving the AI Agent's brain into your laptop: it reads papers, writes reports, and cross-checks results right inside your project folder, becoming a true research partner.
 
 ---
 
-## 資料夾內容
+## Folder Contents
 
 ```
 00-ai-workshop-openai/
-├── README.md                                          本說明
-├── measuring-how-ai-agents-handle-wet-lab-science.pdf 示範用的論文
-├── measuring-how-ai-agents-handle-wet-lab-science.tex 論文的 LaTeX 原始檔
-├── report.docx                                        地端示範：Claude Code 產出的報告
-└── report_revised.docx                                Gemini 檢核後修改、另存的報告
+├── README.md                                          This guide (English)
+├── README.zh-TW.md                                    This guide (Traditional Chinese)
+├── measuring-how-ai-agents-handle-wet-lab-science.pdf Demonstration paper
+├── measuring-how-ai-agents-handle-wet-lab-science.tex LaTeX source of the paper
+├── report.docx                                        Local demo output generated by Claude Code
+└── report_revised.docx                                Revised report after Gemini cross-check
 ```
 
-想自己試一次：用編輯器開啟這個資料夾，依序貼上上面的提示詞即可。
+To try it yourself: open this folder in your IDE and paste the prompts above in order.
 
-## 下一步
+## Next Step
 
-單元 01 從安裝 Antigravity 開始，一步步把這套地端的 AI 工作環境建起來。
+Unit 01 starts from installing Antigravity and walks you through setting up this local AI working environment step by step.

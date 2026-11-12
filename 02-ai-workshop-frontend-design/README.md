@@ -1,131 +1,133 @@
-# 單元 02：前端設計 — frontend-design skill
+# Unit 02: Frontend Design — `frontend-design` Skill
 
-認識 skill 是什麼、怎麼安裝，再用 Anthropic 官方的 frontend-design skill 做一個品牌網頁和記憶翻牌遊戲，比較有沒有 skill 的差別。
+> 🌐 **Language**: English | [繁體中文](README.zh-TW.md)
 
-> 📥 **本單元上課簡報**：[下載 02-frontend-design.pptx](https://github.com/gemini960114/ai-workshop-research/raw/main/PPTX/02-frontend-design.pptx)（12 頁，含講者備註）
+Learn what a Skill is and how to install it, then use Anthropic's official `frontend-design` skill to build a brand landing page and a Memory Match card game—and compare the result with and without the skill.
 
-> 🎬 **本單元教學影片**：[單元 02｜前端設計](https://youtu.be/qVPdYf5CD2A)（YouTube）
+> 📥 **Unit Slides**: [Download 02-frontend-design.pptx](https://github.com/gemini960114/ai-workshop-research/raw/main/PPTX/02-frontend-design.pptx) (12 slides, with speaker notes)
 
-| 步驟 | 內容 | 預估時間 |
+> 🎬 **Tutorial Video**: [Unit 02 | Frontend Design](https://youtu.be/qVPdYf5CD2A) (YouTube)
+
+| Step | Content | Est. Time |
 | :--- | :--- | :---: |
-| **Step 1** | [認識 Skill 是什麼、怎麼安裝](#先備知識) | 3 分鐘 |
-| **Step 2** | [安裝 frontend-design skill](#安裝-frontend-design) | 3 分鐘 |
-| **Step 3** | [範例 1：從零做一個有個性的產品頁](#範例-1從零做一個有個性的產品頁) | 10 分鐘 |
-| **Step 4** | [範例 2：記憶翻牌，和單元 01 比一比](#範例-2記憶翻牌和單元-01-比一比) | 10 分鐘 |
+| **Step 1** | [Learn What a Skill Is and How to Install It](#background) | 3 min |
+| **Step 2** | [Install the `frontend-design` Skill](#install-frontend-design) | 3 min |
+| **Step 3** | [Example 1: Build a Distinctive Product Landing Page from Scratch](#example-1-build-a-distinctive-product-landing-page-from-scratch) | 10 min |
+| **Step 4** | [Example 2: Memory Match — Compare with Unit 01](#example-2-memory-match--compare-with-unit-01) | 10 min |
 
 > [!IMPORTANT]
-> 請用 Antigravity 的 **Open Folder** 開啟 `02-ai-workshop-frontend-design` 這個資料夾，不要開外層的 `ai-workshop-research`。
+> Use Antigravity's **Open Folder** to open the `02-ai-workshop-frontend-design` folder directly—do not open the outer `ai-workshop-research` folder.
 
-## 先備知識
+## Background
 
-### 什麼是 Skill？
-Skill 是寫給 AI Agent 的工作說明書：告訴它某一類任務該怎麼做、要遵守哪些規範、可以用哪些工具或腳本。有了 skill，AI Agent 就不必每次從頭摸索，而是照你（或別人）整理好的經驗做事。
+### What Is a Skill?
+A Skill is an operating manual written for an AI Agent: it tells the agent how to handle a specific category of tasks, what design or quality rules to follow, and what helper scripts or tools it can use. With a skill installed, the AI Agent doesn't have to guess from scratch every time—it follows curated best practices compiled by you or domain experts.
 
-Skill 是一個資料夾，內含 `SKILL.md`（以及可選的腳本、資料、參考文件）。AI Agent 會依據 `SKILL.md` 開頭的 `description` 判斷什麼時候該自動載入它；載入後就照裡面的流程與規範做事。
+Technically, a Skill is a directory containing a `SKILL.md` file (along with optional scripts, templates, or reference documents). The AI Agent reads the `description` in the frontmatter of `SKILL.md` to decide when to load it automatically; once loaded, it follows the workflow and guidelines inside.
 
-你通常不需要點名 skill，只要描述任務，符合條件的 skill 就會被觸發。若想強制使用，也可以直接寫 `/skill名稱` 或「請使用 xxx skill」。
+You usually don't need to mention a skill by name—simply describe your task and any matching skill will trigger automatically. To force a specific skill, you can also type `/skill-name` or say "Please use the xxx skill."
 
-### Skill 的安裝位置
+### Where Skills Are Installed
 
-| 位置 | 範圍 |
+| Location | Scope |
 | :--- | :--- |
-| **專案目錄**（例如 `.claude/skills/`、`.agents/skills/`） | 只在這個專案生效，本單元的 skill 會裝在這裡 |
-| **使用者目錄**（例如 `~/.claude/skills/`） | 全域 skill，所有專案都會生效 |
+| **Project directory** (e.g., `.claude/skills/`, `.agents/skills/`) | Active only within this project folder; skills in this unit are installed here |
+| **User home directory** (e.g., `~/.claude/skills/`) | Global skills active across all projects on your machine |
 
 > [!NOTE]
-> 如果你的電腦上另外裝了全域 skill，它們也會在本課程的專案裡出現，可能和本單元的 skill 搶著被觸發。
+> If you have global skills installed in your user home directory, they will also be visible inside workshop projects and may compete to trigger alongside the unit's project-level skills.
 
 ---
 
-### 安裝指令說明
+### Installation Command Reference
 
 > [!IMPORTANT]
-> **本單元的 skill 需要自己安裝。** 請在 Antigravity 開啟終端機（確認目前位置是本資料夾），執行〈安裝 frontend-design〉的指令，裝好後**重新開啟 AI Agent 的對話**再開始做範例。
+> **You need to install the skill for this unit yourself.** Open the Terminal inside Antigravity (make sure your current working directory is this unit's folder), run the command under *Install frontend-design*, and **start a new AI Agent chat session** before running the examples.
 
-#### 安裝語法
+#### Installation Syntax
 ```bash
-npx skills add <GitHub擁有者>/<repo>[@skill名稱] -a antigravity -a claude-code --copy -y
+npx skills add <github-owner>/<repo>[@skill-name] -a antigravity -a claude-code --copy -y
 ```
 
-| 參數 | 意義 |
+| Flag | Meaning |
 | :--- | :--- |
-| `owner/repo` | 安裝該 repo 內所有 skills |
-| `owner/repo@name` | 只安裝 repo 中的某一個 skill |
-| `-a antigravity -a claude-code` | 同時安裝給兩個 AI Agent（寫入 `.agents/skills/` 與 `.claude/skills/`） |
-| `--copy` | 複製檔案而非建立連結（Windows 上較穩定） |
-| `-y` | 略過確認提示 |
+| `owner/repo` | Install all skills inside that repository |
+| `owner/repo@name` | Install only a specific named skill from that repository |
+| `-a antigravity -a claude-code` | Install for both AI Agents simultaneously (writes to `.agents/skills/` and `.claude/skills/`) |
+| `--copy` | Copy files instead of creating symlinks (more reliable on Windows) |
+| `-y` | Skip interactive confirmation prompts |
 
-#### 常用管理指令
+#### Common Management Commands
 ```bash
-npx skills find <關鍵字>   # 搜尋 skill
-npx skills update          # 更新所有已安裝 skill
+npx skills find <keyword>   # Search for skills
+npx skills update           # Update all installed skills
 ```
 
 > [!TIP]
-> 安裝完成後，專案根目錄會出現 `skills-lock.json` 記錄版本。**重新開啟 AI Agent 的對話後 skill 才會生效**。
+> After installation finishes, a `skills-lock.json` file will appear in the project root recording the installed version. **Remember to start a fresh AI Agent chat session so the newly installed skill takes effect.**
 
 ---
 
-## 安裝 frontend-design
+## Install frontend-design
 
 ```bash
 npx skills add anthropics/skills@frontend-design -a antigravity -a claude-code --copy -y
 ```
 
-- **用途**：Anthropic 官方 skill。讓 AI 做前端時像「設計工作室的設計總監」，從主題本身找出配色、字體與版面方向，避免千篇一律的「紫色漸層 + 大數字 + 卡片」AI 模板感。
+- **Purpose**: Official Anthropic skill that guides the AI to approach frontend work like a creative director at a design studio—deriving color palettes, typography, and layout structure from the subject matter itself rather than defaulting to generic AI templates ("purple gradient + big numbers + 3 cards").
 
-## 重點觀念
-1. **先釐清主題、受眾、頁面的主要任務**，再決定美學方向。
-2. **Hero 區要放「這個主題最有代表性的東西」**。
-3. **字體刻意挑選，建立明確的字級系統**；字體本身就是設計的一部分。
+## Key Concepts
+1. **Clarify the subject, audience, and primary goal of the page first** before deciding on an aesthetic direction.
+2. **Put the most iconic representation of the subject in the Hero section**.
+3. **Choose typography deliberately and establish a clear type scale**—typography itself is a core part of the design.
 
 ---
 
-## 範例 1：從零做一個有個性的產品頁
+## Example 1: Build a Distinctive Product Landing Page from Scratch
 
-### 任務 Prompt
+### Task Prompt
 ```text
-在目錄 output/case01/ 中，幫我做一個台灣手工茶葉品牌「山嵐茶研所」的單頁官網（HTML + CSS），主頁面存成 output/case01/index.html。
-受眾是 30–50 歲重視產地與職人精神的消費者。
-需要：品牌故事、三款茶品介紹、產地地圖區、訂購按鈕。
-不要用常見的 SaaS 模板風格，請先提出 2 個美學方向讓我選。
+In the directory output/case01/, build a single-page official website (HTML + CSS) for a Taiwanese artisanal tea brand called "Shanlan Tea Research Institute (山嵐茶研所)", saving the main page as output/case01/index.html.
+The target audience is 30–50 year-old consumers who value origin and craftsmanship.
+Required sections: Brand Story, Introduction to Three Teas, Tea Origin Map, and Order Button.
+Do not use a generic SaaS template style—please propose 2 aesthetic directions for me to choose from first.
 ```
 
-- **預期行為**：AI Agent 先提出例如「宣紙水墨 + 襯線字」與「高山晨霧 + 大留白」兩種方向，確認後再實作，配色與字體都會呼應茶與山的主題。
-- **驗證觸發**：完成後追問下面這句，確認 AI Agent 確實載入了 skill：
+- **Expected Behavior**: The AI Agent first proposes two distinct aesthetic directions—for example, *"Xuan Paper & Ink Wash with Serif Typography"* vs. *"High-Mountain Morning Mist with Generous Whitespace"*—and waits for your choice before implementing a layout whose colors and fonts echo the theme of tea and mountains.
+- **Verify Skill Trigger**: After completion, ask the follow-up question below to confirm the AI Agent loaded the skill:
   ```text
-  在這個 Case 你使用了哪些 Skills
+  Which Skills did you use in this case?
   ```
 
 ---
 
-## 範例 2：記憶翻牌，和單元 01 比一比
+## Example 2: Memory Match — Compare with Unit 01
 
-這段 prompt 和單元 01 Step 6 幾乎一樣，差別只在這次裝了 frontend-design skill。做完後把兩個遊戲並排打開，比較配色、字體和版面。
+This prompt is nearly identical to Unit 01 Step 6; the only difference is that the `frontend-design` skill is now installed. Once completed, open both games side by side in your browser and compare their color palettes, typography, and layout polish.
 
-### 任務 Prompt
+### Task Prompt
 ```text
-在目錄 output/case02/ 幫我用最簡單的 Vite + JS 做一個「記憶翻牌」遊戲：
-總共 16 張牌隨機排列，翻到相同的兩張就消除，上方顯示步數和計時。
-全部消除後顯示「恭喜完成」和「重新開始」按鈕，介面用繁體中文。
-做完後直接幫我把網頁跑起來，給我網址讓我可以點開玩。
+In the directory output/case02/, help me build a "Memory Match" card game using the simplest Vite + JS setup:
+16 cards arranged randomly; flip two matching cards to clear them, and show move count and timer at the top.
+When all cards are cleared, display "Congratulations!" and a "Play Again" button.
+Once finished, start the web server directly and give me the URL so I can click and play.
 ```
 
-- **預期行為**：AI Agent 會自動建立輕量的 Vite + JS 專案、撰寫洗牌與翻牌配對邏輯，完成後在背景啟動伺服器並提供本地網址（如 `http://localhost:5173`），讓學員能直接點擊在瀏覽器試玩。
-- **驗證觸發**：完成後追問下面這句，確認 AI Agent 確實載入了 skill：
+- **Expected Behavior**: The AI Agent scaffolds a lightweight Vite + JS project, writes the card shuffling and matching logic, starts the background dev server, and provides a local URL (such as `http://localhost:5173`) so you can click and play immediately.
+- **Verify Skill Trigger**: After completion, ask the follow-up question below to confirm the AI Agent loaded the skill:
   ```text
-  在這個 Case 你使用了哪些 Skills
+  Which Skills did you use in this case?
   ```
 
 ---
 
-## 學到的事
+## What You Learned
 
-- Skill 是一個資料夾＋`SKILL.md`，裝在專案層級只在這個資料夾生效；裝在使用者層級則所有專案都會用到。
-- 不用點名 skill，AI 會依任務內容自動判斷要不要載入；不確定有沒有生效，直接問「這個 Case 你使用了哪些 Skills」。
-- 同樣的 prompt，裝了 frontend-design 之後，AI 會先想清楚主題、受眾和視覺方向，而不是套用制式模板——這就是 skill 帶來的差別。
-- 裝好 skill 後要**重新開啟 AI Agent 的對話**，才會生效。
+- A Skill is a folder containing `SKILL.md`; installing it at the project level scopes it to that folder, while installing it at the user level makes it available across all projects.
+- You don't need to call out a skill by name—the AI automatically decides whether to load it based on your task description. If you aren't sure whether it triggered, just ask: *"Which Skills did you use in this case?"*
+- Given the exact same prompt, having `frontend-design` installed prompts the AI to think through theme, audience, and visual direction instead of falling back on generic boilerplate—demonstrating the impact of a well-crafted skill.
+- Always **start a new AI Agent chat session** after installing a skill so it takes effect.
 
-## 下一步
+## Next Step
 
-單元 03 安裝 docx、pdf、pptx、xlsx 四個官方 skill，把一份 CSV 一路做成 Excel、簡報、Word 報告和 PDF 講義。
+In Unit 03, you will install four official skills—`docx`, `pdf`, `pptx`, and `xlsx`—to transform a single CSV dataset into an Excel workbook, an animated presentation, a Word report, and a PDF handout.

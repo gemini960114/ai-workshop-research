@@ -1,224 +1,226 @@
-# 單元 04：核銷憑證登錄 Excel（voucher-to-excel）
+# Unit 04: Voucher OCR to Excel (`voucher-to-excel`)
 
-用中文請 AI Agent 看懂掃描的發票 PDF，把資料填進 Excel，最後把整套做法存成 skill。之後只要說一句「幫我把這幾筆資料填入 excel」就能重複使用。全程不需要寫程式。
+> 🌐 **Language**: English | [繁體中文](README.zh-TW.md)
 
-> 📥 **本單元上課簡報**：[下載 04-voucher-ocr.pptx](https://github.com/gemini960114/ai-workshop-research/raw/main/PPTX/04-voucher-ocr.pptx)（17 頁，含示範短片與講者備註）
+Use natural language to ask an AI Agent to read scanned invoice PDFs, populate an Excel spreadsheet, and finally save the entire verified workflow as a reusable Skill. Next time, a single sentence—"Please help me enter these records into Excel"—is all it takes. No coding required.
 
-> 🎬 **本單元教學影片**：[單元 04｜核銷憑證登錄 Excel](https://github.com/gemini960114/ai-workshop-research/blob/main/movies/04-voucher-ocr.mp4)（MP4，4 分 26 秒，附[繁體中文字幕](https://github.com/gemini960114/ai-workshop-research/blob/main/movies/04-voucher-ocr.zh-TW.srt)）
+> 📥 **Unit Slides**: [Download 04-voucher-ocr.pptx](https://github.com/gemini960114/ai-workshop-research/raw/main/PPTX/04-voucher-ocr.pptx) (17 slides, with demo clips and speaker notes)
 
-> 💡 影片和簡報用的是真實憑證（敏感資訊已模糊化）。這份說明改用 [example_deid/](example_deid/) 的**去識別化練習樣本**，所以檔名、單位和金額會和影片不同，做法完全一樣。
+> 🎬 **Tutorial Video**: [Unit 04 | Voucher OCR to Excel](https://github.com/gemini960114/ai-workshop-research/blob/main/movies/04-voucher-ocr.mp4) (MP4, 4 min 26 sec, with [Traditional Chinese subtitles](https://github.com/gemini960114/ai-workshop-research/blob/main/movies/04-voucher-ocr.zh-TW.srt))
 
-| 步驟 | 內容 | 預估時間 |
+> 💡 The video and slides use real vouchers (with sensitive fields blurred). This written guide uses the **de-identified practice samples** in [`example_deid/`](example_deid/), so filenames, organization names, and amounts differ from the video while the workflow remains identical.
+
+| Step | Content | Est. Time |
 | :--- | :--- | :---: |
-| **Step 0** | [開啟資料夾、準備練習](#step-0開啟資料夾準備練習) | 3 分鐘 |
-| **Step 1** | [先讓 AI 看懂要做什麼](#step-1先讓-ai-看懂要做什麼) | 3 分鐘 |
-| **Step 2** | [先約定標示規則](#step-2先約定標示規則) | 2 分鐘 |
-| **Step 3** | [先做一筆，確認正確](#step-3先做一筆確認正確) | 3 分鐘 |
-| **Step 4** | [填入其餘四張](#step-4填入其餘四張) | 3 分鐘 |
-| **Step 5** | [⭐ 把流程做成 skill](#step-5-把流程做成-skill) | 5 分鐘 |
-| **Step 6** | [之後怎麼用：開新對話，一句話搞定](#step-6之後怎麼用開新對話一句話搞定) | 3 分鐘 |
-| **加碼** | [兩個 AI Agent 合作：一個做、一個審](#加碼兩個-ai-agent-合作一個做一個審) | 5 分鐘 |
+| **Step 0** | [Open the Folder and Prepare for Practice](#step-0-open-the-folder-and-prepare-for-practice) | 3 min |
+| **Step 1** | [Let AI Understand the Task First](#step-1-let-ai-understand-the-task-first) | 3 min |
+| **Step 2** | [Agree on Highlighting Rules](#step-2-agree-on-highlighting-rules) | 2 min |
+| **Step 3** | [Process One Record First and Verify](#step-3-process-one-record-first-and-verify) | 3 min |
+| **Step 4** | [Fill in the Remaining Four Records](#step-4-fill-in-the-remaining-four-records) | 3 min |
+| **Step 5** | [⭐ Turn the Workflow into a Skill](#step-5--turn-the-workflow-into-a-skill) | 5 min |
+| **Step 6** | [How to Reuse It Later: New Chat, One Sentence](#step-6-how-to-reuse-it-later-new-chat-one-sentence) | 3 min |
+| **Bonus** | [Two AI Agents Collaborating: One Extracts, One Audits](#bonus-two-ai-agents-collaborating-one-extracts-one-audits) | 5 min |
 
-## 可以做什麼
+## What It Does
 
-- 🧾 看懂沒有文字層的掃描 PDF：上半部「核銷憑證黏存單」＋下半部黏貼的統一發票、電子發票或免用發票收據
-- 📋 填入 Excel 的 9 個欄位：會計科目、控帳編號、發票號碼、發票金額、總計金額、發票統編、發票抬頭、負債科目、計畫代號
-- 🟨🟦 找不到的格子塗**黃底**，不確定的塗**藍底**，並在儲存格加註解說明原因
-- ⭐ 把做對的流程存成 skill，下次開新對話一句話就能重複使用
-- 🤝 讓兩家 AI Agent 分工：一個負責填、一個負責審
+- 🧾 Reads scanned PDFs that have no embedded text layer: upper half "Expenditure Voucher Mounting Form" + lower half attached uniform invoice, e-invoice, or receipt
+- 📋 Populates 9 columns in Excel: Account Code (會計科目), Control Number (控帳編號), Invoice Number (發票號碼), Invoice Amount (發票金額), Total Amount (總計金額), Vendor Tax ID (發票統編), Buyer Title (發票抬頭), Liability Account (負債科目), and Project Code (計畫代號)
+- 🟨🟦 Highlights missing fields in **yellow** and uncertain fields in **blue**, adding cell comments explaining the reason
+- ⭐ Saves the verified workflow as a Skill for one-sentence reuse in future sessions
+- 🤝 Splits work between two AI Agents: one fills in the sheet, and another audits the result against the original PDFs
 
-## 示範的問法：先讓 AI 看，再讓它做
+## Recommended Prompting Strategy: Look First, Then Act
 
-不要一次把所有事情丟給 AI。照這個順序問，結果更準，也更容易發現問題：
+Don't dump everything onto the AI in a single prompt. Following this four-step progression produces much more accurate results and makes discrepancies easy to catch early:
 
-1. **先讓 AI 看懂**：Excel 要填什麼？PDF 找得到嗎？
-2. **先講好規則**：找不到、不確定的要怎麼標示
-3. **先做一筆**：確認正確，再大量處理
-4. **整理成 skill**：把做對的流程存下來
+1. **Let AI inspect first**: What columns does the Excel file need? Are those fields present in the PDFs?
+2. **Set the rules**: How should missing or uncertain values be highlighted?
+3. **Test on one record**: Confirm accuracy on a single file before batch processing.
+4. **Package into a skill**: Save the verified procedure for future use.
 
 ---
 
-## Step 0：開啟資料夾、準備練習
+## Step 0: Open the Folder and Prepare for Practice
 
-用 Antigravity 的 **Open Folder** 開啟 `04-ai-workshop-voucher-ocr` 這個資料夾，不要開外層的 `ai-workshop-research`，否則 AI Agent 找不到本單元的 skill。
+Use Antigravity's **Open Folder** to open the `04-ai-workshop-voucher-ocr` folder directly—do not open the outer `ai-workshop-research` folder, or the AI Agent will not find the unit's skill.
 
 ```
 04-ai-workshop-voucher-ocr/
-├── record.example.xlsx                 ← Excel 範本（有一筆範例資料，不會被改動）
-├── example_deid/                       ← 5 份去識別化的掃描核銷憑證
+├── record.example.xlsx                 ← Excel template (contains 1 sample row; never modified directly)
+├── example_deid/                       ← 5 de-identified scanned voucher PDFs
 │   ├── SKM_650i25101515330_deid.pdf
-│   ├── SKM_650i25101515330_deid.json   ← 同名的標準答案
-│   ├── …（331、340、341 同上）
+│   ├── SKM_650i25101515330_deid.json   ← Ground-truth answer key with matching filename
+│   ├── … (331, 340, 341 as above)
 │   ├── SKM_650i25101515350_deid.pdf
 │   └── SKM_650i25101515350_deid.json
-└── .claude/skills/voucher-to-excel/    ← 示範做好的 skill（Step 5 會用到）
+└── .claude/skills/voucher-to-excel/    ← Pre-built demo skill (used in Step 5/6)
 ```
 
-- 每份 PDF 的上半部是黏存單，下半部黏貼發票或收據。
-- 這些都是掃描檔，**沒有文字層**，AI 必須「看圖」辨識。
-- 樣本的單位、廠商、金額、統編都是虛構的。買受人是虛構的「財團法人未來科技研究院智慧雲端運算中心」（統編 81924865）。
+- Each PDF has the internal voucher mounting form on the top half and the invoice or receipt attached on the bottom half.
+- All files are image scans **without a text layer**, so the AI must convert pages to images and inspect them visually.
+- Organization names, vendors, amounts, and tax IDs in `example_deid/` are fictional. The buyer is the fictional *"Cloud Intelligence Computing Center, Future Technology Research Institute (財團法人未來科技研究院智慧雲端運算中心)"* (Tax ID `81924865`).
 
-**想從頭體驗 Step 1–5**：資料夾裡已經附上示範做好的 skill，AI 可能會直接拿來用。請先把 `.claude/skills/voucher-to-excel` 資料夾移到別處，到 Step 6 再放回來；或在每句話前面加上「先不要使用任何 skill」。
+**To experience Steps 1–5 from scratch**: Because this folder already includes the pre-built skill, the AI might use it right away. Either temporarily move `.claude/skills/voucher-to-excel` out of the folder until Step 6, or prepend `"Do not use any skill yet."` to your prompts in Steps 1–4.
 
-## Step 1：先讓 AI 看懂要做什麼
+## Step 1: Let AI Understand the Task First
 
-> 先把 record.example.xlsx 複製成 record.xlsx。example_deid 資料夾有五份發票的 PDF，你先看一下 Excel 要填哪些東西，PDF 裡面找得到嗎？
+> First copy record.example.xlsx to record.xlsx. There are five invoice PDFs in the example_deid folder. Please take a look at what fields need to be filled in the Excel file and check whether they can be found in the PDFs.
 
-可以觀察 AI 會不會做到這幾件事：
+Observe whether the AI automatically performs these actions:
 
-- 讀出 Excel 的欄位。
-- 發現 PDF 沒有文字層，自己先把每一頁轉成圖片再辨識。
-- 分辨買方和賣方：發票上的 81924865 是本單位（買方），所以「發票統編」要填的是**賣方**統編。
-- 主動提出疑點，例如 …340 是收據，沒有發票號碼；…331 的計畫代號和其他張不一樣；「負債科目」在 PDF 上找不到；範本範例列的發票抬頭和樣本上的買受人不同。
+- Reads the column headers and sample row in `record.xlsx`.
+- Notices that the PDFs have no text layer and converts each PDF page to an image to inspect visually.
+- Distinguishes buyer from seller: recognizes that `81924865` on the invoice is our organization (the buyer), so "發票統編 (Invoice Tax ID)" must be filled with the **seller's (vendor's)** Tax ID.
+- Proactively flags edge cases: e.g., `…340` is a receipt without an invoice number; `…331` has a different project code from the others; "負債科目 (Liability Account)" does not appear anywhere on the PDF; and the buyer title in the template's sample row differs from the buyer on the practice PDFs.
 
-## Step 2：先約定標示規則
+## Step 2: Agree on Highlighting Rules
 
-> 缺少的資料還是要保留欄位，找不到的請用黃色螢光標示，你不確定的請用藍色螢光背景，並在儲存格加註解說明原因。也請在 Excel 最上方找個合適的地方，註解這兩種顏色代表的意義。
+> Keep the columns even if data is missing: highlight missing fields in bright yellow, highlight uncertain fields with a light blue background, and add a cell comment explaining the reason. Also find a suitable spot at the top of the Excel sheet to add a legend explaining what these two colors mean.
 
-Excel 右上角（K1:L2）會加上顏色說明，拿到檔案的人也看得懂：
+A color legend will be added in the top-right corner of the sheet (`K1:L2`) so anyone reviewing the spreadsheet immediately understands the highlights:
 
-| 顏色 | 意思 |
+| Color | Meaning |
 | --- | --- |
-| 🟨 黃底 | 找不到：PDF 中沒有此資料，欄位留空 |
-| 🟦 藍底 | 不確定：已填入推測值，請人工確認（見儲存格註解） |
+| 🟨 Yellow fill | Missing: Field does not exist in the PDF; cell left blank |
+| 🟦 Blue fill | Uncertain: Best-guess value filled in; requires human review (see cell comment) |
 
-## Step 3：先做一筆，確認正確
+## Step 3: Process One Record First and Verify
 
-> 先做第一張 example_deid/SKM_650i25101515330_deid.pdf 就好，我要確認是否正確。
+> Just process the first file example_deid/SKM_650i25101515330_deid.pdf for now so I can verify that it is correct.
 
-AI 只填第一張。不確定的格子會塗藍底並加註解，例如：
+The AI fills in only the first record, highlighting any uncertain cells in blue with explanatory comments such as:
 
-> 發票金額：填的是含稅總計 315,420；若要未稅應為 300,400
+> Invoice Amount: Filled with tax-included total 315,420; if pre-tax is required, it should be 300,400.
 
-打開 `record.xlsx`，對照 PDF 檢查這一列。先試一筆，就能及早發現欄位理解上的落差。
+Open `record.xlsx` and check this single row against the PDF. Testing on one record catches misunderstandings about column definitions before batch processing.
 
-## Step 4：填入其餘四張
+## Step 4: Fill in the Remaining Four Records
 
-> 第一筆我核對過沒問題，請把剩下的四張 PDF 也照同樣的規則填入 record.xlsx，填完後列出結果，並說明每個黃色、藍色格子的原因。
+> I checked the first record and it looks good. Please fill in the remaining four PDFs into record.xlsx following the same rules, list the results when done, and explain the reason for each yellow or blue cell.
 
-正確答案（可以拿來對照 AI 的結果；每份 PDF 旁邊同名的 `.json` 就是這份的標準答案）：
+Answer key (compare with the AI's output; each PDF also has a matching `.json` ground-truth file in `example_deid/`):
 
-| 項次 | 檔案 | 控帳編號 | 發票號碼 | 金額 | 賣方統編 | 計畫代號 |
+| Row | File | Control No. | Invoice No. | Amount | Vendor Tax ID | Project Code |
 | --- | --- | --- | --- | ---: | --- | --- |
 | 1 | …330 | 203114009187 | KX52816403 | 315,420 | 23831903 | 03114Z1500 |
 | 2 | …331 | 203114006142 | QA48017256 | 184,275 | 16480894 | 03114Z1600 |
-| 3 | …340 | 203114007326 | 🟨（空白，收據） | 3,250 | 17784483 | 03114Z1500 |
+| 3 | …340 | 203114007326 | 🟨 (Blank, receipt) | 3,250 | 17784483 | 03114Z1500 |
 | 4 | …341 | 203114008054 | PM63950418 | 8,500 | 18302983 | 03114Z1500 |
 | 5 | …350 | 203114008611 | WD30627719 | 70,560 | 95753514 | 03114Z1500 |
-| | | | **合計** | **582,005** | | |
+| | | | **Total** | **582,005** | | |
 
-- 發票金額和總計金額相同；發票抬頭都是「財團法人未來科技研究院智慧雲端運算中心」。
-- 合計列應該是 `=SUM()` 公式，之後加列也會自動加總。
-- …340 是免用發票收據，發票號碼留空並塗黃底。
+- Invoice Amount and Total Amount are identical; Buyer Title is `"財團法人未來科技研究院智慧雲端運算中心"` for all five rows.
+- The Total row should use an `=SUM()` formula so future rows are summed automatically.
+- `…340` is an invoice-exempt receipt, so its Invoice Number cell is left blank and highlighted in yellow.
 
-## Step 5：⭐ 把流程做成 skill
+## Step 5: ⭐ Turn the Workflow into a Skill
 
-前面做完，AI 已經知道這份工作的所有細節：欄位從哪裡讀、怎麼核對金額、什麼情況要標顏色。但這些只存在**這一次的對話**裡，開新對話就忘了。**Skill 就是把這些知識存下來的工作說明書。**
+By now, the AI understands every detail of this task: where to find each field, how to cross-check amounts, and when to apply yellow or blue highlights. However, that knowledge only lives inside **this single conversation**—start a new chat and it forgets everything. **A Skill saves that institutional knowledge as a persistent operating manual.**
 
-不用寫程式，直接用平常說話的方式請 AI 整理：
+No coding is needed—just ask the AI in plain language to package what you did:
 
-> 之後我會再上傳新的 PDF 發票和收據，希望我只要說「請幫我把這幾筆資料填入 excel」，你就能照今天的流程自動處理。請把今天確認過的做法整理成一個 skill，包括每個欄位要從 PDF 哪裡讀、黃色和藍色的標示規則、怎麼核對金額。也請幫這個 skill 取個名字，並給我幾個平常可以怎麼跟你說的使用範例。
+> Later I will upload new PDF invoices and receipts, and I want to simply say "Please help me enter these records into Excel" and have you automatically follow today's workflow. Please package the procedure we confirmed today into a skill, including where to read each field from the PDF, the yellow and blue highlighting rules, and how to cross-check the amounts. Also give this skill a name and show me a few example phrases I can use to invoke it.
 
-示範中，AI 建立了 `voucher-to-excel`（資料夾裡附的就是這一份）：
+In the demonstration, the AI created `voucher-to-excel` (included in this folder):
 
 ```
 .claude/skills/voucher-to-excel/
-├── SKILL.md               ← 工作說明書：流程、欄位規則、標示規則
+├── SKILL.md               ← Operating manual: workflow, field mapping rules, highlight criteria
 └── scripts/
-    ├── render_pdfs.py     ← 把掃描 PDF 轉成圖片
-    └── append_rows.py     ← 寫入 Excel、上色、加註解、更新合計
+    ├── render_pdfs.py     ← Converts scanned PDF pages into images
+    └── append_rows.py     ← Writes rows to Excel, applies colors/comments, and updates the SUM row
 ```
 
-- **SKILL.md** 寫的是需要判斷的部分：每個欄位從哪裡讀、怎麼交叉核對金額、什麼時候標黃或標藍。
-- **scripts/** 放的是每次都要一模一樣的部分：寫入 Excel、上色、算合計。交給程式做，每次結果都一樣；已登錄的控帳編號會跳過，重跑也不會重複，寫入前會先備份。
+- **`SKILL.md`** captures the parts requiring visual judgment: where to read each field on the mounting form vs. the invoice, how to cross-check totals, and when to highlight in yellow or blue.
+- **`scripts/`** encapsulates the deterministic operations that must run identically every time: writing to Excel, applying cell styles, skipping duplicate control numbers, and backing up the file before editing.
 
-你自己做出來的 skill，名稱和內容可能略有不同，這是正常的。
+When you generate your own skill, its exact name and structure may vary slightly—that is completely normal.
 
-## Step 6：之後怎麼用：開新對話，一句話搞定
+## Step 6: How to Reuse It Later: New Chat, One Sentence
 
-把示範的 skill 放回 `.claude/skills/`（或使用你在 Step 5 做的 skill），刪掉 `record.xlsx`，然後開一個新的對話，直接說：
+Restore the demo skill into `.claude/skills/` (or keep the one you created in Step 5), delete `record.xlsx`, open a brand-new chat session, and simply say:
 
-> example_deid 裡有五張新的發票 PDF，幫我把這幾筆資料填入 excel
+> There are five new invoice PDFs in example_deid, please help me enter these records into Excel
 
-AI 會自動找到 `voucher-to-excel`，照說明書處理。其他說法：
+The AI will automatically discover `voucher-to-excel` and execute the entire workflow. Other ways you can phrase it:
 
-| 想做的事 | 可以這樣說 |
+| Goal | Example Prompt |
 | --- | --- |
-| 先確認再大量處理 | 新的收據來了，先做一筆讓我確認，沒問題再做剩下的 |
-| 補登還沒填的 | 把 example_deid 裡還沒登錄的 PDF 都填進去 |
-| 指定使用這個 skill | 輸入 `/voucher-to-excel` |
+| Verify one before batch processing | New receipts have arrived—process one first for me to check, and do the rest if it looks good |
+| Append only unlogged PDFs | Enter all the PDFs in example_deid that haven't been logged yet |
+| Explicitly invoke the skill | Type `/voucher-to-excel` |
 
-**再次使用前，先確認你用的是哪一家的 AI Agent**，skill 要放在它讀得到的地方：
+**Before reusing a skill, check which AI Agent you are using** so the skill is placed where that agent looks for it:
 
-| AI Agent | skill 放在專案目錄下的 |
+| AI Agent | Project Skill Directory |
 | --- | --- |
-| Claude | `.claude/skills/` |
-| 其他 agent（例如 Antigravity 的 Gemini） | `.agents/skills/` |
+| Claude Code | `.claude/skills/` |
+| Other agents (e.g., Antigravity's built-in Gemini) | `.agents/skills/` |
 
-> 本單元示範中，Gemini 也自己找到了 `.claude/skills/` 裡的 skill。如果你的 agent 沒有自動使用，把整個 `voucher-to-excel` 資料夾複製一份到 `.agents/skills/`，或在句子裡直接點名這個 skill。
+> In our demo, Gemini also found the skill inside `.claude/skills/`. If your agent does not pick it up automatically, copy the `voucher-to-excel` folder into `.agents/skills/` or mention the skill by name in your prompt.
 
-### 用對話校正規則，讓 skill 越來越準
+### Refine Rules via Conversation to Make the Skill Smarter
 
-示範的 skill 是用國網中心的真實憑證做出來的，規則裡寫的買受人是國網中心（統編 80778299）。拿練習樣本來跑，「發票抬頭」很可能會被標成藍底，交叉核對「買受人統編」時也會對不上，因為買受人和規則不同。這正好可以練習校正規則：
+The pre-built demo skill was originally created using real NCHC vouchers where the expected buyer was NCHC (Tax ID `80778299`). When run against the de-identified practice samples (`example_deid/`), the "Buyer Title" column will likely be highlighted in blue because the buyer on the practice invoices does not match NCHC. This gives you a great opportunity to practice refining skill rules through conversation:
 
-> 為什麼發票抬頭都標藍？這批練習資料的買受人是財團法人未來科技研究院智慧雲端運算中心，統編 81924865，請把它也加進 skill 的規則，之後不用再標藍。
+> Why are the invoice buyer titles all highlighted in blue? The buyer for this batch of practice data is "財團法人未來科技研究院智慧雲端運算中心" with Tax ID 81924865. Please add this to the skill's rules so it doesn't need to be highlighted in blue anymore.
 
-藍底太多時，也可以直接問 AI 原因，例如「藍色的區塊我看都是正確的，你為何沒有把握？」。示範中，AI 回答藍底不是看不清楚，而是不確定**欄位的意思**（發票金額要填含稅還是未稅、負債科目 PDF 上沒有）。人確認過的規則寫回 skill，之後只有 PDF 上真的看不清楚的值（手寫模糊、印章不清、金額對不上）才會標藍。
+If too many cells are highlighted in blue, you can also ask the AI why: e.g., *"The blue cells all look right to me—why were you uncertain about them?"* Once human-confirmed rules are written back into `SKILL.md`, only genuinely ambiguous visual values (blurry handwriting, smudged stamps, or mismatched totals) will be flagged in blue.
 
 ---
 
-## 加碼：兩個 AI Agent 合作：一個做、一個審
+## Bonus: Two AI Agents Collaborating: One Extracts, One Audits
 
-就像同事互相覆核：讓一家 AI Agent 負責填，再換另一家負責審，錯誤更容易被抓出來。開始前先刪掉 `record.xlsx`。
+Just like having a colleague double-check your accounting sheet: let one AI Agent fill in the spreadsheet, then switch to a second AI Agent to audit the result against the original PDFs. Delete `record.xlsx` before starting.
 
-### 1. Gemini 負責做
+### 1. Gemini Extracts the Data
 
-在 Antigravity 的 Agent 對話框（模型選 Gemini）輸入：
+In Antigravity's Agent chat panel (with Gemini selected), enter:
 
-> 先複製 record.example.xlsx 為 record.xlsx<br>
-> 幫我辨識 example_deid/SKM_650i25101515330_deid.pdf example_deid/SKM_650i25101515331_deid.pdf example_deid/SKM_650i25101515340_deid.pdf example_deid/SKM_650i25101515341_deid.pdf example_deid/SKM_650i25101515350_deid.pdf 填入 record.xlsx
+> First copy record.example.xlsx to record.xlsx<br>
+> Please recognize example_deid/SKM_650i25101515330_deid.pdf example_deid/SKM_650i25101515331_deid.pdf example_deid/SKM_650i25101515340_deid.pdf example_deid/SKM_650i25101515341_deid.pdf example_deid/SKM_650i25101515350_deid.pdf and fill them into record.xlsx
 
-示範中，Gemini 自己找到前面做好的 `voucher-to-excel` skill，照裡面的規則處理。完成後可以對照 [Step 4 的正確答案](#step-4填入其餘四張)：合計 582,005 元，…340 收據沒有發票號碼，留空並標黃底。
+Gemini locates the `voucher-to-excel` skill and processes all five files. Compare the output with the [Step 4 Answer Key](#step-4-fill-in-the-remaining-four-records): total `582,005`, with `…340` left blank and highlighted in yellow for the missing invoice number.
 
-### 2. Claude 負責審
+### 2. Claude Audits the Result
 
-切換到 Claude Code 對話框輸入：
+Switch to the Claude Code chat panel and enter:
 
-> 我已將 example_deid/ 裡的 SKM_650i25101515330_deid.pdf、SKM_650i25101515331_deid.pdf、SKM_650i25101515340_deid.pdf、SKM_650i25101515341_deid.pdf、SKM_650i25101515350_deid.pdf 的發票內容擷取到 record.xlsx，請幫我比對 PDF 與 Excel，確認是否正確。
+> I have extracted the invoice contents from SKM_650i25101515330_deid.pdf, SKM_650i25101515331_deid.pdf, SKM_650i25101515340_deid.pdf, SKM_650i25101515341_deid.pdf, and SKM_650i25101515350_deid.pdf in example_deid/ into record.xlsx. Please cross-check the PDFs against the Excel sheet and verify whether everything is accurate.
 
-Claude 會把每張 PDF 轉成圖片，逐筆核對發票號碼、金額和統編，最後列出比對結果。示範影片中，Claude 除了確認五筆全部正確，還做了這些檢查：
+Claude renders each PDF to images, verifies every invoice number, amount, and tax ID row by row, and reports a complete audit table:
 
-- 發票上的總計等於黏存單的核銷金額，含稅也算得對。
-- 收據的金額加總和 Excel 一致。
-- 買受人名稱和統編正確；計畫代號和會計科目吻合；合計正確。
-- **格式提醒**：統編欄有的存成文字（例如開頭是 0 的統編）、有的存成數字。不影響正確性，但之後要排序或比對時，建議統一成文字格式。
+- Confirms that each invoice total matches the mounting form reimbursement amount and tax calculation.
+- Verifies that itemized receipt lines sum to the Excel total.
+- Checks buyer title, tax ID, project code, account code, and the grand total formula.
+- **Formatting note**: Points out if any Tax IDs are stored as numbers vs. text strings (important when a Tax ID starts with `0`) and recommends standardizing them as text.
 
-> 📌 **重點**：審核的那一方不用知道前一方怎麼做，只要拿原始 PDF 重新比對。而且同一個 skill，不同家的 AI Agent 都能用。
-
----
-
-## 使用小提醒
-
-- **黃底、藍底一定要人工確認，沒標色的也建議抽查。** 加碼示範的「一個做、一個審」也是一種抽查方式。
-- **「發票統編」填的是賣方（廠商）的統編**，不是買方（本單位）的統編。
-- **發票金額填含稅總計**；免用發票收據沒有發票號碼，留空標黃。
-- **不要直接改範本** `record.example.xlsx`；要從頭來，刪掉 `record.xlsx` 即可。
-- **換成自己單位的資料**：請 AI 把 skill 規則裡的買受人名稱和統編改成你的單位（做法同上面的「用對話校正規則」）。
-- **注意機密性。** 用 AI Agent 看圖時，掃描圖片會送到該 AI Agent 的服務商。真實的財務資料請依單位規定處理，對外分享前先去識別化。
+> 📌 **Key Takeaway**: The auditing agent doesn't need to know how the first agent produced the file—it simply compares the final Excel sheet against the raw PDFs. Moreover, the exact same Skill works across different AI Agents.
 
 ---
 
-## 專案內容
+## Practical Tips
 
-| 路徑 | 說明 |
+- **Always manually review yellow and blue cells, and spot-check unhighlighted rows.** The two-agent audit above is a great way to automate spot-checking.
+- **"發票統編 (Invoice Tax ID)" is the seller's (vendor's) Tax ID**, not the buyer's (your organization's) Tax ID.
+- **Invoice Amount uses the tax-included total**; invoice-exempt receipts have no invoice number and should be left blank in yellow.
+- **Never overwrite `record.example.xlsx` directly**; to start over, simply delete `record.xlsx`.
+- **Adapting to your own organization**: Ask the AI to update the buyer name and Tax ID in `SKILL.md` to match your organization.
+- **Protect confidential data.** When an AI Agent inspects images, those images are sent to the model provider's servers. Handle real financial documents according to your institution's data governance policies, and always de-identify files before sharing publicly.
+
+---
+
+## Project Contents
+
+| Path | Description |
 | --- | --- |
-| `record.example.xlsx` | Excel 範本（有一筆範例資料，不會被改動） |
-| `record.xlsx` | 練習時從範本複製出來的 Excel（自己產生，不放在 GitHub）；刪掉即可重新開始 |
-| [example_deid/](example_deid/) | 5 份去識別化的掃描核銷憑證（虛構資料），附同名 `.json` 標準答案 |
-| [.claude/skills/voucher-to-excel/](.claude/skills/voucher-to-excel/) | 示範中做出來的 skill（`SKILL.md` ＋ `scripts/`） |
-| `tutorial.md` | 示範影片的完整過程與每一步 AI 的回答（真實資料版，含真實帳務資訊，只在課堂提供，不放在 GitHub） |
-| [AGENTS.md](AGENTS.md) | AI Agent 在這個專案中要遵守的規則（Python 一律用 `uv`） |
+| `record.example.xlsx` | Excel template (contains 1 sample row; never modified) |
+| `record.xlsx` | Working copy created from the template during practice (not tracked on GitHub; delete to reset) |
+| [`example_deid/`](example_deid/) | 5 de-identified scanned voucher PDFs (fictional data) with matching `.json` ground-truth files |
+| [`.claude/skills/voucher-to-excel/`](.claude/skills/voucher-to-excel/) | Pre-built skill created during the demo (`SKILL.md` + `scripts/`) |
+| `tutorial.md` | Full transcript of the live demo video |
+| [`AGENTS.md`](AGENTS.md) | Project rules for AI Agents (always use `uv` for Python) |
 
-## 下一步
+## Next Step
 
-單元 05 換到研究現場：在國網 HPC 上用幾句中文請 AI 跑完整套 QIIME 2 腸道菌相分析，產出一份分析報告。
+Unit 05 moves into scientific computing: using natural language on NCHC HPC to run a complete QIIME 2 gut microbiome analysis pipeline and generate an illustrated PDF report.

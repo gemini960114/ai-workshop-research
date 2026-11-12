@@ -1,6 +1,7 @@
 # Ignore everything by default
 /*
 
-# Except README.md and .gitignore
+# Except README.md, README.zh-TW.md and .gitignore
 !/README.md
+!/README.zh-TW.md
 !.gitignore

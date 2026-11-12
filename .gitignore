@@ -9,6 +9,7 @@ node_modules
 docs/.vitepress/dist/
 docs/.vitepress/cache/
 docs/guide/*.md
+docs/zh-TW/guide/*.md
 
 # Python
 .venv/

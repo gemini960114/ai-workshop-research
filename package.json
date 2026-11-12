@@ -1,7 +1,7 @@
 {
   "name": "ai-workshop-research",
   "version": "1.0.0",
-  "description": "讓 AI Agent 和你一起做研究：從文獻整理、論文撰寫，到建立自己的 Skill",
+  "description": "Do Research with AI Agents: From Literature Review & Paper Writing to Building Your Own Skills",
   "scripts": {
     "docs:sync": "node scripts/sync-docs.mjs",
     "docs:dev": "npm run docs:sync && vitepress dev docs --host",

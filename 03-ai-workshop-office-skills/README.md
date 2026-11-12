@@ -1,25 +1,27 @@
-# 單元 03：Office 文件處理 — docx、pdf、pptx、xlsx
+# Unit 03: Office Document Processing — `docx`, `pdf`, `pptx`, `xlsx`
 
-用 4 個官方 skill，把一份 CSV 一路做成 Excel、簡報、Word 報告和 PDF 講義。
+> 🌐 **Language**: English | [繁體中文](README.zh-TW.md)
 
-> 📥 **本單元上課簡報**：[下載 03-office-skills.pptx](https://github.com/gemini960114/ai-workshop-research/raw/main/PPTX/03-office-skills.pptx)（12 頁，含講者備註）
+Use 4 official skills to turn a single CSV file into an Excel workbook with charts, an animated PowerPoint deck, a Word analysis report, and a watermarked PDF handout.
 
-> 🎬 **本單元教學影片**：[單元 03｜Office 文件處理](https://youtu.be/FwIpKAJ2-vk)（YouTube）
+> 📥 **Unit Slides**: [Download 03-office-skills.pptx](https://github.com/gemini960114/ai-workshop-research/raw/main/PPTX/03-office-skills.pptx) (12 slides, with speaker notes)
 
-| 步驟 | 內容 | 預估時間 |
+> 🎬 **Tutorial Video**: [Unit 03 | Office Document Processing](https://youtu.be/FwIpKAJ2-vk) (YouTube)
+
+| Step | Content | Est. Time |
 | :--- | :--- | :---: |
-| **Step 1** | [安裝 4 個官方 skill](#安裝) | 3 分鐘 |
-| **Step 2** | [範例 1（xlsx）：CSV 做成有圖表的 Excel](#範例-1xlsx把-csv-做成有圖表的-excel) | 5 分鐘 |
-| **Step 3** | [範例 2（pptx）：做成可上課用的動畫簡報](#範例-2pptx根據-excel-做可上課用的動畫簡報) | 8 分鐘 |
-| **Step 4** | [範例 3（docx）：寫一份 Word 分析報告](#範例-3docx根據-excel-寫一份-word-報告) | 5 分鐘 |
-| **Step 5** | [範例 4（pdf）：轉成上課講義 PDF](#範例-4pdf把報告轉成上課講義-pdf) | 3 分鐘 |
+| **Step 1** | [Install the 4 Official Skills](#installation) | 3 min |
+| **Step 2** | [Example 1 (xlsx): Turn CSV into an Excel Workbook with Charts](#example-1-xlsx-turn-csv-into-an-excel-workbook-with-charts) | 5 min |
+| **Step 3** | [Example 2 (pptx): Build an Animated Presentation from Excel](#example-2-pptx-build-an-animated-presentation-from-excel) | 8 min |
+| **Step 4** | [Example 3 (docx): Write a Word Analysis Report from Excel](#example-3-docx-write-a-word-analysis-report-from-excel) | 5 min |
+| **Step 5** | [Example 4 (pdf): Convert the Report into a Course Handout PDF](#example-4-pdf-convert-the-report-into-a-course-handout-pdf) | 3 min |
 
 > [!IMPORTANT]
-> 請用 Antigravity 的 **Open Folder** 開啟 `03-ai-workshop-office-skills` 這個資料夾，不要開外層的 `ai-workshop-research`。
+> Use Antigravity's **Open Folder** to open the `03-ai-workshop-office-skills` folder directly—do not open the outer `ai-workshop-research` folder.
 
-## 安裝
+## Installation
 
-在 Antigravity 開啟終端機（確認目前位置是本資料夾），執行：
+Open the Terminal in Antigravity (confirm your current directory is this folder) and run:
 
 ```bash
 npx skills add anthropics/skills@docx -a antigravity -a claude-code --copy -y
@@ -29,40 +31,40 @@ npx skills add anthropics/skills@xlsx -a antigravity -a claude-code --copy -y
 ```
 
 > [!TIP]
-> 裝好後資料夾裡會出現 `.agents/skills/` 與 `.claude/skills/`。**請重新開啟 AI Agent 的對話**，skill 才會生效。
+> Once installed, `.agents/skills/` and `.claude/skills/` will appear in the folder. **Please start a new AI Agent chat session** so the skills take effect.
 
-## 用途
+## Purpose
 
-Anthropic 官方 skill，讓 AI Agent 能可靠地讀取與產生 Office 文件和 PDF。沒有這些 skill 時，AI Agent 常要臨時自己寫程式讀檔，格式複雜一點就容易出錯；產出的 Excel、簡報也常只有內容、沒有版面。
+These official Anthropic skills enable AI Agents to reliably read and generate Office documents and PDFs. Without them, an AI Agent often improvises ad-hoc scripts that break on complex formatting and produce spreadsheets or slide decks with raw text but no visual layout.
 
-| Skill | 作用 |
+| Skill | Capabilities |
 | --- | --- |
-| docx | 讀取、建立、修改 Word 文件（標題層級、表格、目錄、追蹤修訂） |
-| pdf | 擷取文字與表格、合併分割、填表單，掃描檔可做 OCR |
-| pptx | 讀取、建立、修改簡報（版面、圖表、講者備註、動畫） |
-| xlsx | 讀取、建立、修改試算表（公式、格式、圖表） |
+| `docx` | Read, create, and edit Word documents (heading levels, tables, table of contents, tracked changes) |
+| `pdf` | Extract text and tables, merge/split pages, fill forms, and run OCR on scanned PDFs |
+| `pptx` | Read, create, and edit presentations (layouts, charts, speaker notes, animations) |
+| `xlsx` | Read, create, and edit spreadsheets (formulas, number formatting, charts) |
 
-這幾個 skill 不用特別點名，只要任務牽涉到這些檔案就會觸發。
+You don't need to mention these skills by name—they trigger automatically whenever your task involves the corresponding file types.
 
-## 事前準備
+## Prerequisites
 
-| 工具 | 用在哪裡 | 沒有會怎樣 |
+| Tool | Where It's Used | What Happens Without It |
 | --- | --- | --- |
-| uv、Node.js（課堂電腦已安裝） | 所有 skill 都靠它們執行程式；Python 由 uv 管理，AI 會自動在 `.venv` 安裝需要的套件 | 無法執行 |
-| [LibreOffice](https://www.libreoffice.org/download/download/)（課堂電腦已安裝） | 重算 Excel 公式、docx 轉 PDF、把簡報轉成圖片讓 AI Agent 自己檢查版面 | 範例 1 的公式沒有預先算好的值、範例 4 需改用 Word 轉檔、AI Agent 無法自己檢查版面 |
-| Microsoft Office | 打開成果檢查；Windows 上沒有 LibreOffice 時，可以叫 Word 轉 PDF | 可用 LibreOffice 代替檢查，但動畫、轉場在 PowerPoint 最準 |
+| `uv`, `Node.js` (pre-installed on classroom PCs) | All skills rely on them to execute scripts; Python is managed by `uv` and packages are auto-installed in `.venv` | Cannot execute skill scripts |
+| [LibreOffice](https://www.libreoffice.org/download/download/) (pre-installed on classroom PCs) | Recalculate Excel formula caches, convert `docx` to PDF, and render slides to images so the AI Agent can visually inspect layouts | Example 1 formulas won't have cached values, Example 4 must use Word for PDF conversion, and AI cannot visually self-check slide layouts |
+| Microsoft Office | Open output files for inspection; on Windows without LibreOffice, Word can convert `docx` to PDF | LibreOffice can be used for viewing instead, though animations and transitions are best checked in PowerPoint |
 
-安裝 LibreOffice 後，請確認 `soffice` 指令能在終端機執行（Windows 預設路徑 `C:\Program Files\LibreOffice\program`，必要時加到 PATH）。
+After installing LibreOffice, verify that the `soffice` command works in your terminal (on Windows, default path is `C:\Program Files\LibreOffice\program`; add it to `PATH` if needed).
 
-## 範例資料
+## Sample Data
 
 ```text
 example/
-└── 臺灣採購經理人指數(pmi及nmi).csv   ← 輸入：2012/07–2026/09 每月 PMI、NMI
-output/                                 ← 產出：AI 做的檔案都存在這裡（第一次存檔時自動建立）
+└── 臺灣採購經理人指數(pmi及nmi).csv   ← Input: Monthly Taiwan PMI & NMI (2012/07–2026/09)
+output/                                 ← Output: Files generated by AI (created automatically)
 ```
 
-以下四個範例是一條流水線，前一個範例的產出就是下一個範例的輸入。請依序完成：
+The four examples below form a continuous pipeline where the output of each step becomes the input to the next. Complete them in order:
 
 ```text
 CSV ──xlsx──▶ pmi.xlsx ──pptx──▶ pmi.pptx
@@ -72,87 +74,87 @@ CSV ──xlsx──▶ pmi.xlsx ──pptx──▶ pmi.pptx
 
 ---
 
-## 範例 1（xlsx）：把 CSV 做成有圖表的 Excel
+## Example 1 (xlsx): Turn CSV into an Excel Workbook with Charts
 
 ```text
-把 example/臺灣採購經理人指數(pmi及nmi).csv 做成 Excel，存成 output/pmi.xlsx：
-第一個工作表放原始資料，第二個工作表算出每年的 PMI、NMI 平均，並加上歷年走勢的折線圖。
+Convert example/臺灣採購經理人指數(pmi及nmi).csv into an Excel workbook saved as output/pmi.xlsx:
+Put the raw data on the first worksheet, calculate the annual average PMI and NMI on the second worksheet, and add a line chart showing the multi-year trend.
 ```
 
-**預期行為：** 產出有兩個工作表的 Excel，年度平均用公式計算（點開儲存格看得到公式，不是寫死的數字），折線圖的座標軸與圖例都有中文標示。CSV 裡 NMI 在 2014 年 8 月以前是「-」，AI Agent 應該當成沒有資料處理，而不是當成 0。
+**Expected Behavior:** Produces a two-sheet Excel workbook where annual averages are computed via Excel formulas (clicking a cell reveals the formula, not a hardcoded number) and the line chart has properly labeled axes and legend. In the CSV, NMI values prior to August 2014 are marked as `"-"`; the AI Agent should treat them as missing values rather than `0`.
 
-**檢查重點：**
+**What to Check:**
 
-- 2012 年只有 7–12 月、2026 年只有 1–9 月，屬於不完整年度，最好有註記。
-- 程式寫入的公式不會自帶計算結果。有 LibreOffice 時 AI Agent 會先重算一次；沒有的話，用 Excel 打開會自動計算，但下一個範例讀檔時可能讀到空值，AI Agent 應該改從原始資料自己算，而不是把空值當成 0。
+- 2012 only covers July–December and 2026 only covers January–September (partial years), which should ideally be noted.
+- Formulas written programmatically by libraries like `openpyxl` do not include cached results by default. When LibreOffice is installed, the AI Agent recalculates and caches the values automatically; without LibreOffice, Excel calculates them when opened, or the next step's script computes averages directly from the raw data sheet rather than reading empty cached values as `0`.
 
 ---
 
-## 範例 2（pptx）：根據 Excel 做可上課用的動畫簡報
+## Example 2 (pptx): Build an Animated Presentation from Excel
 
 ```text
-根據 output/pmi.xlsx 做一份 5 頁的簡報，存成 output/pmi.pptx，說明臺灣採購經理人指數的意義、近年走勢與重點觀察，要有圖表。
+Based on output/pmi.xlsx, create a 5-slide presentation saved as output/pmi.pptx explaining the meaning of Taiwan's Purchasing Managers' Index (PMI/NMI), recent trends, and key observations, including charts.
 
-文字都要能在 PowerPoint 裡編輯（不要做成圖片）。
+All text must be editable in PowerPoint (do not render text as images).
 
-每頁內容用卡片（圓角方塊）排版，標題直接顯示。卡片依序逐一出現。每按一下，只讓下一張卡片以淡入效果出現；播放開始時卡片先隱藏。背景與裝飾元素不需動畫。
+Lay out each slide's content using cards (rounded rectangles) with the slide title shown immediately. Have the cards appear one by one in sequence: on each click, reveal only the next card with a fade-in animation; hide all cards when the slide starts. Background and decorative elements should not be animated.
 
-換頁用淡入效果，慢一點。要講者備註。
+Use a slow fade transition between slides, and include speaker notes.
 ```
 
-**預期行為：** 產出 5 頁簡報，包含標題頁、指標說明、走勢圖表與重點觀察；圖表數字與 Excel 一致，文字不超出版面。每頁的文字都是可編輯的文字方塊，圖表最好是 PowerPoint 原生圖表（點開可以編輯資料），不是貼上的圖片。
+**Expected Behavior:** Produces a 5-slide presentation with a title slide, indicator explanation, trend charts, and key takeaways; chart numbers match the Excel file, and no text overflows. Every text element is an editable PowerPoint text box, and charts are ideally native PowerPoint charts (or high-resolution embedded charts).
 
-**檢查重點：** 用 PowerPoint 打開：
+**What to Check (Open in PowerPoint):**
 
-- 版面是否整齊、圖表能不能正常顯示
-- 「動畫」→「動畫窗格」：只有卡片有動畫，每張都是「按一下時」觸發的「淡入」，順序與閱讀順序一致；背景、裝飾、標題沒有動畫
-- 投影片放映：一開始只看到標題，每按一下多出現一張卡片
-- 「轉場」：每頁都是「淡入」，期間比預設的 0.7 秒長（例如 1.5–2 秒）
-- 「檢視」→「備忘稿」：每頁都有講者備註，內容是講者要說的話，不只是重複投影片文字
+- Layout alignment and chart legibility
+- **Animations → Animation Pane**: Only content cards have animations, each set to "On Click" with a "Fade" entrance in reading order; backgrounds, decorations, and slide titles are not animated
+- **Slide Show**: Initially only the slide title is visible, and each click reveals one additional card
+- **Transitions**: Every slide uses a "Fade" transition with a duration longer than the 0.7s default (e.g., 1.5–2 seconds)
+- **View → Notes**: Every slide includes meaningful speaker notes rather than just repeating bullet points
 
-> 動畫與轉場是 python-pptx 等函式庫沒有直接支援的功能，AI Agent 需要直接寫入簡報的 XML。這正是 pptx skill 派得上用場的地方——沒有 skill 時常會漏掉動畫，或產生 PowerPoint 打不開的檔案。
+> Slide animations and transitions are not natively supported by high-level libraries like `python-pptx`, requiring the AI Agent to manipulate presentation XML directly. This is where the `pptx` skill shines—without it, agents often omit animations or generate corrupted `.pptx` files.
 
 ---
 
-## 範例 3（docx）：根據 Excel 寫一份 Word 報告
+## Example 3 (docx): Write a Word Analysis Report from Excel
 
 ```text
-根據 output/pmi.xlsx 寫一份 Word 分析報告，存成 output/pmi-report.docx：
-要有封面、自動目錄，章節分成「指標說明」「歷年走勢」「近一年觀察」「結論」，
-「歷年走勢」放年度平均的表格與折線圖。
+Based on output/pmi.xlsx, write a Word analysis report saved as output/pmi-report.docx:
+Include a cover page, an automatic table of contents, and chapters divided into "Indicator Overview", "Multi-Year Trends", "Recent Year Observations", and "Conclusion".
+In "Multi-Year Trends", include the annual average table and the line chart.
 ```
 
-**預期行為：** 標題用 Word 內建的「標題 1／標題 2」樣式，目錄是可更新的欄位（在目錄上按右鍵 →「更新功能變數」會跟著章節變化），不是手打的文字；表格數字與 Excel 的年度平均一致。
+**Expected Behavior:** Headings use Word's built-in `Heading 1 / Heading 2` styles, the Table of Contents is a dynamic Word field (right-click → "Update Field" updates page numbers and headings automatically) rather than manually typed text, and table values match the annual averages in Excel.
 
-**檢查重點：**
+**What to Check:**
 
-- 剛產出的目錄可能顯示「沒有目錄項目」或空白，這是正常的：在 Word 裡更新功能變數後才會出現頁碼。範例 4 轉 PDF 前應先更新。
-- Word 文件裡的折線圖通常是圖片（AI Agent 先用程式畫好圖再插入），不是可以點開編輯資料的 Word 圖表，這是可以接受的。
+- A freshly generated Table of Contents may initially appear blank or say "No table of contents entries found" until updated in Word or LibreOffice—this is normal for dynamic TOC fields and should be updated before converting to PDF in Example 4.
+- Line charts in Word reports are typically generated via Python (`matplotlib`) and inserted as high-resolution images, which is expected.
 
 ---
 
-## 範例 4（pdf）：把報告轉成上課講義 PDF
+## Example 4 (pdf): Convert the Report into a Course Handout PDF
 
 ```text
-把 output/pmi-report.docx 用 LibreOffice 轉成 PDF，存成 output/pmi-report.pdf：
-每頁下方加上頁碼，並加上淡灰色「課堂講義」浮水印。
+Convert output/pmi-report.docx to PDF using LibreOffice and save it as output/pmi-report.pdf:
+Add page numbers at the bottom of every page and a light gray "Course Handout" ("課堂講義") watermark.
 ```
 
-**預期行為：** 中文字型正常顯示（沒有方框或亂碼），頁碼與浮水印出現在每一頁，浮水印不遮住內文、文字仍可選取複製。
+**Expected Behavior:** CJK/English fonts render cleanly without missing-glyph boxes (`□`), page numbers and the diagonal watermark appear on every page, and the watermark stays behind or semi-transparent over the text while keeping all body text selectable.
 
-**檢查重點：**
+**What to Check:**
 
-- 轉 PDF 指定用 LibreOffice（課堂電腦已安裝）；自己的電腦沒有 LibreOffice 時，可以把 Prompt 改成「用 Word 轉成 PDF」。兩者都沒有時，AI Agent 可能改用其他方式自己排版輸出 PDF，版面會和 Word 不同。
-- 頁碼、浮水印用程式疊加時，必須指定中文字型（例如微軟正黑體、Noto Sans TC），否則「課堂講義」會變成方框。這是最常見的錯誤。
+- If your personal computer does not have LibreOffice installed, change the prompt to "convert to PDF using Word."
+- When overlaying page numbers or Chinese watermarks programmatically, a CJK-capable font (e.g., Microsoft JhengHei or Noto Sans CJK TC) must be registered; otherwise Chinese characters render as empty boxes (`□`).
 
 ---
 
-## 學到的事
+## What You Learned
 
-- 一個 skill 管一種檔案：xlsx、pptx、docx、pdf 各司其職，不用點名，任務牽涉到這些檔案就會觸發。
-- 把任務拆成**流水線**：前一個範例的產出就是下一個範例的輸入，每一步都能單獨檢查。
-- AI 產出的檔案一定要**打開檢查**：公式有沒有值、動畫順序、目錄是否更新、中文字型有沒有變成方框。
+- Each skill specializes in one document format (`xlsx`, `pptx`, `docx`, `pdf`) and triggers automatically when relevant files are involved.
+- Break complex workflows into a **pipeline**: each step's output feeds into the next step, making every stage easy to inspect and verify independently.
+- Always **open and inspect AI-generated documents**: verify formula caches, animation order, dynamic TOC fields, and font rendering.
 
-## 下一步
+## Next Step
 
-前面用的都是別人寫好的 skill。單元 04 請 AI 看懂掃描發票、填進 Excel，再把做對的流程**存成自己的 skill**。
+Up to now we have used pre-built official skills. In Unit 04, you will ask the AI to read scanned invoice PDFs, populate an Excel sheet, and **save your verified workflow as your own custom Skill**.
