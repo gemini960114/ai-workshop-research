@@ -1,0 +1,17 @@
+{
+  "version": 1,
+  "skills": {
+    "arxiv": {
+      "source": "NousResearch/hermes-agent",
+      "sourceType": "github",
+      "skillPath": "skills/research/arxiv/SKILL.md",
+      "computedHash": "1169b475f91036091746b5c8142688eedb9f414ec4b4578f368301acd7d5066c"
+    },
+    "research-paper-writing": {
+      "source": "master-cai/research-paper-writing-skills",
+      "sourceType": "github",
+      "skillPath": "research-paper-writing/SKILL.md",
+      "computedHash": "f3fab147f1324d8afe1e7025f62890c73175506a9919825820aeeaa33d0b27a8"
+    }
+  }
+}

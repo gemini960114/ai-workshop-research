@@ -1,0 +1,5 @@
+metric	PC1	PC2	PC3
+unweighted_unifrac	20.42%	6.25%	4.43%
+weighted_unifrac	31.61%	11.55%	11.48%
+bray_curtis	13.90%	10.65%	5.64%
+jaccard	6.86%	3.40%	2.79%

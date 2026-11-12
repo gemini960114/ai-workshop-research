@@ -1,0 +1,942 @@
+> 請閱讀 manuscript/00-research-brief.md，並對照 data/tables/
+  確認數字，用白話告訴我：這篇論文要回答什麼問題、答案是什麼、有哪
+  些限制、要去找哪些文獻。
+
+● Explored 1 file (00-research-brief.md)
+● Ran (ls -la data/tables/)
+● Explored 9 files (00_filtering_funnel.tsv,...) (ctrl+o to expand)
+
+  已閱讀 00-research-brief.md 並逐一核對 data/tables/
+  下的所有表格，數值完全一致。以下用白話為你整理這篇論文的核心脈
+  絡：
+  ──────
+  ### 1. 這篇論文要回答什麼問題？研究背景是什麼？
+
+  接受「異體造血幹細胞移植（allo-
+  HSCT）」的病人，在移植前會經歷高強度化療與抗生素治療，這會把腸
+  道裡的好菌殺光，導致菌相崩潰、死亡率上升。因此臨床上有個做法叫
+  自體糞菌移植（auto-
+  FMT）：先在化療前把病人自己的糞便菌叢冰起來，等幹細胞移植後再放
+  回腸道，看能不能幫腸道菌相恢復。
+
+  這篇論文利用公開臨床試驗資料（NCT02269150，篩選後共 24
+  位病人、356 個糞便檢體、2,422 種菌 [ASV]，參考
+  00_filtering_funnel.tsv 與
+  03_lme_model_summary.tsv），要回答三個核心問題（同時示範「縱向
+  分析方法」的重要性）：
+
+  • 問題一（Q1）：幹細胞移植前後，腸道菌相發生了什麼事？
+  • 問題二（Q2）：有做「自體糞菌移植（auto-
+  FMT）」的人，跟沒做的對照組相比，菌相有比較好嗎？為什麼不同統計
+  方法會給出不同答案？
+  •
+  問題三（Q3）：在移植後的時間軸上，主要是哪些細菌在跟著時間起落
+  ？
+  ──────
+  ### 2. 答案是什麼？（對照 data/tables/ 確認後的數據）
+
+  • Q1
+  答案：移植後菌相豐富度大崩盤，腸球菌（Enterococcaceae）趁機霸占
+  腸道。
+      • 數據核對：比較移植前（pre, n = 78）與移植後（post, n =
+      225），菌種豐富度顯著暴跌（Kruskal-Wallis H = 70.58, p = 4.
+      42 × 10⁻¹⁷, q = 1.33 × 10⁻¹⁶，見
+      02_kruskal_categorical-time-relative-to-hct.tsv）。腸球菌科
+      的平均占比從移植前的 0.9% 飆升到移植後的 22.0%，且移植後
+      225 個檢體中有 48 個檢體超過一半都是腸球菌。
+  • Q2
+  答案：如果把所有時間點的檢體「混在一起比」，兩組看起來沒差；但
+  改用「縱向追蹤模型（LME）」看隨時間變化的趨勢，就會發現 auto-
+  FMT 組的菌相退化得比較慢！
+      • 數據核對（混在一起比）：對照組（10 人、150 個檢體）vs.
+      auto-FMT 組（14 人、206
+      個檢體），整期直接做檢定是沒有顯著差異的（H = 1.29, p = 0.
+      256，見 02_kruskal_autoFmtGroup.tsv）。
+      • 數據核對（考慮時間與個人的縱向模型
+      LME）：對照組的菌種數量每天平均掉 0.859 種（95% CI: -1.196
+      至 -0.523, p < 0.001）；而 auto-FMT
+      組與時間有顯著的正向交互作用 +0.560 種/天（95% CI: 0.104 至
+      1.015, p = 0.016），代表下降斜率被拉平、掉得比較慢（見
+      03_lme_model_results.tsv）。這正是本論文的核心定位：強調縱
+      向時間分析才能看見混在一起比看不見的變化。
+  • Q3
+  答案：跟著移植週數變化的指標菌，主要是趁亂崛起的「腸球菌科」以
+  及原本健康腸道常見的厭氧菌（如梭菌屬、毛螺菌科）。
+      • 數據核對：用隨機森林（Random
+      Forest）拿菌相去預測「這是移植後第幾週」，可解釋約 32%
+      的變異（R² = 0.319, r = 0.565, p = 2.37 × 10⁻⁷，見
+      04_rf_accuracy.tsv）。貢獻度最高的前四名依序是：Enterococca
+      ceae（重要性 0.124）、Clostridium（0.109）、Enterococcaceae
+      Incertae Sedis（0.089）與 Lachnospiraceae（0.087）（見
+      04_rf_feature_importance.tsv）。
+
+
+  (註：另外已核對 01_dada2_stats.tsv 41
+  個上游示範檢體之輸入總讀數確為 1,832,285、非嵌合體保留
+  1,535,600 [83.8%]；以及 05_pcoa_proportion_explained.tsv
+  各距離矩陣 PC1 解釋力完全吻合。)
+  ──────
+  ### 3. 這項研究有哪些限制？（寫論文時說話不能太滿的地方）
+
+  這篇論文定位是**「分析方法的示範與公開資料再分析」**，不能宣稱
+  證明了臨床療效，原因有 6 個關鍵限制：
+
+  1. 病人數太少：只有 24 位病人（對照 10、治療
+  14），估計出來的信賴區間很寬（例如斜率差從 +0.104 到 +1.015）。
+  2. LME 模型沒有收斂：在 03_lme_model_summary.tsv 第 12
+  行明確記錄了 Converged:
+  No，代表統計模型的數值估計不穩定，解讀必須非常保守。
+  3. 一條直線切到底（沒分 FMT 前後）：目前的 LME 把「FMT
+  前的破壞期」和「FMT
+  後的恢復期」畫成同一條斜率直線，所以斜率比較緩（+0.
+  560/天）不完全等於「FMT
+  之後菌相回升」，更好的做法應該用分段迴歸（piecewise）或非線性模
+  型。
+  4.
+  單次稀釋抽樣（Rarefying）的爭議：為了拉平每個檢體的讀數，固定抽
+  樣在 10,000 條讀序，不僅丟掉了 50 個讀數不足的檢體（406 →
+  356），單次抽樣在統計學界也有損失資訊的爭議。
+  5. 把同一個人的多個檢體當成獨立樣本（偽重複）：在做 Kruskal-
+  Wallis 檢定時，356 個檢體其實來自 24 個人（每人測 2～34
+  次，平均 14.8 次），直接檢定違反了樣本獨立性假設。
+  6.
+  隨機森林看的是「時間相關菌」，不是「療效菌」：模型預測的是「移
+  植後週數」，找出來的菌只是隨時間大幅波動的菌，不代表 auto-FMT
+  成功植入（engraftment）的菌。
+  ──────
+  ### 4. 我們接下來要去找哪些文獻？
+
+  為了支撐前言、方法，並在討論章節（Discussion）誠實探討上述 6
+  個限制與更好的統計做法，我們需要收集兩類文獻：
+
+  #### A. 用 DOI 直接收錄的基礎必備文獻（期刊論文）
+
+  1. 原始臨床試驗論文：Taur et al. (2018), Science Translational
+  Medicine（NCT02269150 資料來源與臨床背景）。
+  2. 分析工具與資料庫：QIIME 2（Bolyen et al., 2019）、DADA2
+  去噪演算法、SILVA 138 資料庫。
+
+  #### B. 用 arxiv skill 搜尋的統計與方法學文獻（5 個方向）
+
+  1. FMT 與菌相植入（Engraftment）評估（搜尋：abs:microbiome AND
+  abs:transplant）→ 用於前言背景，以及說明限制
+  6（如何真正評估植入成效）。
+  2. 縱向菌相混合效應模型（搜尋：abs:microbiome AND
+  abs:longitudinal AND abs:mixed）→ 用於方法依據，以及討論限制
+  2、3（模型不收斂問題、分段/時變模型等替代方案）。
+  3. 重複測量與偽重複問題（搜尋：abs:microbiome AND abs:"repeated
+  measures"）→ 用於討論限制 5（同一病人多次採樣不獨立的問題）。
+  4. 稀釋（Rarefying）的統計爭議（搜尋：abs:microbiome AND
+  abs:rarefying）→ 用於討論限制 4（單次稀釋到 10,000
+  讀數的優缺點與替代標準化方法）。
+  5. 菌相的組成資料特性（Compositional
+  data）與零膨脹（搜尋：abs:microbiome AND abs:compositional）→
+  用於討論章節（探討相對豐度與零值過多的進階統計方法）。
+  ──────
+  請問這樣整理清楚嗎？如果沒問題，我們下一步要不要先查看目前
+  library/ 裡已經有哪些文獻，或是開始用 arxiv
+  搜尋候選文獻讓你挑選？
+
+────────────────────────────────────────────────────────────
+> 請用 arxiv skill，依照 manuscript/00-research-brief.md
+  的搜尋關鍵字找相關論文，列出候選清單給我挑選，先不要下載。
+
+● Explored 2 files (SKILL.md, search_arxiv.py)
+● Ran (python3 -c ' import time, urllib.requ...) (ctrl+o to expand)
+
+  已經啟動 arXiv
+  搜尋程序，正在查詢五個主題的候選論文，稍候幾秒完成後立即為您整
+  理清單。
+
+● Explored 1 file (output.txt) (ctrl+o to expand)
+
+  我已使用 arxiv skill 針對 00-research-brief.md
+  的五組關鍵字完成搜尋。以下為你整理各主題最契合本論文需求與研究
+  限制的候選清單（標註 ★ 推薦 為最切題、最好引用的首選）：
+  ──────
+  ### 1. FMT 與菌相移植評估（查詢：abs:microbiome AND            
+  abs:transplant）
+
+  │ 用途：前言背景、限制
+  │ 6（說明本研究隨機森林僅預測時間，若要真正評估 FMT 菌叢植入
+  │ [engraftment] 可用哪些方法與工具）
+
+  • ★ 推薦 1-A｜2411.17901 — Assessing microbiome engraftment
+  extent following fecal microbiota transplant with q2-fmt
+      • 作者與年份：Chloe Herman, Evan Bolyen, ..., J. Gregory
+      Caporaso (2024)
+      • 摘要重點：QIIME 2 團隊推出的 q2-fmt
+      外掛，專門用來評估糞菌移植（FMT）後的菌叢植入程度（包含與供
+      體距離、嵌合群落等指標）。非常適合在討論限制 6
+      時作為「未來在 QIIME 2 中直接評估 auto-FMT
+      植入成效」的具體建議。
+  • ★ 推薦 1-B｜2404.07325 — Assessing Engraftment Following
+  Fecal Microbiota Transplant
+      • 作者與年份：Chloe Herman, ..., Joao B. Xavier, J. Gregory
+      Caporaso (2024)
+      • 摘要重點：系統性回顧與整理臨床上評估 FMT
+      植入程度的各種方法學（共同作者包含原始臨床試驗的通訊作者
+      Joao B. Xavier！），適合在前言與討論中引用。
+
+  ──────
+  ### 2. 縱向菌相模型（查詢：abs:microbiome AND abs:longitudinal 
+  AND abs:mixed）
+
+  │ 用途：方法依據、限制 2（LME 未收斂）、限制 3（跨 FMT
+  │
+  前後用單一斜率直線太簡化，應改用時變係數模型或針對零膨脹設計的
+  │ 混合模型）
+
+  • ★ 推薦 2-A｜2601.10872 — Locally sparse varying coefficient
+  mixed model with application to longitudinal microbiome
+  differential abundance
+      • 作者與年份：Simon Fontaine, ..., Ji Zhu, Gen Li (2026)
+      • 摘要重點：提出「時變係數混合模型（varying coefficient
+      mixed
+      model）」來捕捉菌相隨時間非線性、動態變化的效應。完美對應限
+      制 3（我們的 LME
+      只用固定斜率直線跨越移植前後，若改用時變係數模型就能區分移
+      植前崩潰與 FMT 後回升）。
+  • ★ 推薦 2-B｜2504.15411 — A stochastic method to estimate a
+  zero-inflated two-part mixed model for human microbiome data
+      • 作者與年份：John Barrera, Cristian Meza, Ana Arribas-Gil
+      (2025)
+      •
+      摘要重點：探討人類菌相縱向資料在混合效應模型下的參數估計挑
+      戰（特別是零值過多與收斂問題），並提出基於隨機近似
+      EM（SAEM）的兩部分混合模型，可對應限制 2（LME
+      模型收斂困難）。
+  • 候選 2-C｜2602.09279 — Stochastic EM Estimation and Inference
+  for Zero-Inflated Beta-Binomial Mixed Models for Longitudinal
+  Count Data
+      • 作者與年份：John Barrera, Ana Arribas-Gil, Dae-Jin Lee,
+      Cristian Meza (2026)
+      • 摘要重點：針對過度離散、零膨脹的縱向計數資料提出 ZIBBMR
+      混合效應模型與隨機 EM 估計法。
+
+  ──────
+  ### 3. 重複測量與偽重複（查詢：abs:microbiome AND abs:"repeated
+  measures"）
+
+  │ 用途：限制 5（Kruskal-Wallis
+  │ 將同一病人的多個檢體視為獨立樣本，忽略受試者內時間相關性）
+
+  • ★ 推薦 3-A｜2610.21224 — Bayesian Nonparametric Longitudinal
+  Factor Model for Microbiome Counts
+      • 作者與年份：Shuangjie Zhang, ..., Yang Ni (2026)
+      •
+      摘要重點：明確指出縱向菌相資料中，對同一受試者的「重複測量
+      （repeated
+      measurements）」會產生受試者內的時間相依性（within-subject
+      temporal dependence），不能當作獨立樣本處理。
+  • 候選 3-B｜1702.04808 — A Model for Paired-Multinomial Data
+  and Its Application to Analysis of Data on a Taxonomic Tree
+      • 作者與年份：Pixu Shi, Hongzhe Li (2017)
+      •
+      摘要重點：探討同一受試者重複測量（如介入前後）的菌相組成變
+      化檢定，指出傳統獨立檢定無法處理重複測量的相關性結構。
+  • 候選 3-C｜2110.05368 — Truncated Rank-Based Tests for Two-
+  Part Models with Excessive Zeros and Applications to Microbiome
+  Data
+      • 作者與年份：Wanjie Wang, Eric Z. Chen, Hongzhe Li (2021)
+      • 摘要重點：針對菌相資料的等級檢定（rank-based tests，與
+      Kruskal-Wallis 同類）在面對零膨脹與重複測量時的延伸討論。
+
+  ──────
+  ### 4. 稀釋抽樣爭議（查詢：abs:microbiome AND abs:rarefying）
+
+  │ 用途：限制 4（單次稀釋到 10,000
+  │ 讀數會丟棄低讀數檢體與高讀數資訊 vs.
+  透過多次抽樣/靴拔法改善）
+
+  • ★ 推薦 4-A｜1310.0424 — Waste Not, Want Not: Why Rarefying
+  Microbiome Data is Inadmissible
+      • 作者與年份：Paul J. McMurdie, Susan Holmes (2013/2014)
+      •
+      摘要重點：菌相統計領域最經典的稀釋爭議論文！論證單次隨機稀
+      釋（rarefying）會丟棄有效讀數並增加隨機誤差，在統計上不可取
+      。
+  • ★ 推薦 4-B｜2408.05420 — Facilitating bootstrapped and
+  rarefaction-based microbiome diversity analysis with q2-boots
+      • 作者與年份：Isaiah Raspet, ..., Evan Bolyen, J. Gregory
+      Caporaso (2024)
+      • 摘要重點：QIIME 2 團隊推出的 q2-boots
+      外掛，透過**多次重複稀釋抽樣（bootstrapped / repeated
+      rarefaction）**取平均來解決「單次稀釋」的不穩定問題。這跟
+      4-A 搭配起來寫進限制 4 會非常精彩！
+  • 候選 4-C｜2606.21000 — Data-Adaptive Multi-Bin Rarefying for
+  Alpha Diversity Association Analysis under Heterogeneous
+  Library Sizes
+      • 作者與年份：Mo Li (2026)
+      • 摘要重點：直接點出「統一稀釋到單一深度（如我們的 10,
+      000）會丟棄高深度讀數或剔除低深度樣本（如我們被剔除的 50
+      個檢體）」，並提出多區間稀釋框架。
+
+  ──────
+  ### 5. 組成資料與零膨脹（查詢：abs:microbiome AND              
+  abs:compositional）
+
+  │ 用途：討論章節（菌相相對豐度的組成資料限制 [compositional
+  │ nature]，以及結合線性混合效應的差異豐度模型）
+
+  • ★ 推薦 5-A｜2104.00242 — LinDA: linear models for
+  differential abundance analysis of microbiome compositional
+  data
+      • 作者與年份：Huijuan Zhou, Kejun He, Jun Chen, Xianyang
+      Zhang (2021)
+      •
+      摘要重點：非常知名的菌相統計方法論文。在對數比例轉換後套用
+      線性模型與混合效應模型（mixed-effects
+      models），同時解決「組成資料偏差（compositional
+      bias）」與「縱向重複測量（correlated microbiome
+      data）」，能串起我們整篇論文的方法學討論！
+  • 候選 5-B｜1305.5355 — Variable selection for sparse 
+  Dirichlet-multinomial regression with an application to
+  microbiome data analysis
+      • 作者與年份：Jun Chen, Hongzhe Li (2013)
+      • 摘要重點：早期經典的菌相組成資料與過度離散（Dirichlet-
+      multinomial）建模方法。
+
+  ──────
+  ### 6. 補充：非 arXiv 的基礎必備期刊論文（將透過 DOI 收錄）
+
+  除了上述 arXiv 論文，00-research-brief.md 第 53 行提到的 4
+  篇基礎文獻（資料來源與軟體工具）：
+
+  1. Taur et al. (2018) — Reconstitution of the gut microbiota of
+  antibiotic-treated patients by autologous fecal microbiota
+  transplant (Science Translational Medicine, DOI: 10.
+  1126/scitranslmed.aap9489) —— 本資料集的原始臨床試驗論文
+  2. Bolyen et al. (2019) — Reproducible, interactive, scalable
+  and extensible microbiome data science using QIIME 2 (Nature
+  Biotechnology, DOI: 10.1038/s41587-019-0209-9) —— QIIME 2
+  主論文
+  3. Callahan et al. (2016) — DADA2: High-resolution sample
+  inference from Illumina amplicon data (Nature Methods, DOI: 10.
+  1038/nmeth.3869) —— DADA2 論文
+  4. Quast et al. (2013) — The SILVA ribosomal RNA gene database
+  project: improved data processing and web-based tools (Nucleic
+  Acids Research, DOI: 10.1093/nar/gks1219) —— SILVA 資料庫論文
+  ──────
+  ### 請問你想挑選哪些論文收錄？
+
+  你可以：
+
+  1. 直接說**「收錄所有標註 ★ 推薦的 arXiv 論文（1-A, 1-B, 2-A,
+  2-B, 3-A, 4-A, 4-B, 5-A）加上 4 篇基礎 DOI 論文」**（共 8 篇
+  arXiv + 4 篇 DOI），或者
+  2. 指定增減任何編號（例如想加收 4-C
+  討論單一深度剔除樣本的問題）。
+
+  等你確認清單後，我就會使用 paper-library skill 將它們正式收錄進
+  papers/ 與 library/references.bib！
+
+────────────────────────────────────────────────────────────
+> 錄所有標註 ★ 推薦的 arXiv 論文
+
+● Explored 3 files (SKILL.md, references.bib, download-log.md)
+● Ran (python3 .agents/skills/paper-library/...) (ctrl+o to expand)
+
+  正在使用 paper-library skill 下載並收錄這 8 篇推薦的 arXiv
+  論文（目前已下載完成前 5
+  篇），稍待幾秒全部完成後立即向您回報收錄結果。
+
+  8 篇標註 ★ 推薦 的 arXiv 論文已全數透過 paper-library skill
+  下載至 papers/，並同步更新至 references.bib 與
+  download-log.md。
+
+  ### 收錄清單
+
+   面向          │ citekey       │ PDF 檔名      │ 標題
+  ───────────────┼───────────────┼───────────────┼───────────────
+   1. FMT        │ herman2024ass │ Herman_2024_A │ Assessing
+   植入評估      │ essing        │ ssessing-micr │ microbiome
+                 │               │ obiome-engraf │ engraftment
+                 │               │ tment-extent- │ extent
+                 │               │ following.pdf │ following
+                 │               │               │ fecal
+                 │               │               │ microbiota
+                 │               │               │ transplant
+                 │               │               │ with q2-fmt
+   1. FMT        │ herman2024ass │ Herman_2024_A │ Assessing
+   植入評估      │ essingb       │ ssessing-Engr │ Engraftment
+                 │               │ aftment-Follo │ Following
+                 │               │ wing-Fecal-Mi │ Fecal
+                 │               │ crobiota.pdf  │ Microbiota
+                 │               │               │ Transplant
+   2.            │ fontaine2026l │ Fontaine_2026 │ Locally
+   縱向菌相模型  │ ocally        │ _Locally-spar │ sparse
+                 │               │ se-varying-co │ varying
+                 │               │ efficient-mix │ coefficient
+                 │               │ ed.pdf        │ mixed model
+                 │               │               │ with
+                 │               │               │ application
+                 │               │               │ to
+                 │               │               │ longitudinal
+                 │               │               │ microbiome
+                 │               │               │ differential
+                 │               │               │ abundance
+   2.            │ barrera2025st │ Barrera_2025_ │ A stochastic
+   縱向菌相模型  │ ochastic      │ stochastic-me │ method to
+                 │               │ thod-estimate │ estimate a
+                 │               │ -zero-inflate │ zero-inflated
+                 │               │ d.pdf         │ two-part
+                 │               │               │ mixed model
+                 │               │               │ for human
+                 │               │               │ microbiome
+                 │               │               │ data
+   3. 重複測量   │ zhang2026baye │ Zhang_2026_Ba │ Bayesian
+                 │ sian          │ yesian-Nonpar │ Nonparametric
+                 │               │ ametric-Longi │ Longitudinal
+                 │               │ tudinal-Facto │ Factor Model
+                 │               │ r-Model.pdf   │ for
+                 │               │               │ Microbiome
+                 │               │               │ Counts
+   4. 稀釋爭議   │ mcmurdie2013w │ McMurdie_2013 │ Waste Not,
+                 │ aste          │ _Waste-Not-Wa │ Want Not: Why
+                 │               │ nt-Not-Why.pd │ Rarefying
+                 │               │ f             │ Microbiome
+                 │               │               │ Data is
+                 │               │               │ Inadmissible
+   4. 稀釋爭議   │ raspet2024fac │ Raspet_2024_F │ Facilitating
+                 │ ilitating     │ acilitating-b │ bootstrapped
+                 │               │ ootstrapped-r │ and
+                 │               │ arefaction-ba │ rarefaction-
+                 │               │ sed-microbiom │ based
+                 │               │ e.pdf         │ microbiome
+                 │               │               │ diversity
+                 │               │               │ analysis with
+                 │               │               │ q2-boots
+   5. 組成資料   │ zhou2021linda │ Zhou_2021_Lin │ LinDA: linear
+                 │               │ DA-linear-mod │ models for
+                 │               │ els-different │ differential
+                 │               │ ial-abundance │ abundance
+                 │               │ .pdf          │ analysis of
+                 │               │               │ microbiome
+                 │               │               │ compositional
+                 │               │               │ data
+  ──────
+  請問接下來是否也要把 00-research-brief.md 第 53 行提到的 4
+  篇基礎期刊論文（Taur 2018 原始試驗、QIIME 2、DADA2、SILVA） 用
+  DOI 登錄進書目庫？或者你想先閱讀這些論文並建立
+  library/notes/<citekey>.md 筆記？
+
+────────────────────────────────────────────────────────────
+> 錄所有標註 ★ 推薦的 arXiv 論文
+
+  這 8 篇標註 ★ 推薦 的 arXiv
+  論文已經在剛才全部收錄並下載完成了！
+
+  你可以點擊下方連結確認：
+
+  • 書目清單：references.bib（已包含
+  herman2024assessing、herman2024assessingb、fontaine2026locally
+  、barrera2025stochastic、zhang2026bayesian、mcmurdie2013waste、
+  raspet2024facilitating、zhou2021linda 共 8 筆）
+  • 下載紀錄：download-log.md
+  • PDF 檔案：皆已存放在 papers/ 目錄下。
+
+  請問下一步我們要：
+
+  1. 繼續把 4 篇基礎期刊論文（Taur 2018 原始臨床試驗、QIIME
+  2、DADA2、SILVA）透過 DOI 登錄進 references.bib？
+  2. 還是開始閱讀這 8 篇 PDF 並撰寫 library/notes/<citekey>.md
+  閱讀筆記？
+
+────────────────────────────────────────────────────────────
+> 請根據 library/notes/ 的筆記和 manuscript/00-research-brief.md
+  的研究限制，整理一份文獻比較表：別人做了什麼、我們缺什麼，存成
+  library/literature-matrix.md。
+
+───────────────────── Conversation compacted ──────────────────────
+
+○ Thought for 1m 17s (Creating the literature matrix is the fin...)
+● Ran 2 commands (+1 · ls -la manuscript/)
+● Explored 8 files (Herman_2024_Assessing-microbiome-engraftmen...)
+● Edited 9 files (herman2024assessing.md, he...) (ctrl+o to expand)
+
+  我已經先為下載的 8 篇 arXiv
+  論文建立附有逐字原文與頁碼的閱讀筆記（存於
+  library/notes/），並對照 00-research-brief.md 的六項研究限制與
+  data/tables/ 的數據，整理出文獻比較表存入
+  literature-matrix.md。
+
+  ### 產出檔案一覽
+
+  • 文獻比較總表：literature-matrix.md
+  • 各篇閱讀筆記（含可引用原文與頁碼）：
+      1. herman2024assessing.md — q2-fmt 評估自體／異體 FMT
+      菌相植入程度
+      2. herman2024assessingb.md — FMT
+      植入三大指標與縱向配對設計原則
+      3. fontaine2026locally.md —
+      局部稀疏變係數混合模型（LSVCMM）捕捉隨時間變化的局部差異區
+      間
+      4. barrera2025stochastic.md — SAEM
+      演算法解決不平衡縱向微菌叢混合模型不收斂問題
+      5. zhang2026bayesian.md —
+      貝氏無母數縱向因子模型（LODI）處理重複測量與動態菌群共變異
+      6. mcmurdie2013waste.md —
+      證明單次稀釋抽樣（rarefying）捨棄有效資料且降低統計檢定力
+      7. raspet2024facilitating.md — q2-boots
+      以多重拔靴／稀釋抽樣改善 q2-diversity 單次稀釋誤差
+      8. zhou2021linda.md — LinDA-LMM
+      校正組成性偏差並控制縱向重複測量的偽陽性膨脹
+
+  ──────
+  ### 核心比較摘要（別人做了什麼 vs. 我們缺什麼）
+
+   本研究限制（00-re… │ 我們目前的做法與…  │ 文獻提供的解法與引…
+  ────────────────────┼────────────────────┼─────────────────────
+   1. 小樣本（24      │ 估計區間過寬（交互 │ barrera2025stochast
+   人）與不平衡縱向設 │ 作用 95% CI:       │ ic（SAEM
+   計（每人 2–34      │ 0.104–1.015），缺  │ 不需插補即可處理不
+   檢體）             │ 針對不規則採樣時間 │ 平衡追蹤）、fontain
+                      │ 與缺漏值的穩健縱向 │ e2026locally（LSVCM
+                      │ 方法。             │ M
+                      │                    │ 專為小樣本不規則時
+                      │                    │ 間點設計）。
+   2. LME             │ 交互作用 p = 0.016 │ barrera2025stochast
+   模型未收斂（Conver │ 雖呈正向（+0.560   │ ic
+   ged: No）          │ ASV/天），但標準   │ 指出傳統近似法在複
+                      │ LME                │ 雜縱向微菌叢混合模
+                      │ 優化器在高個體異質 │ 型易收斂失敗，改用
+                      │ 性下未收斂，推論效 │ 結合 Metropolis-
+                      │ 力受限。           │ Hastings 的 SAEM
+                      │                    │ 可保證收斂。
+   3. 時間跨過 FMT    │ 用一條固定斜率直線 │ fontaine2026locally
+   前後、單一斜率過度 │ 貫穿移植前清腸崩潰 │ 以 B-spline
+   簡化               │ 期與 FMT           │ 配適隨時間平滑變化
+                      │ 後恢復期，無法定位 │ 的效應函數
+                      │ 哪個時間區段才有組 │ β(t)，自動篩選出組
+                      │ 間差異。           │ 間差異非零的局部時
+                      │                    │ 間區間。
+   4.                 │ q2-diversity       │ mcmurdie2013waste
+   單次稀釋抽樣（10,0 │ 單次抽樣排除了 50  │ 證明單次 rarefying
+   00 reads）丟棄 50  │ 個低深度樣本（406  │ 統計上不可容許；ras
+   個檢體             │ →                  │ pet2024facilitating
+                      │ 356）並捨棄大量序  │ 開發 q2-boots 執行
+                      │ 列，引入隨機抽樣誤 │ n
+                      │ 差與潛在選擇偏差。 │ 次拔靴／多重稀釋取
+                      │                    │ 平均。
+   5.                 │ 把 24 人的 356     │ herman2024assessing
+   檢體不獨立（Kruska │ 個檢體視為獨立樣本 │ b、zhang2026bayesia
+   l-Wallis 偽重複）  │ 跨時間合併，導致組 │ n、zhou2021linda
+                      │ 間差異被時間變異掩 │ 皆強調重複測量不可
+                      │ 蓋（H = 1.29, p =  │ 直接跨時間合併或視
+                      │ 0.256）且違反獨立  │ 為獨立，否則會掩蓋
+                      │ 假設。             │ 縱向訊號或導致 FDR
+                      │                    │ 失控。
+   6.                 │ RF 找出的          │ herman2024assessing
+   隨機森林僅預測時間 │ Enterococcaceae 與 │ &
+   （R² =             │ Lachnospiraceae    │ herman2024assessing
+   0.319），未驗證植  │ 僅反映時間演替，未 │ b 提出以 q2-fmt
+   入與組成偏差       │ 驗證自體捐贈菌株植 │ 評估群落融合（coale
+                      │ 入，亦未校正組成性 │ scence）與捐贈指標
+                      │ 偏差。             │ 特徵（PEDF）；zhou2
+                      │                    │ 021linda 以 LinDA-
+                      │                    │ LMM
+                      │                    │ 進行校正組成性偏差
+                      │                    │ 的縱向差異豐度分析
+                      │                    │ 。
+
+  請問接下來要先用 paper-library 收錄 00-research-brief.md 提到的
+  4 篇基礎方法與原始資料 DOI（Taur 2018、QIIME
+  2、DADA2、SILVA），還是直接開始撰寫論文第一節 01-methods.tex？
+
+────────────────────────────────────────────────────────────
+> 請用 arxiv-preprint skill 在 manuscript/
+  建立英文論文架構，每一節一個檔案放在 sections/。
+
+○ Thought for 1m 16s (Initial check with the build script confi...)
+● Explored 1 file (SKILL.md)
+● Ran (python .agents/skills/arxiv-preprint/scripts/build.py ma...)
+● Explored 4 files (main.tex, build.py, arxiv.sty, +1)
+● Edited 8 files (01-methods.tex, 02-results.tex, 03-introducti...)
+● Ran (python .agents/skills/arxiv-preprint/...) (ctrl+o to expand)
+
+▸ Thought for 8s, 118 tokens
+
+  已使用 arxiv-preprint skill 在 manuscript/
+  建立英文論文架構，並依照寫作順序編號拆分為 7 個章節檔置於
+  manuscript/sections/，由 main.tex 依閱讀順序 \input 引入。
+
+  ### 1. 檔案架構與寫作／閱讀順序對照
+
+  • 主控檔與版型：
+      • main.tex（依閱讀順序引入 06 → 05 → 03 → 01 → 02 → 04 →
+      07）
+      • arxiv.sty、fancyhdr.sty
+      • 圖表目錄：manuscript/figures/
+  • 各節檔案（檔名編號依寫作順序）：
+      1. 01-methods.tex — Methods（研究佇列與資料來源、QIIME 2 /
+      DADA2 序列處理、多樣性與縱向統計模型）
+      2. 02-results.tex — Results（過濾漏斗、橫斷面 Alpha/Beta
+      多樣性、LME 縱向軌跡、Random Forest 時間預測）
+      3. 03-introduction.tex — Introduction（HCT
+      菌相失調臨床問題、自體 FMT 與縱向分析缺口、本研究目的）
+      4. 04-discussion.tex —
+      Discussion（主要發現、與既有文獻比較、六項方法學限制與未來
+      方向、結論）
+      5. 05-abstract.tex — Abstract &
+      Keywords（結構化摘要：Background / Methods / Results /
+      Conclusions）
+      6. 06-title.tex — Title & Authors（標題、頁首短標題
+      \shorttitle、作者與單位）
+      7. 07-declarations.tex — Declarations（Data/Code
+      availability、Ethics、Author contributions、Competing
+      interests、Funding、Use of AI tools）
+
+  ──────
+  ### 2. build.py 初步檢查與編譯結果（check-report.md）
+
+  • 狀態：
+      • 已編譯 main.pdf（2 頁）
+      • LaTeX 原始檔 8 個（main.tex + 7 個 sections/*.tex）
+      • 引用文獻 0 篇；bib 中未引用 8 篇（barrera2025stochastic,
+      fontaine2026locally, herman2024assessing,
+      herman2024assessingb, mcmurdie2013waste,
+      raspet2024facilitating, zhang2026bayesian, zhou2021linda）
+      • 圖 0 張
+      • 摘要約 58 字元（arXiv 上限 1920）
+  • 需要修正（待各節撰寫時替換之範本佔位文字）：
+      • ❌ 範本佔位文字尚未替換：FULL TITLE OF THE PAPER、SHORT
+      TITLE FOR RUNNING HEAD、First Author、email@example.
+      org、[To be completed
+  • 編譯警告：
+      • 無
+  請問接下來要先收錄 00-research-brief.md 裡的 4
+  篇基礎方法與資料集 DOI（Taur 2018、QIIME
+  2、DADA2、SILVA），還是直接開始撰寫第一節 01-methods.tex？
+
+────────────────────────────────────────────────────────────
+> 請參考 research-paper-writing skill，用英文寫 Methods。請寫
+  Results，只描述數據，不要解釋。需要的圖請依 data/tables/ 重畫
+  請寫 Introduction。請依照文獻比較表寫
+  Discussion，包含研究限制和結論。請寫結構化摘要。請提出 3
+  個候選標題，說明你推薦哪一個。
+
+○ Thought for 9m 53s (Warnings have been eliminated, and the ab...)
+● Explored 2 files (Qiime2_Pipeline.sh, 00-research-brief.md)
+● Ran (ls -la data/tables/ data/figures/ manuscript/)
+… 51 more actions (19 reads, 18 edits, 14 commands: 1 failed) …
+● Edited 1 file (05-abstract.tex)
+● Ran (python .agents/skills/arxiv-preprint/...) (ctrl+o to expand)
+▸ Thought for 10s
+  已依照 AGENTS.md 的寫作順序（01 方法 → 02 結果 → 03 前言 → 04
+  討論 → 05 摘要 → 06 標題 → 07 聲明）與 research-paper-
+  writing、arxiv-preprint skills 完成英文論文各節撰寫、重繪 4
+  張論文圖表、建立數字與引用核對表，並通過 pdflatex + bibtex
+  編譯產出 11 頁的 main.pdf。
+  ──────
+  ### 一、三個候選標題與推薦原因（已將推薦標題寫入 06-title.tex）
+
+  1. 候選標題 1（★ 推薦）：
+  │ Longitudinal Reanalysis of Gut Microbiome Trajectories
+  │ Following Autologous Fecal Microbiota Transplantation in
+  │ Hematopoietic Cell Transplant Recipients: A QIIME 2
+  │ Methodological Case Study
+
+      • 短標題（\shorttitle）：Longitudinal Reanalysis of Auto-
+      FMT Microbiome Trajectories（59 字元）
+      •
+      推薦原因：同時精準交代臨床問題（造血幹細胞移植後之自體糞菌
+      移植腸道菌相軌跡）、研究性質（公開臨床試驗數據之縱向再分析
+      Longitudinal Reanalysis）與核心定位（QIIME 2 方法學案例研究
+      Methodological Case Study），不誇大臨床療效，完全符合 00-
+      research-brief.md 的論文定位。
+  2. 候選標題 2（聚焦統計方法對比）：
+  │ Cross-Sectional Pooling Versus Longitudinal Mixed-Effects
+  │ Modeling of Gut Microbiota Recovery After Autologous Fecal
+  │ Microbiota Transplantation in Allogeneic Hematopoietic Cell
+  │ Transplantation
+      • 特點：直接凸顯「跨時間合併檢定（p = 0.256）vs.
+      縱向混合效應模型（交互作用 p = 0.
+      016）」的反差，但未涵蓋隨機森林時間預測與篩選／稀釋方法學討
+      論。
+  3. 候選標題 3（聚焦生物現象與方法限制）：
+  │ Evaluating Post-Transplant Gut Microbiome Richness Dynamics
+  │ and Temporal Indicator Taxa After Autologous Fecal Microbiota
+  │ Transplantation: Potential and Pitfalls of Standard
+  │ Longitudinal Workflows
+      •
+      特點：涵蓋豐富度動態與時間指標菌群（Enterococcaceae、Lachno
+      spiraceae），並點出標準縱向流程的限制，但標題較長且未點出
+      QIIME 2 再分析架構。
+  ──────
+  ### 二、各節撰寫摘要與圖表產出
+  1. Methods（01-methods.tex）：
+      • 嚴格依據 Qiime2_Pipeline.sh 與 data/tables/ 撰寫 4
+      個小節：（1）研究設計、NCT02269150
+      資料來源與下游五步驟篩選漏斗（12,546 → 556 → 406 → 406 →
+      406 → 356 檢體、2,422 ASVs；並明確交代上游 41
+      檢體示範與下游分析互不承接）；（2）上游 DADA2 去噪參數（--
+      p-trunc-len-f 204、--p-trunc-len-r 205）與 SILVA 138.
+      2（515F/806R）RESCRIPt / Naive Bayes 分類器；（3）MAFFT-
+      FastTree 系統發生樹、10,000 reads 單次稀釋抽樣、Alpha/Beta
+      多樣性與 Kruskal-Wallis 檢定；（4）LME
+      模型（observed_features ~ day-relative-to-fmt *
+      autoFmtGroup，PatientID 為隨機截距）與屬級（level 6，盛行率
+      ≥ 10%、豐度 ≥ 1%）Random Forest 迴歸。
+  2. Results（02-results.tex）：
+      • 只描述數據事實、不作推論解釋，所有數字 100% 取自
+      data/tables/*.tsv，並包含兩張 booktabs 表格（Table 1
+      篩選漏斗、Table 2 LME 模型參數）與 4 張由 plot_figures.py
+      依 data/tables/ 重繪之圖檔：
+          • fig1_filtering_and_qc.pdf：（A）下游五階段檢體與 ASV
+          篩選漏斗；（B）上游 41 檢體 DADA2 各階段讀序保留率（83.
+          81% 非嵌合體）。
+          • fig2_diversity_and_pcoa.pdf：（A）各臨床與時間變項之
+          Kruskal-Wallis H 統計量與 q 值；（B）四種 Beta
+          多樣性距離之 PCoA PC1–PC3 解釋變異。
+          • fig3_lme_trajectories.pdf：（A）對照組（-0.859
+          d⁻¹）與 auto-FMT 組（隱含淨斜率 -0.299 d⁻¹）之 LME
+          預測直線軌跡與未收斂註記；（B）斜率與交互作用項（+0.560
+          d⁻¹, 95% CI [0.104, 1.015]）森林圖。
+          • fig4_rf_feature_importance.pdf：預測移植後週數（R² =
+          0.319, r = 0.565, p = 2.37 × 10⁻⁷）之 20
+          個屬級特徵重要性排序。
+  3. Introduction（03-introduction.tex）：
+      • 三段式結構：（1）allo-HCT 菌相崩潰、腸球菌霸占與 auto-FMT
+      介入背景；（2）縱向微菌叢分析的方法學挑戰（重複測量偽重複、
+      單次稀釋抽樣、小樣本混合模型收斂與單一斜率限制、時間演替 vs.
+      菌株植入）；（3）本研究三大研究問題（Q1–Q3）與方法學案例定
+      位。
+  4. Discussion（04-discussion.tex）：
+      • 依 literature-matrix.md 撰寫主要發現、與文獻比較（q2-fmt
+      三大植入指標）、六項研究限制與具體改進方案（SAEM、LSVCMM、q
+      2-boots、LinDA-
+      LMM、LODI）及結論；嚴格控制主張強度，避免使用
+      "prove"、"demonstrate efficacy"、"confirm" 等詞彙。
+  5. Abstract（05-abstract.tex）與
+  Declarations（07-declarations.tex）：
+      • 結構化摘要（Background / Methods / Results /
+      Conclusions），字元數 1,910 字元（符合 arXiv ≤ 1, 920
+      字元上限）。
+      • 聲明節如實揭露 AI 工具協助步驟與人工核對範圍，並依規定於
+      Author contributions、Competing interests、Funding 保留 [To
+      be completed by the authors.]。
+  6. 數字與引用核對表（citation-check.md）：
+      •
+      完整記錄所有原始表格數字、新算出之衍生數字（如上游各階段總
+      讀序百分比、auto-FMT 組隱含淨斜率 -0.299 ASVs/day、PCoA
+      前三軸累積解釋變異、RF
+      特徵重要性加總）之算法與來源檔案，以及全部 8 篇引用與
+      library/notes/*.md 的頁碼對應。
+  ──────
+  ### 三、Claim-Evidence 對齊檢查（依 research-paper-writing     
+  skill）
+
+  • Claim: Cross-sectional pooling shows no richness difference
+  between arms, whereas longitudinal LME modeling detects a
+  positive group-by-time slope interaction. | Evidence: Kruskal-
+  Wallis H = 1.29, p = 0.256 (02_kruskal_autoFmtGroup.tsv); LME
+  interaction +0.560 ASVs/day, 95% CI [0.104, 1.015], p = 0.016
+  (03_lme_model_results.tsv). | Status: supported (hedged due to
+  LME non-convergence)
+  • Claim: Gut microbial richness declines sharply after allo-HCT.
+|
+  Evidence: Post-HCT (n=225) vs. Pre-HCT (n=78) Kruskal-Wallis H
+  = 70.58, q = 1.33e-16 (02_kruskal_categorical-time-relative-to-
+  hct.tsv); LME control slope -0.859 ASVs/day, p < 0.001. |
+  Status: supported
+  • Claim: Enterococcaceae, Clostridium, and Lachnospiraceae are
+  the primary genus-level indicators tracking post-HCT week, but
+  reflect temporal succession rather than verified donor strain
+  engraftment. | Evidence: RF regression R² = 0.319, r = 0.565, p
+  = 2.37e-7 (04_rf_accuracy.tsv); top importances 0.124, 0.109, 
+  0.089, 0.087 (04_rf_feature_importance.tsv); engraftment
+  criteria in Herman et al. (2024a,b). | Status: supported
+  ──────
+  ### 四、build.py 檢查與編譯報告（check-report.md）
+  • 狀態：
+      • 已編譯 main.pdf（11 頁），並打包 arxiv-submission.tar.gz
+      與 overleaf.zip
+      • LaTeX 原始檔 8 個
+      • 引用文獻 8 篇；bib 中未引用 0 篇
+      • 圖 4 張
+      • 摘要約 1,910 字元（arXiv 上限 1,920）
+  • 需要修正：
+      • ❌
+      範本佔位文字尚未替換：To be completed`（此為 [07-declaratio
+      ns.tex 中依 AGENTS.md規定必須保留由作者填寫之[To be
+      completed by the authors.]`）
+  • 編譯警告：
+      • 無（0 處未定義引用、0 處 Overfull \hbox）`
+
+────────────────────────────────────────────────────────────
+> 完成了嗎 怎麼好像沒再編輯
+  候選標題 1（★ 推薦）
+
+○ Thought for 25.3s (The confirmed title needs to be integrated...)
+● Explored 1 file (06-title.tex)
+● Ran (ls -lh manuscript/ manuscript/sections/ manuscript/figures/)
+● Edited 1 file (06-title.tex)
+● Ran (python .agents/skills/arxiv-preprint/...) (ctrl+o to expand)
+
+  已經將候選標題 1 正式定稿寫入
+  06-title.tex（移除其餘候選註解），並重新執行 build.py
+  完成編譯與打包！
+  │ 💡 為什麼 main.tex 看起來簡短沒變？
+  │ 因為依照專案規範，main.tex 只負責以 \input{sections/...}
+  │ 引入各章節，完整的英文論文內容全部寫在 manuscript/sections/
+  │ 底下的 7 個檔案中，並且已經實際編譯成 11 頁的 main.pdf。
+  ──────
+  ### 已完成的論文檔案與圖表清單（點擊可直接開啟檢視）
+  1. 編譯完成的 11 頁論文 PDF 與打包檔：
+      • 📄 **main.pdf**（完整 11
+      頁排版後論文，含標題、摘要、內文、2 張表、4
+      張圖、參考文獻）
+      • 📦 overleaf.zip（Overleaf 專案打包檔）
+      • 📦 arxiv-submission.tar.gz（arXiv 投稿打包檔）
+  2. 各章節 LaTeX 原始檔（manuscript/sections/）：
+      • 06-title.tex — 定稿標題：Longitudinal Reanalysis of Gut
+      Microbiome Trajectories Following Autologous Fecal
+      Microbiota Transplantation in Hematopoietic Cell Transplant
+      Recipients: A QIIME 2 Methodological Case Study
+      • 05-abstract.tex — 結構化摘要（Background / Methods /
+      Results / Conclusions，共 1,910 字元）
+      • 03-introduction.tex — Introduction（4.4 KB）
+      • 01-methods.tex — Methods（8.4 KB）
+      • 02-results.tex — Results（15 KB，含 Table 1、Table 2 與
+      Figures 1–4 引用）
+      • 04-discussion.tex — Discussion & Conclusions（12
+      KB，含六項研究限制與文獻對照）
+      • 07-declarations.tex — Declarations（2.3 KB）
+  3. 重繪之 4 張論文圖表（manuscript/figures/）：
+      • fig1_filtering_and_qc.pdf / PNG 預覽
+      • fig2_diversity_and_pcoa.pdf / PNG 預覽
+      • fig3_lme_trajectories.pdf / PNG 預覽
+      • fig4_rf_feature_importance.pdf / PNG 預覽
+  4. 核對文件：
+      • citation-check.md（數字與引用核對表）
+      • check-report.md（build.py 投稿前檢查報告：11 頁 PDF、8 個
+      .tex 檔、8 篇引用全數對應、4 張圖、摘要 1,910 字元、0
+      編譯警告；僅保留 AGENTS.md 規定由作者填寫之 [To be
+      completed by the authors.]）。
+
+────────────────────────────────────────────────────────────
+> 請補上論文最後的聲明段落。作者貢獻、利益衝突、經費先留空，由作者
+  填寫。
+  請用 arxiv-preprint skill 檢查並編譯論文，告訴我檢查結果。
+  請逐句核對論文中的每一個引用，原文有沒有支持這句話；再把論文裡的
+  每一個數字對回
+  data/tables/。整理成 manuscript/citation-check.md。
+
+○ Thought for 3m 30s (Recompiling the manuscript, expecting the...)
+● Explored 12 files (07-declarations.tex, herman2024assessing.m...)
+● Edited 2 files (04-discussion.tex, citation-check.md)
+● Ran (python .agents/skills/arxiv-preprint/...) (ctrl+o to expand)
+  已完成論文最後聲明段落（07-declarations.tex）確認、arxiv-
+  preprint
+  檢查與編譯，以及全篇論文逐句引用與全數數字核對表（citation-chec
+  k.md）。
+  ──────
+  ### 一、聲明段落（07-declarations.tex）
+
+  已寫入完整聲明段落，包含：
+  • Data availability：說明資料源自臨床試驗 NCT02269150（QIIME 2
+  Cancer Microbiome Intervention Tutorial
+  公開資料集），處理後之統計結果表位於 data/tables/。
+  • Code availability：完整 QIIME 2 分析流程位於
+  Qiime2_Pipeline.sh，重繪圖表之 Python 腳本位於
+  plot_figures.py。
+  • Ethics
+  statement：說明本研究為公開去識別化人類微菌叢定序資料之二次計算
+  再分析，無須額外 IRB 審查。
+  • Author contributions / Competing interests / Funding：依
+  AGENTS.md 規定均保留 [To be completed by the authors.
+  ]，留待作者填寫。
+  • Use of AI tools：如實揭露使用 AI 協助文獻搜尋與收錄（arxiv /
+  paper-library skills）、整理閱讀筆記與比較矩陣、撰寫繪圖腳本與
+  LaTeX
+  英文初稿，並說明所有數據、參數與引文均已對照原始檔案核實。
+  ──────
+  ### 二、arxiv-preprint 檢查與編譯結果（check-report.md）
+
+  執行 python .agents/skills/arxiv-preprint/scripts/build.py
+  manuscript --bib library/references.bib 之完整回報結果如下：
+  • 狀態：
+      • 已編譯 main.pdf（11 頁）
+      • LaTeX 原始檔 8 個（main.tex + 7 個 sections/*.tex）
+      • 引用文獻 8 篇；bib 中未引用 0 篇
+      • 圖 4 張（fig1_filtering_and_qc.
+      pdf、fig2_diversity_and_pcoa.pdf、fig3_lme_trajectories.
+      pdf、fig4_rf_feature_importance.pdf）
+      • 摘要約 1,910 字元（arXiv 上限 1,920）
+      • 已同步產生投稿打包檔：arxiv-submission.tar.gz 與
+      overleaf.zip
+  • 需要修正：
+      • ❌ 範本佔位文字尚未替換：[To be completed（即 07-
+      declarations.tex 中依規定保留給作者填寫的 [To be completed
+      by the authors.
+      ]；待作者填上貢獻、利益衝突與經費後即可消除）
+  • 編譯警告：
+      • 無（0 處未定義引用、0 處 Overfull \hbox）
+  ──────
+  ### 三、逐句引用與全數數字核對摘要（citation-check.md）
+
+  1. 逐句引用核對（共 19 句含引用之英文原句）：
+      • 已將 03-introduction.tex（5 句）、01-methods.tex（2
+      句）、04-discussion.tex（12 句）中每一句含 \citep{} 或
+      \citet{} 的句子逐句列出，對照 library/notes/<citekey>.md
+      的逐字原文與頁碼。
+      • 修正紀錄：在逐句核對時，發現 04-discussion.tex 原先描述
+      fontaine2026locally（LSVCMM）與
+      barrera2025stochastic（SAEM）時帶有筆記未直接摘錄的細節字眼
+      ，已立即修正 04-discussion.tex:19-20 使其 100% 貼合
+      fontaine2026locally.md（p. 1: "penalized kernel smoothing
+      approach... and include a random effect to account for
+      serial correlation"）與 barrera2025stochastic.md（p. 1, 13:
+      "log-likelihood approximation, prone to limitations such as
+      biased estimates or unstable convergence" 與 "SAEM... can
+      accommodate unbalanced data... without prior
+      interpolation"）的逐字原文。
+  2. 全數數字核對（4 大分類共 22 組數據與衍生計算）：
+      • 全篇所有軟體版本、參數、樣本數、ASV 數、讀序數、Kruskal-
+      Wallis H/p/q 值、PCoA 解釋變異、LME 係數與 95% CI、Random
+      Forest R²/r/MSE/p 與 20 個屬級特徵重要性均已逐項對回
+      data/tables/*.tsv 與 data/Qiime2_Pipeline.
+      sh，並完整列出所有新算出之衍生數字與計算公式於
+      citation-check.md。
+
+────────────────────────────────────────────────────────────
+> 請先用 which pdflatex 確認本機的 LaTeX，再用本機的 pdflatex +
+  bibtex 直接編譯 manuscript/main.tex 產出
+  main.pdf，有錯誤就修正後重新編譯，並告訴我 PDF
+  有幾頁、有沒有警告。
+
+○ Thought for 30.3s (Inspecting the `.blg` file to identify any...)
+● Ran 2 commands (+1 · cat manuscript/main....) (ctrl+o to expand)
+
+▸ Thought for 14s
+  已使用 which pdflatex 與 which bibtex 確認本機 LaTeX
+  環境，並直接於 manuscript/ 執行 pdflatex → bibtex → pdflatex ×
+  2 完成編譯。
+
+  ### 1. 本機 LaTeX 環境確認
+
+  • pdflatex 路徑：~/.TinyTeX/bin/x86_64-linux/pdflatex（pdfTeX
+  3.141592653-2.6-1.40.29，TeX Live 2026）
+  • bibtex 路徑：~/.TinyTeX/bin/x86_64-linux/bibtex（BibTeX 0.
+  99e，TeX Live 2026）
+
+  ### 2. 編譯結果與頁數
+
+  • 產出檔案：main.pdf
+  • 總頁數：11 頁（489,794 bytes）
+  • 編譯錯誤（Errors）：0 個（所有編譯指令皆以 exit code 0
+  正常結束）
+
+  ### 3. 警告檢查明細（main.log 與 main.blg）
+
+  • 未定義引用或交叉參照（Undefined citations / references）：0
+  處（全數 8 篇引用與 Table 1–2、Figure 1–4 參照皆正確解析）
+  • BibTeX 警告（main.blg）：0 處（You've used 8 entries ...
+  warning$ -- 0）
+  • 文字或表格超出邊界警告（Overfull \hbox）：0 處
+  • 字型提示（LaTeX Font Warning）：1 處良性字型代換提示（Font
+  shape 'T1/lmr/bx/sc' undefined），這是因為版型檔 arxiv.sty 在
+  Abstract 標題同時指定粗體與小型大寫字母（\bfseries
+  \scshape），而 lmodern
+  字型集自動以標準粗體代換，不影響排版與閱讀。

@@ -1,0 +1,6 @@
+	Coef.	Std.Err.	z	P>|z|	[0.025	0.975]
+Intercept	65.687	6.696	9.811	0.000	52.564	78.810
+autoFmtGroup[T.treatment]	2.962	8.849	0.335	0.738	-14.381	20.306
+Q('day-relative-to-fmt')	-0.859	0.172	-5.003	0.000	-1.196	-0.523
+Q('day-relative-to-fmt'):autoFmtGroup[T.treatment]	0.560	0.232	2.409	0.016	0.104	1.015
+Group Var	197.005	2.058				

@@ -1,0 +1,35 @@
+% arXiv preprint template for biomedical / computational biology papers (IMRaD)
+% Layout: arxiv.sty by George Kour (MIT). Header/footer: fancyhdr.sty (LPPL), bundled locally.
+% Compile: python .agents/skills/arxiv-preprint/scripts/build.py manuscript --bib library/references.bib
+\documentclass{article}
+
+\usepackage{arxiv}               % bundled in this folder
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+\usepackage{url}
+\usepackage{booktabs}            % \toprule \midrule \bottomrule
+\usepackage{amsmath,amsfonts}
+\usepackage{graphicx}
+\usepackage{float}
+\usepackage{microtype}
+\usepackage[numbers,sort&compress]{natbib}   % or [authoryear,round] for author-year citations
+\usepackage[hidelinks]{hyperref}
+
+\graphicspath{{figures/}}
+
+\begin{document}
+
+% Sections are numbered by writing order (01 to 07) and included here in reading order:
+\input{sections/06-title}
+\input{sections/05-abstract}
+\input{sections/03-introduction}
+\input{sections/01-methods}
+\input{sections/02-results}
+\input{sections/04-discussion}
+\input{sections/07-declarations}
+
+\bibliographystyle{plainnat}
+\bibliography{references}
+
+\end{document}

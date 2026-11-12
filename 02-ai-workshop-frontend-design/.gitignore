@@ -1,0 +1,6 @@
+# Ignore everything by default
+/*
+
+# Except README.md and .gitignore
+!/README.md
+!.gitignore

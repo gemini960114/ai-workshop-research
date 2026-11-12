@@ -1,0 +1,76 @@
+\begin{thebibliography}{12}
+\providecommand{\natexlab}[1]{#1}
+\providecommand{\url}[1]{\texttt{#1}}
+\expandafter\ifx\csname urlstyle\endcsname\relax
+  \providecommand{\doi}[1]{doi: #1}\else
+  \providecommand{\doi}{doi: \begingroup \urlstyle{rm}\Url}\fi
+
+\bibitem[Barrera et~al.(2025)Barrera, Meza, and Arribas-Gil]{barrera2025stochastic}
+John Barrera, Cristian Meza, and Ana Arribas-Gil.
+\newblock {A stochastic method to estimate a zero-inflated two-part mixed model for human microbiome data}, 2025.
+\newblock URL \url{https://arxiv.org/abs/2504.15411}.
+
+\bibitem[Bolyen et~al.(2019)Bolyen, Rideout, Dillon, Bokulich, Abnet, Al-Ghalith, Alexander, Alm, Arumugam, Asnicar, Bai, Bisanz, Bittinger, Brejnrod, Brislawn, Brown, Callahan, Caraballo-Rodríguez, Chase, Cope, Silva, Diener, Dorrestein, Douglas, Durall, Duvallet, Edwardson, Ernst, Estaki, Fouquier, Gauglitz, Gibbons, Gibson, Gonzalez, Gorlick, Guo, Hillmann, Holmes, Holste, Huttenhower, Huttley, Janssen, Jarmusch, Jiang, Kaehler, Kang, Keefe, Keim, Kelley, Knights, Koester, Kosciolek, Kreps, Langille, Lee, Ley, Liu, Loftfield, Lozupone, Maher, Marotz, Martin, McDonald, McIver, Melnik, Metcalf, Morgan, Morton, Naimey, Navas-Molina, Nothias, Orchanian, Pearson, Peoples, Petras, Preuss, Pruesse, Rasmussen, Rivers, Robeson, Rosenthal, Segata, Shaffer, Shiffer, Sinha, Song, Spear, Swafford, Thompson, Torres, Trinh, Tripathi, Turnbaugh, Ul-Hasan, van~der Hooft, Vargas, Vázquez-Baeza, Vogtmann, von Hippel, Walters, Wan, Wang, Warren, Weber, Williamson, Willis, Xu, Zaneveld, Zhang, Zhu, Knight, and Caporaso]{bolyen2019reproducible}
+Evan Bolyen, Jai~Ram Rideout, Matthew~R. Dillon, Nicholas~A. Bokulich, Christian~C. Abnet, Gabriel~A. Al-Ghalith, Harriet Alexander, Eric~J. Alm, Manimozhiyan Arumugam, Francesco Asnicar, Yang Bai, Jordan~E. Bisanz, Kyle Bittinger, Asker Brejnrod, Colin~J. Brislawn, C.~Titus Brown, Benjamin~J. Callahan, Andrés~Mauricio Caraballo-Rodríguez, John Chase, Emily~K. Cope, Ricardo~Da Silva, Christian Diener, Pieter~C. Dorrestein, Gavin~M. Douglas, Daniel~M. Durall, Claire Duvallet, Christian~F. Edwardson, Madeleine Ernst, Mehrbod Estaki, Jennifer Fouquier, Julia~M. Gauglitz, Sean~M. Gibbons, Deanna~L. Gibson, Antonio Gonzalez, Kestrel Gorlick, Jiarong Guo, Benjamin Hillmann, Susan Holmes, Hannes Holste, Curtis Huttenhower, Gavin~A. Huttley, Stefan Janssen, Alan~K. Jarmusch, Lingjing Jiang, Benjamin~D. Kaehler, Kyo~Bin Kang, Christopher~R. Keefe, Paul Keim, Scott~T. Kelley, Dan Knights, Irina Koester, Tomasz Kosciolek, Jorden Kreps, Morgan G.~I. Langille, Joslynn Lee, Ruth Ley, Yong-Xin Liu, Erikka Loftfield, Catherine Lozupone, Massoud Maher, Clarisse Marotz, Bryan~D. Martin, Daniel McDonald, Lauren~J. McIver, Alexey~V. Melnik, Jessica~L. Metcalf, Sydney~C. Morgan, Jamie~T. Morton, Ahmad~Turan Naimey, Jose~A. Navas-Molina, Louis~Felix Nothias, Stephanie~B. Orchanian, Talima Pearson, Samuel~L. Peoples, Daniel Petras, Mary~Lai Preuss, Elmar Pruesse, Lasse~Buur Rasmussen, Adam Rivers, Michael~S. Robeson, Patrick Rosenthal, Nicola Segata, Michael Shaffer, Arron Shiffer, Rashmi Sinha, Se~Jin Song, John~R. Spear, Austin~D. Swafford, Luke~R. Thompson, Pedro~J. Torres, Pauline Trinh, Anupriya Tripathi, Peter~J. Turnbaugh, Sabah Ul-Hasan, Justin J.~J. van~der Hooft, Fernando Vargas, Yoshiki Vázquez-Baeza, Emily Vogtmann, Max von Hippel, William Walters, Yunhu Wan, Mingxun Wang, Jonathan Warren, Kyle~C. Weber, Charles H.~D. Williamson, Amy~D. Willis, Zhenjiang~Zech Xu, Jesse~R. Zaneveld, Yilong Zhang, Qiyun Zhu, Rob Knight, and J.~Gregory Caporaso.
+\newblock {Reproducible, interactive, scalable and extensible microbiome data science using QIIME 2}.
+\newblock \emph{Nature Biotechnology}, 37\penalty0 (8):\penalty0 852--857, 2019.
+\newblock \doi{10.1038/s41587-019-0209-9}.
+\newblock URL \url{https://doi.org/10.1038/s41587-019-0209-9}.
+
+\bibitem[Callahan et~al.(2016)Callahan, McMurdie, Rosen, Han, Johnson, and Holmes]{callahan2016dada2}
+Benjamin~J Callahan, Paul~J McMurdie, Michael~J Rosen, Andrew~W Han, Amy Jo~A Johnson, and Susan~P Holmes.
+\newblock {DADA2: High-resolution sample inference from Illumina amplicon data}.
+\newblock \emph{Nature Methods}, 13\penalty0 (7):\penalty0 581--583, 2016.
+\newblock \doi{10.1038/nmeth.3869}.
+\newblock URL \url{https://doi.org/10.1038/nmeth.3869}.
+
+\bibitem[Fontaine et~al.(2026)Fontaine, D'Silva, de~Medeiros, Chen, Zhu, and Li]{fontaine2026locally}
+Simon Fontaine, Nisha~J. D'Silva, Marcell~Costa de~Medeiros, Grace~Y. Chen, Ji~Zhu, and Gen Li.
+\newblock {Locally sparse varying coefficient mixed model with application to longitudinal microbiome differential abundance}, 2026.
+\newblock URL \url{https://arxiv.org/abs/2601.10872}.
+
+\bibitem[Herman et~al.(2024{\natexlab{a}})Herman, Barker, Bartelli, Chandra, Krajmalnik-Brown, Jewell, Li, Liao, McAllister, Nirmalkar, Xavier, and Caporaso]{herman2024assessingb}
+Chloe Herman, Bridget~M. Barker, Thais~F. Bartelli, Vidhi Chandra, Rosa Krajmalnik-Brown, Mary Jewell, Le~Li, Chen Liao, Florencia McAllister, Khemlal Nirmalkar, Joao~B. Xavier, and J.~Gregory Caporaso.
+\newblock {Assessing Engraftment Following Fecal Microbiota Transplant}, 2024{\natexlab{a}}.
+\newblock URL \url{https://arxiv.org/abs/2404.07325}.
+
+\bibitem[Herman et~al.(2024{\natexlab{b}})Herman, Bolyen, Simard, Gehret, and Caporaso]{herman2024assessing}
+Chloe Herman, Evan Bolyen, Anthony Simard, Liz Gehret, and J.~Gregory Caporaso.
+\newblock {Assessing microbiome engraftment extent following fecal microbiota transplant with q2-fmt}, 2024{\natexlab{b}}.
+\newblock URL \url{https://arxiv.org/abs/2411.17901}.
+
+\bibitem[McMurdie and Holmes(2013)]{mcmurdie2013waste}
+Paul~J. McMurdie and Susan Holmes.
+\newblock {Waste Not, Want Not: Why Rarefying Microbiome Data is Inadmissible}, 2013.
+\newblock URL \url{https://arxiv.org/abs/1310.0424}.
+
+\bibitem[Quast et~al.(2012)Quast, Pruesse, Yilmaz, Gerken, Schweer, Yarza, Peplies, and Glöckner]{quast2012silva}
+Christian Quast, Elmar Pruesse, Pelin Yilmaz, Jan Gerken, Timmy Schweer, Pablo Yarza, Jörg Peplies, and Frank~Oliver Glöckner.
+\newblock {The SILVA ribosomal RNA gene database project: improved data processing and web-based tools}.
+\newblock \emph{Nucleic Acids Research}, 41\penalty0 (D1):\penalty0 D590--D596, 2012.
+\newblock \doi{10.1093/nar/gks1219}.
+\newblock URL \url{https://doi.org/10.1093/nar/gks1219}.
+
+\bibitem[Raspet et~al.(2024)Raspet, Gehret, Herman, Meilander, Manley, Simard, Bolyen, and Caporaso]{raspet2024facilitating}
+Isaiah Raspet, Elizabeth Gehret, Chloe Herman, Jeff Meilander, Andrew Manley, Anthony Simard, Evan Bolyen, and J.~Gregory Caporaso.
+\newblock {Facilitating bootstrapped and rarefaction-based microbiome diversity analysis with q2-boots}, 2024.
+\newblock URL \url{https://arxiv.org/abs/2408.05420}.
+
+\bibitem[Taur et~al.(2018)Taur, Coyte, Schluter, Robilotti, Figueroa, Gjonbalaj, Littmann, Ling, Miller, Gyaltshen, Fontana, Morjaria, Gyurkocza, Perales, Castro-Malaspina, Tamari, Ponce, Koehne, Barker, Jakubowski, Papadopoulos, Dahi, Sauter, Shaffer, Young, Peled, Meagher, Jenq, van~den Brink, Giralt, Pamer, and Xavier]{taur2018reconstitution}
+Ying Taur, Katharine Coyte, Jonas Schluter, Elizabeth Robilotti, Cesar Figueroa, Mergim Gjonbalaj, Eric~R. Littmann, Lilan Ling, Liza Miller, Yangtsho Gyaltshen, Emily Fontana, Sejal Morjaria, Boglarka Gyurkocza, Miguel-Angel Perales, Hugo Castro-Malaspina, Roni Tamari, Doris Ponce, Guenther Koehne, Juliet Barker, Ann Jakubowski, Esperanza Papadopoulos, Parastoo Dahi, Craig Sauter, Brian Shaffer, James~W. Young, Jonathan Peled, Richard~C. Meagher, Robert~R. Jenq, Marcel R.~M. van~den Brink, Sergio~A. Giralt, Eric~G. Pamer, and Joao~B. Xavier.
+\newblock {Reconstitution of the gut microbiota of antibiotic-treated patients by autologous fecal microbiota transplant}.
+\newblock \emph{Science Translational Medicine}, 10\penalty0 (460):\penalty0 eaap9489, 2018.
+\newblock \doi{10.1126/scitranslmed.aap9489}.
+\newblock URL \url{https://doi.org/10.1126/scitranslmed.aap9489}.
+
+\bibitem[Zhang et~al.(2026)Zhang, Ok, Jayaraman, Landrock, Ivanov, Chapkin, and Ni]{zhang2026bayesian}
+Shuangjie Zhang, Seoyeon Ok, Arul Jayaraman, Kirsten Landrock, Ivan Ivanov, Robert~S. Chapkin, and Yang Ni.
+\newblock {Bayesian Nonparametric Longitudinal Factor Model for Microbiome Counts}, 2026.
+\newblock URL \url{https://arxiv.org/abs/2610.21224}.
+
+\bibitem[Zhou et~al.(2021)Zhou, He, Chen, and Zhang]{zhou2021linda}
+Huijuan Zhou, Kejun He, Jun Chen, and Xianyang Zhang.
+\newblock {LinDA: linear models for differential abundance analysis of microbiome compositional data}, 2021.
+\newblock URL \url{https://arxiv.org/abs/2104.00242}.
+
+\end{thebibliography}

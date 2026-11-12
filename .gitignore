@@ -1,0 +1,35 @@
+
+# 金鑰與環境
+apikey
+.env
+*.key
+
+# Node / VitePress 網站建置
+node_modules
+docs/.vitepress/dist/
+docs/.vitepress/cache/
+docs/guide/*.md
+
+# Python
+.venv/
+__pycache__/
+*.py[cod]
+
+# LaTeX 編譯中間檔
+*.aux
+*.log
+*.blg
+*.out
+*.synctex.gz
+
+# 根目錄的 skill 副本（各單元資料夾內已各自附帶，避免打開外層時混淆）
+/.agents/
+/.claude/
+
+# 04 核銷憑證：真實憑證與帳務資料只放本機（公開版只用 example_deid/ 去識別化樣本）
+04-ai-workshop-voucher-ocr/SKM_*.pdf
+04-ai-workshop-voucher-ocr/record.xlsx
+04-ai-workshop-voucher-ocr/tutorial.md
+04-ai-workshop-voucher-ocr/output/
+04-ai-workshop-voucher-ocr/output_*/
+04-ai-workshop-voucher-ocr/example/

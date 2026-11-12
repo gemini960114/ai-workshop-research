@@ -1,0 +1,8 @@
+stage	filter	samples	ASVs	total_reads	source
+upstream_dada2	41 示範檢體 DADA2 去噪後（與下游不承接）	41	660	1535600	Upstream/feature-table-0.qza
+0_raw	FigShare 全部檢體（下游起點）	12546	17865	550243459	Input_Data/feature-table.qza
+1_trial_cohort	autoFmtGroup IS NOT NULL（納入隨機分組）	556	4256	27997124	Downstream/autofmt-table.qza
+2_time_window	DayRelativeToNearestHCT BETWEEN -10 AND 70	406	3680	23069077	Downstream/filtered-table-1.qza
+3_prevalence	--p-min-samples 2（剔除只出現在 1 個檢體的 ASV）	406	2458	22972681	Downstream/filtered-table-2.qza
+4_taxonomy	保留 p__；排除 Chloroplast、Mitochondria	406	2425	22909139	Downstream/filtered-table-3.qza
+5_depth	--p-min-frequency 10000（讀數不足的檢體剔除）	356	2422	22692526	Downstream/filtered-table-4.qza

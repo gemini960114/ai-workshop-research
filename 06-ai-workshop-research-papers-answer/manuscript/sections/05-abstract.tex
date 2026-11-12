@@ -1,0 +1,14 @@
+% 05-abstract.tex — Structured Abstract & Keywords
+% arXiv limit: abstract field <= 1,920 characters.
+
+\begin{abstract}
+\textbf{Background:} Conditioning and antibiotics during allogeneic hematopoietic cell transplantation (allo-HCT) severely deplete gut microbial diversity. Autologous fecal microbiota transplantation (auto-FMT) aims to restore baseline microbiota, but longitudinal evaluation is complicated by repeated-measures correlation, irregular sampling, and single-step rarefying.
+
+\textbf{Methods:} Using QIIME 2 (v2026.7), we reanalyzed 16S rRNA V4 data from trial NCT02269150. Filtering of 12,546 samples isolated trial participants across days $-10$ to $+70$ post-HCT, removed singleton and organellar features, and rarefied libraries at 10,000 reads, retaining 356 samples (2,422 ASVs) from 24 patients (10 control, 150 samples; 14 auto-FMT, 206 samples). A standalone 41-sample dataset demonstrated DADA2 denoising. Richness was evaluated via Kruskal-Wallis tests and linear mixed-effects (LME) modeling (\texttt{observed\_features} $\sim$ \texttt{day-relative-to-fmt} $\times$ \texttt{autoFmtGroup} with patient random intercepts), and temporal indicator genera via random forest regression.
+
+\textbf{Results:} Observed ASV richness fell sharply post-HCT ($H = 70.58$, $q = 1.33 \times 10^{-16}$). Pooled cross-sectional testing showed no group difference ($H = 1.29$, $p = 0.256$). Conversely, LME modeling estimated a control decline of $-0.859$ ASVs/day ($p < 0.001$) and an auto-FMT interaction of $+0.560$ ASVs/day (95\% CI $[0.104, 1.015]$, $p = 0.016$; net slope $-0.299$ ASVs/day), though the REML optimizer did not converge. Random forest regression predicted post-HCT week ($R^2 = 0.319$, $r = 0.565$, $p = 2.37 \times 10^{-7}$), led by \textit{Enterococcaceae} (0.124), \textit{Clostridium} (0.109), \textit{Enterococcaceae Incertae Sedis} (0.089), and \textit{Lachnospiraceae} (0.087).
+
+\textbf{Conclusions:} Longitudinal mixed modeling detects trajectory differences masked by cross-sectional pooling, but small unbalanced cohorts, LME non-convergence, single-slope models, single rarefying, and unverified strain engraftment require specialized longitudinal tools.
+\end{abstract}
+
+\keywords{autologous fecal microbiota transplantation \and hematopoietic cell transplantation \and gut microbiome \and longitudinal mixed-effects model \and QIIME 2}

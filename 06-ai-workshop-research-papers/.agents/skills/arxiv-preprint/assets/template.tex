@@ -1,0 +1,85 @@
+% arXiv preprint template for biomedical / computational biology papers (IMRaD)
+% Layout: arxiv.sty by George Kour (MIT). Header/footer: fancyhdr.sty (LPPL), bundled locally.
+% Compile: python <skill>/scripts/build.py <this folder>   (pdflatex + bibtex, 3 passes)
+\documentclass{article}
+
+\usepackage{arxiv}               % bundled in this folder
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+\usepackage{url}
+\usepackage{booktabs}            % \toprule \midrule \bottomrule
+\usepackage{amsmath,amsfonts}
+\usepackage{graphicx}
+\usepackage{float}
+\usepackage{microtype}
+\usepackage[numbers,sort&compress]{natbib}   % or [authoryear,round] for author-year citations
+\usepackage[hidelinks]{hyperref}
+
+\graphicspath{{figures/}}
+
+% ---- Header shown on every page -------------------------------------------
+\renewcommand{\headeright}{Preprint}
+\renewcommand{\undertitle}{Preprint}
+\renewcommand{\shorttitle}{SHORT TITLE FOR RUNNING HEAD}
+
+\title{FULL TITLE OF THE PAPER}
+
+\author{
+  First Author\textsuperscript{1}\thanks{Corresponding author: \texttt{email@example.org}} \And
+  Second Author\textsuperscript{2} \\[2pt]
+  \textsuperscript{1}Department, Institution, City, Country \\
+  \textsuperscript{2}Department, Institution, City, Country
+}
+
+\date{}   % arXiv adds its own submission date
+
+\begin{document}
+\maketitle
+
+% arXiv limit: abstract field <= 1,920 characters. Use the same text in the metadata form.
+\begin{abstract}
+\textbf{Background:} ...
+\textbf{Methods:} ...
+\textbf{Results:} ...
+\textbf{Conclusions:} ...
+\end{abstract}
+
+\keywords{keyword one \and keyword two \and keyword three}
+
+\section{Introduction}
+% Problem and why it matters -> what is known [cite] -> gap -> aims / research questions.
+
+\section{Methods}
+\subsection{Data source and participants}
+\subsection{Processing}
+\subsection{Statistical analysis}
+
+\section{Results}
+% Every number must come from a results table/file; report effect size, 95% CI and p-value.
+% \begin{table}[t]\centering\caption{...}\label{tab:x}
+% \begin{tabular}{lrr}\toprule A & B & C\\\midrule ... \\\bottomrule\end{tabular}\end{table}
+% \begin{figure}[t]\centering\includegraphics[width=0.7\linewidth]{fig1.png}
+% \caption{...}\label{fig:x}\end{figure}
+
+\section{Discussion}
+\subsection{Principal findings}
+\subsection{Comparison with previous work}
+\subsection{Limitations}
+\subsection{Conclusions}
+
+% ---- Declarations commonly required by journals ---------------------------
+\section*{Data availability}
+\section*{Code availability}
+\section*{Ethics statement}
+\section*{Author contributions}
+\section*{Competing interests}
+The authors declare no competing interests.
+\section*{Funding}
+\section*{Use of AI tools}
+% Which steps used AI assistance, which tools, and what the authors verified by hand.
+
+\bibliographystyle{plainnat}
+\bibliography{references}
+
+\end{document}

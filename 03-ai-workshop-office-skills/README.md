@@ -1,0 +1,146 @@
+# 單元 03：Office 文件處理 — docx、pdf、pptx、xlsx
+
+用 4 個官方 skill，把一份 CSV 一路做成 Excel、簡報、Word 報告和 PDF 講義。
+
+> 📥 **本單元上課簡報**：[下載 03-office-skills.pptx](https://github.com/gemini960114/ai-workshop-research/raw/main/PPTX/03-office-skills.pptx)（12 頁，含講者備註）
+
+> 🎬 **本單元教學影片**：[單元 03｜Office 文件處理](https://youtu.be/FwIpKAJ2-vk)（YouTube）
+
+| 步驟 | 內容 | 預估時間 |
+| :--- | :--- | :---: |
+| **Step 1** | [安裝 4 個官方 skill](#安裝) | 3 分鐘 |
+| **Step 2** | [範例 1（xlsx）：CSV 做成有圖表的 Excel](#範例-1xlsx把-csv-做成有圖表的-excel) | 5 分鐘 |
+| **Step 3** | [範例 2（pptx）：做成可上課用的動畫簡報](#範例-2pptx根據-excel-做可上課用的動畫簡報) | 8 分鐘 |
+| **Step 4** | [範例 3（docx）：寫一份 Word 分析報告](#範例-3docx根據-excel-寫一份-word-報告) | 5 分鐘 |
+| **Step 5** | [範例 4（pdf）：轉成上課講義 PDF](#範例-4pdf把報告轉成上課講義-pdf) | 3 分鐘 |
+
+> [!IMPORTANT]
+> 請用 Antigravity 的 **Open Folder** 開啟 `03-ai-workshop-office-skills` 這個資料夾，不要開外層的 `ai-workshop-research`。
+
+## 安裝
+
+在 Antigravity 開啟終端機（確認目前位置是本資料夾），執行：
+
+```bash
+npx skills add anthropics/skills@docx -a antigravity -a claude-code --copy -y
+npx skills add anthropics/skills@pdf -a antigravity -a claude-code --copy -y
+npx skills add anthropics/skills@pptx -a antigravity -a claude-code --copy -y
+npx skills add anthropics/skills@xlsx -a antigravity -a claude-code --copy -y
+```
+
+> [!TIP]
+> 裝好後資料夾裡會出現 `.agents/skills/`。**請重新開啟 AI Agent 的對話**，skill 才會生效。
+
+## 用途
+
+Anthropic 官方 skill，讓 AI Agent 能可靠地讀取與產生 Office 文件和 PDF。沒有這些 skill 時，AI Agent 常要臨時自己寫程式讀檔，格式複雜一點就容易出錯；產出的 Excel、簡報也常只有內容、沒有版面。
+
+| Skill | 作用 |
+| --- | --- |
+| docx | 讀取、建立、修改 Word 文件（標題層級、表格、目錄、追蹤修訂） |
+| pdf | 擷取文字與表格、合併分割、填表單，掃描檔可做 OCR |
+| pptx | 讀取、建立、修改簡報（版面、圖表、講者備註、動畫） |
+| xlsx | 讀取、建立、修改試算表（公式、格式、圖表） |
+
+這幾個 skill 不用特別點名，只要任務牽涉到這些檔案就會觸發。
+
+## 事前準備
+
+| 工具 | 用在哪裡 | 沒有會怎樣 |
+| --- | --- | --- |
+| uv、Node.js（課堂電腦已安裝） | 所有 skill 都靠它們執行程式；Python 由 uv 管理，AI 會自動在 `.venv` 安裝需要的套件 | 無法執行 |
+| [LibreOffice](https://www.libreoffice.org/download/download/)（課堂電腦已安裝） | 重算 Excel 公式、docx 轉 PDF、把簡報轉成圖片讓 AI Agent 自己檢查版面 | 範例 1 的公式沒有預先算好的值、範例 4 需改用 Word 轉檔、AI Agent 無法自己檢查版面 |
+| Microsoft Office | 打開成果檢查；Windows 上沒有 LibreOffice 時，可以叫 Word 轉 PDF | 可用 LibreOffice 代替檢查，但動畫、轉場在 PowerPoint 最準 |
+
+安裝 LibreOffice 後，請確認 `soffice` 指令能在終端機執行（Windows 預設路徑 `C:\Program Files\LibreOffice\program`，必要時加到 PATH）。
+
+## 範例資料
+
+```text
+example/
+└── 臺灣採購經理人指數(pmi及nmi).csv   ← 輸入：2012/07–2026/09 每月 PMI、NMI
+output/                                 ← 產出：AI 做的檔案都存在這裡（第一次存檔時自動建立）
+```
+
+以下四個範例是一條流水線，前一個範例的產出就是下一個範例的輸入。請依序完成：
+
+```text
+CSV ──xlsx──▶ pmi.xlsx ──pptx──▶ pmi.pptx
+                 │
+                 └──docx──▶ pmi-report.docx ──pdf──▶ pmi-report.pdf
+```
+
+---
+
+## 範例 1（xlsx）：把 CSV 做成有圖表的 Excel
+
+```text
+把 example/臺灣採購經理人指數(pmi及nmi).csv 做成 Excel，存成 output/pmi.xlsx：
+第一個工作表放原始資料，第二個工作表算出每年的 PMI、NMI 平均，並加上歷年走勢的折線圖。
+```
+
+**預期行為：** 產出有兩個工作表的 Excel，年度平均用公式計算（點開儲存格看得到公式，不是寫死的數字），折線圖的座標軸與圖例都有中文標示。CSV 裡 NMI 在 2014 年 8 月以前是「-」，AI Agent 應該當成沒有資料處理，而不是當成 0。
+
+**檢查重點：**
+
+- 2012 年只有 7–12 月、2026 年只有 1–9 月，屬於不完整年度，最好有註記。
+- 程式寫入的公式不會自帶計算結果。有 LibreOffice 時 AI Agent 會先重算一次；沒有的話，用 Excel 打開會自動計算，但下一個範例讀檔時可能讀到空值，AI Agent 應該改從原始資料自己算，而不是把空值當成 0。
+
+---
+
+## 範例 2（pptx）：根據 Excel 做可上課用的動畫簡報
+
+```text
+根據 output/pmi.xlsx 做一份 5 頁的簡報，存成 output/pmi.pptx，說明臺灣採購經理人指數的意義、近年走勢與重點觀察，要有圖表。
+
+文字都要能在 PowerPoint 裡編輯（不要做成圖片）。
+
+每頁內容用卡片（圓角方塊）排版，標題直接顯示。卡片依序逐一出現。每按一下，只讓下一張卡片以淡入效果出現；播放開始時卡片先隱藏。背景與裝飾元素不需動畫。
+
+換頁用淡入效果，慢一點。要講者備註。
+```
+
+**預期行為：** 產出 5 頁簡報，包含標題頁、指標說明、走勢圖表與重點觀察；圖表數字與 Excel 一致，文字不超出版面。每頁的文字都是可編輯的文字方塊，圖表最好是 PowerPoint 原生圖表（點開可以編輯資料），不是貼上的圖片。
+
+**檢查重點：** 用 PowerPoint 打開：
+
+- 版面是否整齊、圖表能不能正常顯示
+- 「動畫」→「動畫窗格」：只有卡片有動畫，每張都是「按一下時」觸發的「淡入」，順序與閱讀順序一致；背景、裝飾、標題沒有動畫
+- 投影片放映：一開始只看到標題，每按一下多出現一張卡片
+- 「轉場」：每頁都是「淡入」，期間比預設的 0.7 秒長（例如 1.5–2 秒）
+- 「檢視」→「備忘稿」：每頁都有講者備註，內容是講者要說的話，不只是重複投影片文字
+
+> 動畫與轉場是 python-pptx 等函式庫沒有直接支援的功能，AI Agent 需要直接寫入簡報的 XML。這正是 pptx skill 派得上用場的地方——沒有 skill 時常會漏掉動畫，或產生 PowerPoint 打不開的檔案。
+
+---
+
+## 範例 3（docx）：根據 Excel 寫一份 Word 報告
+
+```text
+根據 output/pmi.xlsx 寫一份 Word 分析報告，存成 output/pmi-report.docx：
+要有封面、自動目錄，章節分成「指標說明」「歷年走勢」「近一年觀察」「結論」，
+「歷年走勢」放年度平均的表格與折線圖。
+```
+
+**預期行為：** 標題用 Word 內建的「標題 1／標題 2」樣式，目錄是可更新的欄位（在目錄上按右鍵 →「更新功能變數」會跟著章節變化），不是手打的文字；表格數字與 Excel 的年度平均一致。
+
+**檢查重點：**
+
+- 剛產出的目錄可能顯示「沒有目錄項目」或空白，這是正常的：在 Word 裡更新功能變數後才會出現頁碼。範例 4 轉 PDF 前應先更新。
+- Word 文件裡的折線圖通常是圖片（AI Agent 先用程式畫好圖再插入），不是可以點開編輯資料的 Word 圖表，這是可以接受的。
+
+---
+
+## 範例 4（pdf）：把報告轉成上課講義 PDF
+
+```text
+把 output/pmi-report.docx 用 LibreOffice 轉成 PDF，存成 output/pmi-report.pdf：
+每頁下方加上頁碼，並加上淡灰色「課堂講義」浮水印。
+```
+
+**預期行為：** 中文字型正常顯示（沒有方框或亂碼），頁碼與浮水印出現在每一頁，浮水印不遮住內文、文字仍可選取複製。
+
+**檢查重點：**
+
+- 轉 PDF 指定用 LibreOffice（課堂電腦已安裝）；自己的電腦沒有 LibreOffice 時，可以把 Prompt 改成「用 Word 轉成 PDF」。兩者都沒有時，AI Agent 可能改用其他方式自己排版輸出 PDF，版面會和 Word 不同。
+- 頁碼、浮水印用程式疊加時，必須指定中文字型（例如微軟正黑體、Noto Sans TC），否則「課堂講義」會變成方框。這是最常見的錯誤。

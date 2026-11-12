@@ -1,0 +1,13 @@
+	model summary
+Model:	MixedLM
+No. Observations:	356
+No. Groups:	24
+Min. group size:	2
+Max. group size:	34
+Mean group size:	14.8
+Dependent Variable:	observed_features
+Method:	REML
+Scale:	1757.4080
+Log-Likelihood:	-1840.5870
+Converged:	No
+	
