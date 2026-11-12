@@ -46,7 +46,7 @@ flowchart LR
 | 工具 | 用途 | 說明 |
 |---|---|---|
 | **Antigravity**（或 Claude Code） | 和 AI Agent 對話 | 單元 01 已安裝 |
-| **Python 3** | 執行搜尋、收錄文獻、檢查論文的小程式 | 單元 01 已安裝；畫圖需要的套件 AI 會自動安裝 |
+| **uv**（Python） | 執行搜尋、收錄文獻、檢查論文的小程式 | 單元 01 已安裝；uv 會自動準備 Python，畫圖需要的套件 AI 會自動安裝 |
 | **LaTeX 或 Overleaf**（二選一） | 把論文排版成 PDF | 有 LaTeX（例如 [TinyTeX](https://yihui.org/tinytex/)）就在本機編譯；沒有的話，註冊免費的 [Overleaf](https://www.overleaf.com) 帳號 |
 
 在 Antigravity 選 **File → Open Folder**，開啟本資料夾。
@@ -136,7 +136,7 @@ Step 1（讀摘要卡）和 Step 3（做筆記）**不需要 skill**，AI 直接
 ### 📋 請複製以下指令貼給 AI Agent：
 
 ```text
-請用 arxiv skill，依照 manuscript/00-research-brief.md 的搜尋關鍵字找相關論文，列出候選清單給我挑選，先不要下載。
+請用 arxiv skill，依照 manuscript/00-research-brief.md 的搜尋關鍵字找相關論文，列出候選清單給我挑選，並用 ★ 標出最推薦的幾篇，先不要下載。
 ```
 
 AI 會列出候選論文和每篇跟我們研究的關係。**由你決定要收哪幾篇**。

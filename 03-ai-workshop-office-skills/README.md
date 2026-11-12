@@ -29,7 +29,7 @@ npx skills add anthropics/skills@xlsx -a antigravity -a claude-code --copy -y
 ```
 
 > [!TIP]
-> 裝好後資料夾裡會出現 `.agents/skills/`。**請重新開啟 AI Agent 的對話**，skill 才會生效。
+> 裝好後資料夾裡會出現 `.agents/skills/` 與 `.claude/skills/`。**請重新開啟 AI Agent 的對話**，skill 才會生效。
 
 ## 用途
 
@@ -144,3 +144,15 @@ CSV ──xlsx──▶ pmi.xlsx ──pptx──▶ pmi.pptx
 
 - 轉 PDF 指定用 LibreOffice（課堂電腦已安裝）；自己的電腦沒有 LibreOffice 時，可以把 Prompt 改成「用 Word 轉成 PDF」。兩者都沒有時，AI Agent 可能改用其他方式自己排版輸出 PDF，版面會和 Word 不同。
 - 頁碼、浮水印用程式疊加時，必須指定中文字型（例如微軟正黑體、Noto Sans TC），否則「課堂講義」會變成方框。這是最常見的錯誤。
+
+---
+
+## 學到的事
+
+- 一個 skill 管一種檔案：xlsx、pptx、docx、pdf 各司其職，不用點名，任務牽涉到這些檔案就會觸發。
+- 把任務拆成**流水線**：前一個範例的產出就是下一個範例的輸入，每一步都能單獨檢查。
+- AI 產出的檔案一定要**打開檢查**：公式有沒有值、動畫順序、目錄是否更新、中文字型有沒有變成方框。
+
+## 下一步
+
+前面用的都是別人寫好的 skill。單元 04 請 AI 看懂掃描發票、填進 Excel，再把做對的流程**存成自己的 skill**。

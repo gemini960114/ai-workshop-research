@@ -28,7 +28,7 @@ git clone https://github.com/gemini960114/ai-workshop-research.git
 | [05 QIIME 2 腸道菌相分析](05-ai-workshop-qiime2-analysis/) | 在國網 HPC 上用中文請 AI 下載資料、派送作業、產出 9 頁分析報告 | 在 HPC 上用自然語言做分析；回到原始輸出檔核對數字 |
 | [06 研究論文處理](06-ai-workshop-research-papers/) | 從分析結果出發：找文獻 → 做筆記 → 寫論文 → 核對引用 → 輸出 PDF | 用 4 個 skill 寫出有引用、追得到出處的英文論文 |
 
-- **04 → 06 是一條研究流程**：05 的分析結果，就是 06 寫論文的材料；06 的資料夾已經附上 05 整理好的研究摘要卡和數字表格。
+- **05 → 06 是一條研究流程**：05 的分析結果，就是 06 寫論文的材料；06 的資料夾已經附上 05 整理好的研究摘要卡和數字表格。
 - **06 有兩個資料夾**：[`06-ai-workshop-research-papers/`](06-ai-workshop-research-papers/) 是乾淨的練習版；[`06-ai-workshop-research-papers-answer/`](06-ai-workshop-research-papers-answer/) 是照手冊試跑一次的參考答案（12 頁英文論文、12 篇參考文獻）。
 
 ## 上課簡報與影片
@@ -45,7 +45,7 @@ git clone https://github.com/gemini960114/ai-workshop-research.git
 | 05 | [05-qiime2-analysis.pptx](https://github.com/gemini960114/ai-workshop-research/raw/main/PPTX/05-qiime2-analysis.pptx) |
 | 06 | [06-research-papers.pptx](https://github.com/gemini960114/ai-workshop-research/raw/main/PPTX/06-research-papers.pptx) |
 
-教學影片放在 [`movies/`](movies/)（附繁體中文字幕），各單元 README 開頭也有連結；01–03 另有 YouTube 版本。
+教學影片放在 [`movies/`](movies/)（附繁體中文字幕）。00、04–06 的 README 開頭直接連到這裡的 MP4；01–03 的 README 連到 YouTube 版本。
 
 ## 事前準備
 

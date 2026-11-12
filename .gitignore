@@ -20,6 +20,7 @@ __pycache__/
 *.log
 *.blg
 *.out
+!05-ai-workshop-qiime2-analysis/pipeline/*.out
 *.synctex.gz
 
 # 根目錄的 skill 副本（各單元資料夾內已各自附帶，避免打開外層時混淆）

@@ -74,7 +74,7 @@ report.docx是 ai agent 根據 measuring-how-ai-agents-handle-wet-lab-science.pd
 
 ## 示範 2：地端做法：在編輯器裡用 Claude Code
 
-1. 論文就放在**自己電腦的資料夾**。在編輯器（Antigravity）裡叫出 Claude Code，問同樣的三個問題。
+1. 論文就放在**自己電腦的資料夾**。在編輯器（Antigravity）裡叫出 Claude Code（安裝方式見單元 01 Step 3），問同樣的三個問題。
 2. 它會**自己找到資料夾裡的 PDF**，讀完再回答。例如第二題，就把 100 道題目整理成表格。
 3. 接著一句話「存成 Word 報告」：它載入 **docx skill**，自己寫程式產生檔案，還轉成 PDF 檢查排版。
 4. [`report.docx`](report.docx) 直接出現在同一個資料夾，在編輯器裡就能打開核對。

@@ -31,5 +31,6 @@
 
 ## 環境
 
-- Python 腳本只用標準函式庫為原則；畫圖需要 matplotlib。
-- 編譯與檢查：在專案根目錄執行 `python .agents/skills/arxiv-preprint/scripts/build.py manuscript --bib library/references.bib`（Claude Code 用 `.claude/skills/...`；有 pdflatex 就編譯，沒有就只檢查並產生 `overleaf.zip`）。
+- Python 一律用 `uv run python ...` 執行（課程電腦只保證有 uv，不一定有 `python` 指令）；腳本以標準函式庫為原則，畫圖需要 matplotlib（`uv run --with matplotlib python ...`）。
+- skill 說明裡寫的 `python` / `python3` 指令，同樣改用 `uv run python` 執行。
+- 編譯與檢查：在專案根目錄執行 `uv run python .agents/skills/arxiv-preprint/scripts/build.py manuscript --bib library/references.bib`（Claude Code 用 `.claude/skills/...`；有 pdflatex 就編譯，沒有就只檢查並產生 `overleaf.zip`）。

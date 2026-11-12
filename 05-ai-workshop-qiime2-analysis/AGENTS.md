@@ -4,8 +4,8 @@
 （Antigravity / Gemini CLI 讀 `GEMINI.md`，Claude Code 讀 `CLAUDE.md`；內容相同，複製一份改名即可。）
 
 ## 1. 參考範本與環境
-- **分析腳本範本**：`pipeline/Qiime2_Pipeline.sh`
-- **報告範本**：`report/QIIME2_Analysis_Report.pdf` 與 `report/figures/`（300 DPI、繁體中文排版）
+- **分析腳本範本**：`QIIME2/Qiime2_Pipeline.sh`（下載資料解壓縮後就有）
+- **報告格式**：繁體中文 PDF、圖 300 DPI；若工作資料夾有 `report/QIIME2_Analysis_Report.pdf` 範例，可參考它的版面
 - **Slurm 預設**：
   - `#SBATCH --account=<計畫代號>`（本次為 `mst109178`）
   - `#SBATCH --partition=ngscourse8g`（上課用，1 CPU / 8 GB 上限）；正式資料可改 `ngs16g`、`ngs32g`、`ngs62g`

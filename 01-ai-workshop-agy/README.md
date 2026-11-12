@@ -1,6 +1,6 @@
 # 單元 01：Antigravity 入門 — 安裝設定與第一個網頁
 
-用 **Google Antigravity IDE** 搭配內建的 AI Agent，用中文對話完成安裝、建立網頁，最後做出一個能玩的小遊戲。不需要寫程式經驗，約 45 分鐘。
+用 **Google Antigravity IDE** 搭配內建的 AI Agent，用中文對話完成安裝、建立網頁，最後做出一個能玩的小遊戲。不需要寫程式經驗，約 30 分鐘。
 
 > 📥 **本單元上課簡報**：[下載 01-antigravity.pptx](https://github.com/gemini960114/ai-workshop-research/raw/main/PPTX/01-antigravity.pptx)（19 頁，含講者備註）
 
@@ -60,12 +60,23 @@ AI Agent 只會在**你打開的資料夾**裡讀檔、寫檔，建議每個專�
 | 左邊 | **檔案總管** | 專案裡所有檔案和資料夾 |
 | 中間 | **檔案預覽／編輯區** | 點一下左邊的檔案，內容顯示在這裡 |
 | 右邊 | **Agent 對話面板** | 跟 AI 對話；下方可選模型，以及 Low／Medium／High 思考程度 |
-| 最右邊 | **Agent 圖示列** | 切換不同的 Agent |
+| 最右邊 | **Agent 圖示列** | 切換不同的 Agent（例如內建 Agent、Claude Code，見下方「加裝其他 AI Agent」） |
 
 ### 把 AI 對話面板放在右側
 
 1. 點選上方選單「**檢視 → 外觀**」（`View → Appearance`），勾選 **Secondary Side Bar**。
 2. 想把「**終端機 (Terminal)**」也移到右邊的話，在終端機分頁標題按右鍵 → **Move → Secondary Side Bar**。
+
+### （選用）加裝其他 AI Agent：Claude Code、Codex
+
+單元 00、04、06 的示範會在同一個編輯器裡切換到 **Claude Code**，讓不同家的 AI 互相檢核。想照著做的話：
+
+1. 點左側的 **Extensions**（擴充功能），搜尋 **Claude Code**（或 **Codex**），按 **Install**。
+2. 選單「**檢視 → 外觀**」，把 **Secondary Activity Bar Position** 設成 **Default**。右側會出現每個 Agent 的圖示，點一下就能切換。
+3. Claude Code、Codex 要**登入各自的帳號**才能使用。
+
+> [!NOTE]
+> 沒有這些帳號也沒關係：各單元的主要步驟用內建的 Antigravity Agent 就能完成，需要「換一家 AI 檢核」時，改用內建 Agent 換另一個模型即可。
 
 ## Step 4：請 AI 安裝與確認工具
 
@@ -76,7 +87,7 @@ AI 要執行指令時會先詢問權限，請點 **Accept / Run**（這是正常
 | 工具 | 用途 | 類別 |
 | :--- | :--- | :---: |
 | **Git** | 記錄作品的每一個版本 | 必要 |
-| **GitHub CLI（gh）** | 登入 GitHub、建立 repo、保存作品（本課程用不到） | 建議 |
+| **GitHub CLI（gh）** | 登入 GitHub、建立 repo、保存作品（本課程用不到） | 選用 |
 | **Node.js**（含 npm） | 執行網頁 App、安裝 Skill | 必要 |
 | **uv** | 執行 Python 程式 | 必要 |
 | **LibreOffice** | 處理 Word、Excel、簡報檔，把簡報轉成圖片讓 AI 檢查版面 | 建議 |
@@ -152,6 +163,10 @@ AI 會建立專案、安裝套件，再啟動**開發伺服器**。點開它給�
 - 工具不用自己查怎麼裝，**請 AI 安裝**，裝完重開 Antigravity。
 - 用**一句清楚的中文**描述想要的結果（做什麼、放哪裡、做完要做什麼），AI 就能從零做出能跑的作品。
 - 想改作品時，直接告訴 AI 哪裡要改、改成什麼樣子。
+
+## 下一步
+
+單元 02 認識 skill，裝上 frontend-design skill，用幾乎一樣的 prompt 再做一次記憶翻牌，比較兩者的差別。
 
 ---
 
