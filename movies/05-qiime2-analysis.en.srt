@@ -1,0 +1,339 @@
+1
+00:00:00,800 --> 00:00:05,981
+Hematopoietic stem cell transplantation
+can cure some cancers and blood diseases,
+
+2
+00:00:05,981 --> 00:00:08,636
+but the chemotherapy and antibiotics given
+
+3
+00:00:08,636 --> 00:00:11,418
+beforehand badly damage the gut
+microbiome.
+
+4
+00:00:11,418 --> 00:00:16,792
+Patients who lose microbial diversity also
+have higher transplant-related mortality.
+
+5
+00:00:16,792 --> 00:00:20,438
+Autologous fecal microbiota
+transplantation, or auto-FMT,
+
+6
+00:00:20,438 --> 00:00:25,363
+banks the patient's own stool microbes and
+returns them after the transplant,
+
+7
+00:00:25,363 --> 00:00:27,474
+hoping to restore the microbiome.
+
+8
+00:00:28,433 --> 00:00:32,184
+In this unit, we use sequencing data to
+answer three questions.
+
+9
+00:00:32,184 --> 00:00:35,638
+How does the gut microbiome change during
+transplantation?
+
+10
+00:00:35,638 --> 00:00:40,104
+Do patients who receive auto-FMT change
+differently from the control group?
+
+11
+00:00:40,104 --> 00:00:43,438
+And which bacteria rise and fall with
+transplant timing?
+
+12
+00:00:44,400 --> 00:00:49,588
+The data come from a clinical trial used
+in the official QIIME 2 tutorial,
+
+13
+00:00:49,588 --> 00:00:53,444
+with patients randomly assigned to
+auto-FMT or control.
+
+14
+00:00:53,444 --> 00:00:56,879
+Upstream are raw sequencing files for 41
+samples;
+
+15
+00:00:56,879 --> 00:01:00,174
+downstream is a public table of 12,546
+samples.
+
+16
+00:01:01,133 --> 00:01:05,352
+This kind of analysis usually means
+knowing Linux, Slurm,
+
+17
+00:01:05,352 --> 00:01:06,906
+and QIIME 2 commands.
+
+18
+00:01:06,906 --> 00:01:11,864
+Unit 05 shows another way: open an AI
+Agent on the NCHC HPC system,
+
+19
+00:01:11,864 --> 00:01:16,527
+and run the whole analysis through
+plain-language conversation.
+
+20
+00:01:17,467 --> 00:01:22,192
+There are four steps: download the data,
+confirm the account and queue,
+
+21
+00:01:22,192 --> 00:01:26,318
+submit the job, and finally ask the AI for
+an analysis report.
+
+22
+00:01:27,267 --> 00:01:32,441
+Step one: paste the download link and ask
+the AI to download and extract it.
+
+23
+00:01:32,441 --> 00:01:35,844
+The data and the analysis script are now
+in place.
+
+24
+00:01:36,800 --> 00:01:39,404
+Step two: not sure which project account
+
+25
+00:01:39,404 --> 00:01:41,161
+or queue to use? Just ask.
+
+26
+00:01:41,161 --> 00:01:46,314
+The AI checks the Slurm settings itself,
+confirms that MST109178 is available,
+
+27
+00:01:46,314 --> 00:01:50,873
+and explains that the course queue,
+ngscourse8g, is enough this time,
+
+28
+00:01:50,873 --> 00:01:55,499
+because the most demanding step,
+denoising, has already been computed.
+
+29
+00:01:56,433 --> 00:02:00,610
+Step three: say "Go ahead and submit it,"
+and the job is on its way.
+
+30
+00:02:00,610 --> 00:02:03,682
+Then ask for a progress report every five
+minutes,
+
+31
+00:02:03,682 --> 00:02:06,692
+so you don't have to watch the commands
+yourself.
+
+32
+00:02:06,692 --> 00:02:10,010
+Eighteen minutes later, the job finishes
+successfully.
+
+33
+00:02:10,967 --> 00:02:16,488
+The run leaves a pile of qza and qzv files
+that are hard to read at a glance.
+
+34
+00:02:16,488 --> 00:02:21,938
+Step four: ask the AI for a report with
+one section and figure per analysis,
+
+35
+00:02:21,938 --> 00:02:23,659
+ending with conclusions.
+
+36
+00:02:23,659 --> 00:02:28,821
+Seventeen minutes later, it delivers a
+nine-page PDF with eight figures.
+
+37
+00:02:29,767 --> 00:02:30,994
+Now the report.
+
+38
+00:02:30,994 --> 00:02:36,965
+First, filtering: starting from 12,546
+samples, filtering by trial group,
+
+39
+00:02:36,965 --> 00:02:43,509
+transplant time window, and sequencing
+depth leaves 24 patients and 356 samples,
+
+40
+00:02:43,509 --> 00:02:45,963
+nearly 15 samples per patient.
+
+41
+00:02:46,900 --> 00:02:48,894
+In taxonomic composition,
+
+42
+00:02:48,894 --> 00:02:54,876
+Enterococcaceae averages under 1% before
+transplant and rises to 22% after.
+
+43
+00:02:54,876 --> 00:03:00,540
+Of the 225 post-transplant samples, 48 are
+more than half Enterococcus,
+
+44
+00:03:00,540 --> 00:03:05,405
+the single-taxon domination often seen
+after transplantation.
+
+45
+00:03:06,367 --> 00:03:09,701
+Microbial richness drops sharply after
+transplant,
+
+46
+00:03:09,701 --> 00:03:13,568
+and the before-and-after difference is
+highly significant.
+
+47
+00:03:13,568 --> 00:03:15,702
+But with all time points pooled,
+
+48
+00:03:15,702 --> 00:03:20,169
+the auto-FMT and control groups show no
+difference: p equals 0.256.
+
+49
+00:03:21,133 --> 00:03:24,156
+The beta diversity ordination tells the
+same story:
+
+50
+00:03:24,156 --> 00:03:28,601
+pre-transplant samples cluster together,
+while during and after transplant,
+
+51
+00:03:28,601 --> 00:03:31,565
+the community clearly shifts away and
+spreads out.
+
+52
+00:03:32,500 --> 00:03:37,367
+Each patient was sampled many times, so we
+need a longitudinal model.
+
+53
+00:03:37,367 --> 00:03:42,656
+A linear mixed-effects model shows
+richness in the control group falling by
+
+54
+00:03:42,656 --> 00:03:47,311
+about 0.86 per day, while the auto-FMT
+group declines more slowly:
+
+55
+00:03:47,311 --> 00:03:50,838
+a slope difference of 0.56, with p equal
+to 0.016.
+
+56
+00:03:51,800 --> 00:03:57,102
+A random forest uses taxon proportions to
+predict the week after transplant,
+
+57
+00:03:57,102 --> 00:03:58,985
+with an R-squared of 0.319.
+
+58
+00:03:58,985 --> 00:04:02,962
+The top features are Enterococcaceae and
+Lachnospiraceae.
+
+59
+00:04:02,962 --> 00:04:06,380
+Note that it predicts time, not treatment
+effect.
+
+60
+00:04:07,333 --> 00:04:09,202
+Back to our three questions.
+
+61
+00:04:09,202 --> 00:04:12,872
+Transplantation sharply reduces gut
+microbial richness,
+
+62
+00:04:12,872 --> 00:04:14,741
+and Enterococcus takes over.
+
+63
+00:04:14,741 --> 00:04:19,880
+Pooling all samples, the two groups look
+the same; with a longitudinal model,
+
+64
+00:04:19,880 --> 00:04:22,550
+the auto-FMT group declines more slowly.
+
+65
+00:04:22,550 --> 00:04:27,155
+And the bacteria that rise and fall with
+transplant timing are mainly
+
+66
+00:04:27,155 --> 00:04:29,557
+Enterococcaceae and Lachnospiraceae.
+
+67
+00:04:29,557 --> 00:04:33,428
+But with only 24 patients, this is a lead
+worth following,
+
+68
+00:04:33,428 --> 00:04:35,764
+not proof that the treatment works.
+
+69
+00:04:36,700 --> 00:04:39,502
+The analysis is done and the report is
+ready, but
+
+70
+00:04:39,502 --> 00:04:42,190
+a report is not yet a paper. In the next
+unit,
+
+71
+00:04:42,190 --> 00:04:46,813
+we take these results and work with AI to
+write an English paper with citations.
+

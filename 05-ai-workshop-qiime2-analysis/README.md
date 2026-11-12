@@ -4,9 +4,9 @@
 
 You have a batch of 16S sequencing data and want to run a gut microbiome analysis, but you're not familiar with Linux, Slurm, or QIIME 2 commands? This unit shows how to open an AI Agent on the HPC system of the NCHC (National Center for High-performance Computing) and, **with just a few plain-language sentences**, have it download the data, pick a project account, submit the job, report progress, and finally deliver a 9-page analysis report with 8 figures.
 
-> 📥 **Unit Slides**: [Download 05-qiime2-analysis.pptx](https://github.com/gemini960114/ai-workshop-research/raw/main/PPTX/05-qiime2-analysis.pptx) (18 slides, with speaker notes)
+> 📥 **Unit Slides**: [Download 05-qiime2-analysis.en.pptx](https://github.com/gemini960114/ai-workshop-research/raw/main/PPTX/05-qiime2-analysis.en.pptx) (18 slides, with speaker notes; [Chinese version](https://github.com/gemini960114/ai-workshop-research/raw/main/PPTX/05-qiime2-analysis.pptx))
 
-> 🎬 **Tutorial Video**: [Unit 05 | QIIME 2 Gut Microbiome Analysis](https://github.com/gemini960114/ai-workshop-research/blob/main/movies/05-qiime2-analysis.mp4) (MP4, 4 min 06 sec, with [Traditional Chinese subtitles](https://github.com/gemini960114/ai-workshop-research/blob/main/movies/05-qiime2-analysis.zh-TW.srt))
+> 🎬 **Tutorial Video**: [Unit 05 | QIIME 2 Gut Microbiome Analysis](https://github.com/gemini960114/ai-workshop-research/blob/main/movies/05-qiime2-analysis.en.mp4) (MP4, 4 min 51 sec, English narration with [English subtitles](https://github.com/gemini960114/ai-workshop-research/blob/main/movies/05-qiime2-analysis.en.srt); [Chinese version](https://github.com/gemini960114/ai-workshop-research/blob/main/movies/05-qiime2-analysis.mp4))
 
 **Download data → Confirm account and queue → Submit job → Generate report**
 
