@@ -6,7 +6,7 @@
 
 > 📥 **本單元上課簡報**：[下載 00-cloud-vs-local.pptx](https://github.com/gemini960114/ai-workshop-research/raw/main/PPTX/00-cloud-vs-local.pptx)（13 頁，含講者備註）
 
-> 🎬 **本單元教學影片**：[單元 00｜雲端 vs 地端](https://github.com/gemini960114/ai-workshop-research/blob/main/movies/00-cloud-vs-local.mp4)（MP4，1 分 57 秒，附[繁體中文字幕](https://github.com/gemini960114/ai-workshop-research/blob/main/movies/00-cloud-vs-local.zh-TW.srt)）
+> 🎬 **本單元教學影片**：[單元 00｜雲端 vs 地端](https://youtu.be/QkUmEnTtMl4)（YouTube，1 分 57 秒，附[繁體中文字幕](https://github.com/gemini960114/ai-workshop-research/blob/main/movies/00-cloud-vs-local.zh-TW.srt)）
 
 | 步驟 | 內容 | 預估時間 |
 | :--- | :--- | :---: |

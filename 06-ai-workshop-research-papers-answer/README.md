@@ -10,7 +10,7 @@ Everything happens in a folder on your own computer. No Zotero or NotebookLM is 
 
 > 📥 **Unit Slides**: [Download 06-research-papers.en.pptx](https://github.com/gemini960114/ai-workshop-research/raw/main/PPTX/06-research-papers.en.pptx) (23 slides, with speaker notes; [Chinese version](https://github.com/gemini960114/ai-workshop-research/raw/main/PPTX/06-research-papers.pptx))
 
-> 🎬 **Tutorial Video**: [Unit 06 | Research Paper Workflow](https://github.com/gemini960114/ai-workshop-research/blob/main/movies/06-research-papers.en.mp4) (MP4, 6 min 57 sec, English narration with [English subtitles](https://github.com/gemini960114/ai-workshop-research/blob/main/movies/06-research-papers.en.srt); [Chinese version](https://github.com/gemini960114/ai-workshop-research/blob/main/movies/06-research-papers.mp4))
+> 🎬 **Tutorial Video**: [Unit 06 | Research Paper Workflow](https://youtu.be/o253sy87788) (YouTube, 6 min 57 sec, English narration with [English subtitles](https://github.com/gemini960114/ai-workshop-research/blob/main/movies/06-research-papers.en.srt); [Chinese version](https://youtu.be/fyyZEMmqQjY))
 
 > 📂 **This is the reference answer folder**: the complete output of one test run following this guide (literature, notes, comparison table, paper, and `main.pdf`). The conversation log of the test run is in [`test-run-conversation.txt`](test-run-conversation.txt). For practice, use [`06-ai-workshop-research-papers/`](../06-ai-workshop-research-papers/).
 
