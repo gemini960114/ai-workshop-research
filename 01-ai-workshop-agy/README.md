@@ -6,7 +6,7 @@ Use **Google Antigravity IDE** with its built-in AI Agent to install tools, crea
 
 > 📥 **Unit Slides**: [Download 01-antigravity.en.pptx](https://github.com/gemini960114/ai-workshop-research/raw/main/PPTX/01-antigravity.en.pptx) (19 slides, with speaker notes; [Chinese version](https://github.com/gemini960114/ai-workshop-research/raw/main/PPTX/01-antigravity.pptx))
 
-> 🎬 **Tutorial Video**: [Unit 01 | Getting Started with Antigravity](https://youtu.be/72oCyg8MDLg) (YouTube, 3 min 59 sec, English narration with [English subtitles](https://github.com/gemini960114/ai-workshop-research/blob/main/movies/01-antigravity.en.srt); [Chinese version on YouTube](https://youtu.be/PQEkjWiNC5o))
+> 🎬 **Tutorial Video**: [Unit 01 | Getting Started with Antigravity](https://youtu.be/72oCyg8MDLg) (YouTube, 3 min 59 sec, English narration with English subtitles; [Chinese version on YouTube](https://youtu.be/PQEkjWiNC5o))
 
 | Step | Content | Est. Time |
 | :--- | :--- | :---: |

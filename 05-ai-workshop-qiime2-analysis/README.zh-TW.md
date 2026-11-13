@@ -6,7 +6,7 @@
 
 > 📥 **本單元上課簡報**：[下載 05-qiime2-analysis.pptx](https://github.com/gemini960114/ai-workshop-research/raw/main/PPTX/05-qiime2-analysis.pptx)（18 頁，含講者備註）
 
-> 🎬 **本單元教學影片**：[單元 05｜QIIME 2 腸道菌相分析](https://youtu.be/r1-ngUd3RKg)（YouTube，4 分 06 秒，附[繁體中文字幕](https://github.com/gemini960114/ai-workshop-research/blob/main/movies/05-qiime2-analysis.zh-TW.srt)）
+> 🎬 **本單元教學影片**：[單元 05｜QIIME 2 腸道菌相分析](https://youtu.be/r1-ngUd3RKg)（YouTube，4 分 06 秒，附繁體中文字幕）
 
 **下載資料 → 確認帳號與佇列 → 派送作業 → 產出報告**
 

@@ -6,7 +6,7 @@ Take the exact same paper and the same three questions, and give them to **ChatG
 
 > 📥 **Unit Slides**: [Download 00-cloud-vs-local.en.pptx](https://github.com/gemini960114/ai-workshop-research/raw/main/PPTX/00-cloud-vs-local.en.pptx) (13 slides, with speaker notes; [Chinese version](https://github.com/gemini960114/ai-workshop-research/raw/main/PPTX/00-cloud-vs-local.pptx))
 
-> 🎬 **Tutorial Video**: [Unit 00 | Cloud vs. Local](https://youtu.be/sLCBtmZAz2c) (YouTube, 2 min 00 sec, English narration with [English subtitles](https://github.com/gemini960114/ai-workshop-research/blob/main/movies/00-cloud-vs-local.en.srt); [Chinese version](https://youtu.be/QkUmEnTtMl4))
+> 🎬 **Tutorial Video**: [Unit 00 | Cloud vs. Local](https://youtu.be/sLCBtmZAz2c) (YouTube, 2 min 00 sec, English narration with English subtitles; [Chinese version](https://youtu.be/QkUmEnTtMl4))
 
 | Step | Content | Est. Time |
 | :--- | :--- | :---: |

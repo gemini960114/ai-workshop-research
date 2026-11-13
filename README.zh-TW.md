@@ -37,19 +37,18 @@ git clone https://github.com/gemini960114/ai-workshop-research.git
 
 ## 上課簡報與影片
 
-各單元 README 開頭有簡報下載連結，檔案都在 [`PPTX/`](PPTX/)：
+各單元 README 開頭有簡報下載與教學影片連結；簡報檔在 [`PPTX/`](PPTX/)，影片放在 YouTube（附繁體中文字幕）：
 
-| 單元 | 簡報 |
-| --- | --- |
-| 00 | [00-cloud-vs-local.pptx](https://github.com/gemini960114/ai-workshop-research/raw/main/PPTX/00-cloud-vs-local.pptx) |
-| 01 | [01-antigravity.pptx](https://github.com/gemini960114/ai-workshop-research/raw/main/PPTX/01-antigravity.pptx) |
-| 02 | [02-frontend-design.pptx](https://github.com/gemini960114/ai-workshop-research/raw/main/PPTX/02-frontend-design.pptx) |
-| 03 | [03-office-skills.pptx](https://github.com/gemini960114/ai-workshop-research/raw/main/PPTX/03-office-skills.pptx) |
-| 04 | [04-voucher-ocr.pptx](https://github.com/gemini960114/ai-workshop-research/raw/main/PPTX/04-voucher-ocr.pptx) |
-| 05 | [05-qiime2-analysis.pptx](https://github.com/gemini960114/ai-workshop-research/raw/main/PPTX/05-qiime2-analysis.pptx) |
-| 06 | [06-research-papers.pptx](https://github.com/gemini960114/ai-workshop-research/raw/main/PPTX/06-research-papers.pptx) |
+| 單元 | 簡報 | 影片 |
+| --- | --- | --- |
+| 00 | [00-cloud-vs-local.pptx](https://github.com/gemini960114/ai-workshop-research/raw/main/PPTX/00-cloud-vs-local.pptx) | [YouTube](https://youtu.be/QkUmEnTtMl4) |
+| 01 | [01-antigravity.pptx](https://github.com/gemini960114/ai-workshop-research/raw/main/PPTX/01-antigravity.pptx) | [YouTube](https://youtu.be/PQEkjWiNC5o) |
+| 02 | [02-frontend-design.pptx](https://github.com/gemini960114/ai-workshop-research/raw/main/PPTX/02-frontend-design.pptx) | [YouTube](https://youtu.be/qVPdYf5CD2A) |
+| 03 | [03-office-skills.pptx](https://github.com/gemini960114/ai-workshop-research/raw/main/PPTX/03-office-skills.pptx) | [YouTube](https://youtu.be/FwIpKAJ2-vk) |
+| 04 | [04-voucher-ocr.pptx](https://github.com/gemini960114/ai-workshop-research/raw/main/PPTX/04-voucher-ocr.pptx) | [YouTube](https://youtu.be/XOs_Pf7QyjA) |
+| 05 | [05-qiime2-analysis.pptx](https://github.com/gemini960114/ai-workshop-research/raw/main/PPTX/05-qiime2-analysis.pptx) | [YouTube](https://youtu.be/r1-ngUd3RKg) |
+| 06 | [06-research-papers.pptx](https://github.com/gemini960114/ai-workshop-research/raw/main/PPTX/06-research-papers.pptx) | [YouTube](https://youtu.be/fyyZEMmqQjY) |
 
-教學影片放在 [`movies/`](movies/)（附繁體中文字幕）。00、04–06 的 README 開頭直接連到這裡的 MP4；01–03 的 README 連到 YouTube 版本。
 
 ## 事前準備
 

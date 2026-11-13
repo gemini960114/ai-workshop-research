@@ -10,7 +10,7 @@
 
 > 📥 **本單元上課簡報**：[下載 06-research-papers.pptx](https://github.com/gemini960114/ai-workshop-research/raw/main/PPTX/06-research-papers.pptx)（23 頁，含講者備註）
 
-> 🎬 **本單元教學影片**：[單元 06｜研究論文處理](https://youtu.be/fyyZEMmqQjY)（YouTube，6 分 37 秒，附[繁體中文字幕](https://github.com/gemini960114/ai-workshop-research/blob/main/movies/06-research-papers.zh-TW.srt)）
+> 🎬 **本單元教學影片**：[單元 06｜研究論文處理](https://youtu.be/fyyZEMmqQjY)（YouTube，6 分 37 秒，附繁體中文字幕）
 
 > 📂 **這是參考答案資料夾**：照本手冊試跑一次的完整產出（文獻、筆記、比較表、論文與 `main.pdf`），試跑的對話紀錄在 [`test-run-conversation.txt`](test-run-conversation.txt)。練習請使用 [`06-ai-workshop-research-papers/`](../06-ai-workshop-research-papers/)。
 

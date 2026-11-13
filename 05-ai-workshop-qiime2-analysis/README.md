@@ -6,7 +6,7 @@ You have a batch of 16S sequencing data and want to run a gut microbiome analysi
 
 > 📥 **Unit Slides**: [Download 05-qiime2-analysis.en.pptx](https://github.com/gemini960114/ai-workshop-research/raw/main/PPTX/05-qiime2-analysis.en.pptx) (18 slides, with speaker notes; [Chinese version](https://github.com/gemini960114/ai-workshop-research/raw/main/PPTX/05-qiime2-analysis.pptx))
 
-> 🎬 **Tutorial Video**: [Unit 05 | QIIME 2 Gut Microbiome Analysis](https://youtu.be/IP08MIu5TCk) (YouTube, 4 min 51 sec, English narration with [English subtitles](https://github.com/gemini960114/ai-workshop-research/blob/main/movies/05-qiime2-analysis.en.srt); [Chinese version](https://youtu.be/r1-ngUd3RKg))
+> 🎬 **Tutorial Video**: [Unit 05 | QIIME 2 Gut Microbiome Analysis](https://youtu.be/IP08MIu5TCk) (YouTube, 4 min 51 sec, English narration with English subtitles; [Chinese version](https://youtu.be/r1-ngUd3RKg))
 
 **Download data → Confirm account and queue → Submit job → Generate report**
 

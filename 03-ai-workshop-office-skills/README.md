@@ -6,7 +6,7 @@ Use 4 official skills to turn a single CSV file into an Excel workbook with char
 
 > 📥 **Unit Slides**: [Download 03-office-skills.en.pptx](https://github.com/gemini960114/ai-workshop-research/raw/main/PPTX/03-office-skills.en.pptx) (12 slides, with speaker notes; [Chinese version](https://github.com/gemini960114/ai-workshop-research/raw/main/PPTX/03-office-skills.pptx))
 
-> 🎬 **Tutorial Video**: [Unit 03 | Office Document Processing](https://youtu.be/sOIg3osiPU4) (YouTube, 3 min 34 sec, English narration with [English subtitles](https://github.com/gemini960114/ai-workshop-research/blob/main/movies/03-office-skills.en.srt); [Chinese version on YouTube](https://youtu.be/FwIpKAJ2-vk))
+> 🎬 **Tutorial Video**: [Unit 03 | Office Document Processing](https://youtu.be/sOIg3osiPU4) (YouTube, 3 min 34 sec, English narration with English subtitles; [Chinese version on YouTube](https://youtu.be/FwIpKAJ2-vk))
 
 | Step | Content | Est. Time |
 | :--- | :--- | :---: |

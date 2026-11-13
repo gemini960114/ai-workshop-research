@@ -6,7 +6,7 @@
 
 > 📥 **本單元上課簡報**：[下載 04-voucher-ocr.pptx](https://github.com/gemini960114/ai-workshop-research/raw/main/PPTX/04-voucher-ocr.pptx)（17 頁，含示範短片與講者備註）
 
-> 🎬 **本單元教學影片**：[單元 04｜核銷憑證登錄 Excel](https://youtu.be/XOs_Pf7QyjA)（YouTube，4 分 26 秒，附[繁體中文字幕](https://github.com/gemini960114/ai-workshop-research/blob/main/movies/04-voucher-ocr.zh-TW.srt)）
+> 🎬 **本單元教學影片**：[單元 04｜核銷憑證登錄 Excel](https://youtu.be/XOs_Pf7QyjA)（YouTube，4 分 26 秒，附繁體中文字幕）
 
 > 💡 影片和簡報用的是真實憑證（敏感資訊已模糊化）。這份說明改用 [example_deid/](example_deid/) 的**去識別化練習樣本**，所以檔名、單位和金額會和影片不同，做法完全一樣。
 
